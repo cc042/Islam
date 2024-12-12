@@ -30,6 +30,17 @@ p {
 }
 
 img,
+body,
 p {
     pointer-events: none;
+}
+
+@media screen and (max-width:399px) {
+    img {
+        width: 100%;
+    }
+
+    p {
+        font-size: 100%;
+    }
 }
