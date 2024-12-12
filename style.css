@@ -571,6 +571,14 @@ section:not(.active) {
     font-family: var(--sff);
 }
 
+#saved_azkar {
+    font-size: 20px;
+    font-family: var(--sff);
+    margin-top: 20px;
+    font-weight: 700;
+    color: var(--Navy-Blue);
+}
+
 .counter_azkar {
     width: 150px;
     height: 50px;
