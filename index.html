@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+    <title>روحانيات</title>
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/headers_assets/read-quran.png">
+
+    <!-- Scripts -->
+    <script src="JS/index.js" defer></script>
+    <script src="JS/surahs.js" defer></script>
+    <script src="JS/services.js" defer></script>
+    <script src="JS/tabs.js" defer></script>
+    <script src="JS/quran.js" defer></script>
+    <script src="JS/azkar.js" defer></script>
+</head>
+
+<body>
+    <!-- Loading Dialog -->
+    <dialog class="Load" open>
+        <div class="loader">
+            <div class="quater ii"></div>
+            <div class="quater i"></div>
+        </div>
+    </dialog>
+
+    <!-- Inquiry Dialog -->
+    <dialog id="estefsar">
+        <div class="close">
+            <button class="estefsarclose" aria-label="Close Inquiry">
+                <img src="assets/icons/close.svg" alt="إغلاق">
+            </button>
+            <h1 class="additions">قسم الاستفسارات</h1>
+        </div>
+        <div class="estefsaritems">
+            <div class="estefsarname">
+                <video src="assets/icons/phone.mp4" autoplay loop muted width="40" height="40"
+                    aria-label="Inquiry Video"></video>
+                <h1>قسم الاستفسارات</h1>
+            </div>
+            <textarea id="estefsartext" placeholder="ما الذي تريد الاستفسار عنه"></textarea>
+            <button type="submit" class="estefsarsend">إرسال الاستفسار</button>
+        </div>
+    </dialog>
+
+    <!-- Follow Us Dialog -->
+    <dialog class="Follows">
+        <div class="followsitems">
+            <button class="Followsclose" aria-label="Close Follow Us">
+                <img src="assets/icons/close.svg" alt="إغلاق">
+            </button>
+            <div class="socials">
+                <div class="social-item">
+                    <img src="assets/icons/youtube.svg" alt="YouTube" width="32" height="32">
+                    <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+                </div>
+                <div class="social-item">
+                    <img src="assets/icons/instagram.svg" alt="Instagram" width="32" height="32">
+                    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                </div>
+                <div class="social-item">
+                    <img src="assets/icons/twitter.svg" alt="Twitter" width="32" height="32">
+                    <a href="https://www.twitter.com/" target="_blank">Twitter</a>
+                </div>
+                <div class="social-item">
+                    <img src="assets/icons/tik-tok.png" alt="TikTok" width="32" height="32">
+                    <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Alert Dialog -->
+    <dialog class="alert1">
+        <div class="alert1items">
+            <button class="exitalert1" aria-label="Close Alert">
+                <img src="assets/icons/close.svg" alt="إغلاق">
+            </button>
+            <h1></h1>
+        </div>
+    </dialog>
+
+    <!-- Screen Condition -->
+    <div class="screen_tabs">
+        <a href="tel:+201225073533" class="contact">اتصل بنا</a>
+        <button class="FollowMe">تابعني</button>
+        <button id="estefsar">استفسار</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="rightdevsection">
+            <img src="assets/headers_assets/read-quran.png" alt="Logo">
+            <h1>روحانيات</h1>
+        </div>
+        <div class="leftdevsection">
+            <ul>
+                <li><a href="tel:+201225073533" class="contact">اتصل بنا</a></li>
+                <li><button class="FollowMe">تابعني</button></li>
+                <li><button class="estefsar">استفسار</button></li>
+            </ul>
+        </div>
+        <div class="hidden">
+            <button class="screen_condition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 512 512">
+                    <path
+                        d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Tabs Navigation -->
+    <nav class="tabs">
+        <input type="radio" id="tab1" name="tab" class="tab">
+        <input type="radio" id="tab2" name="tab" class="tab">
+        <input type="radio" id="tab3" name="tab" class="tab">
+        <input type="radio" id="tab4" name="tab" class="tab">
+
+        <label for="tab1" class="tab-label" id="one">القرآن الكريم</label>
+        <label for="tab2" class="tab-label" id="two">أسماء الله الحسنى</label>
+        <label for="tab3" class="tab-label" id="three">عداد الأذكار</label>
+        <label for="tab4" class="tab-label" id="four">أوقات الصلاة</label>
+    </nav>
+
+    <!-- Main Tab Content -->
+    <main>
+        <section class="HolyQuran" id="content1">
+            <div class="header">
+                <img src="assets/headers_assets/book.png" alt="Holy Quran" width="50">
+                <h2>المصحف</h2>
+            </div>
+
+            <div class="surahs"></div>
+        </section>
+
+        <section class="NamesOfAllah" id="content2">
+            <div class="header">
+                <img src="assets/headers_assets/belief.png" alt="أسماء الله الحسنى" width="50">
+                <h2>أسماء الله الحسنى</h2>
+            </div>
+            <div class="names"></div>
+        </section>
+
+        <section class="Counter" id="content3">
+            <div class="header">
+                <img src="assets/headers_assets/beads.png" alt="الأذكار" width="50">
+                <h2>الأذكار</h2>
+            </div>
+
+            <div class="counter">
+                <p id="counter_azkar">عداد التسبيح 0</p>
+                <button class="counter_azkar">أضعط</button>
+            </div>
+        </section>
+
+        <section class="pray" id="content4">
+            <div class="header">
+                <img src="assets/headers_assets/prayer.png" alt="الأذكار" width="50">
+                <h2>أوقات الصلاة</h2>
+            </div>
+
+            <div class="prayers">
+                <div class="fajr" id="prayer">
+                    <h3>الفجر</h3>
+                    <img src="assets/pray_assets/1.png" alt="صورة الصلاة">
+                    <p>00:00</p>
+                </div>
+                <div class="sunrise" id="prayer">
+                    <h3>الشروق</h3>
+                    <img src="assets/pray_assets/sunrise.png" alt="صورة الصلاة">
+                    <p>00:00</p>
+                </div>
+                <div class="dhuhur" id="prayer">
+                    <h3>الظهر</h3>
+                    <img src="assets/pray_assets/dhuhr.png" alt="صورة الصلاة">
+                    <p>00:00</p>
+                </div>
+                <div class="Asr" id="prayer">
+                    <h3>العصر</h3>
+                    <img src="assets/pray_assets/asr.png" alt="صورة الصلاة">
+                    <p>00:00</p>
+                </div>
+                <div class="Maghrib" id="prayer">
+                    <h3>المغرب</h3>
+                    <img src="assets/pray_assets/maghrib.png" alt="صورة الصلاة">
+                    <p>00:00</p>
+                </div>
+                <div class="Isha" id="prayer">
+                    <h3>العشاء</h3>
+                    <img src="assets/pray_assets/isha.png" alt="صورة الصلاة">
+                    <p>00:00</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h1 dir="auto">&COPY; جميع الحقوق محفوظة لـ Code Comet</h1>
+    </footer>
+</body>
+
+</html>
