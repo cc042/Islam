@@ -1,0 +1,712 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&display=swap');
+
+/* ALL */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+/* Variables */
+:root {
+    --mff: "Cairo Play";
+    --sff: "Rubik";
+
+    /* Traditional */
+    --Green: rgb(0, 128, 0);
+    --Gold: rgb(255, 215, 0);
+    --Black: rgb(0, 0, 0);
+    --White: rgb(255, 255, 255);
+
+    /* Modern and Elegant Colors */
+    --Navy-Blue: rgb(0, 0, 128);
+    --Soft-Gray: rgb(128, 128, 128);
+    --Cream: rgb(255, 240, 200);
+}
+
+/* Animations */
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spin1 {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    25% {
+        transform: rotateZ(0deg);
+    }
+
+    50% {
+        transform: rotateZ(180deg);
+    }
+
+    75% {
+        transform: rotateZ(180deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes spin2 {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    25% {
+        transform: rotateZ(180deg);
+    }
+
+    50% {
+        transform: rotateZ(180deg);
+    }
+
+    75% {
+        transform: rotateZ(360deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+/* loader */
+.Load {
+    height: 100vh;
+    overflow: hidden;
+    margin: auto;
+    position: fixed;
+    z-index: 9999;
+}
+
+.Load::backdrop {
+    background-color: rgba(100, 100, 100, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.quater {
+    height: 1.5cm;
+    width: 1.5cm;
+    background-color: skyblue;
+    float: left;
+    position: relative;
+    bottom: 1.25cm;
+}
+
+.i {
+    border-top-left-radius: 100%;
+    animation: spin1 2s ease-in-out infinite;
+    transform-origin: 1.5cm 1.5cm;
+}
+
+.ii {
+    border-top-right-radius: 100%;
+    animation: spin2 2s ease-in-out infinite;
+    transform-origin: 0 1.5cm;
+}
+
+/* HTML */
+html {
+    width: 100vw;
+    height: 100vh;
+    font-size: 16px;
+    font-family: var(--sff);
+    overflow-x: hidden;
+}
+
+/* body */
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* ANY ANCHOR TAG */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* ANY DIALOG WHEN IT OPENS */
+dialog[open] {
+    animation: fade 0.5s ease;
+}
+
+/* ANY BACKDROP DIALOG */
+dialog::backdrop {
+    backdrop-filter: blur(10px);
+}
+
+/* ANY INPUT WITH TYPE RADIO */
+input[type="radio"] {
+    display: none;
+}
+
+/* ANY IMAGE OR SVG OR VIDEO */
+img,
+svg,
+video {
+    pointer-events: none;
+}
+
+/* ANY BUTTONS */
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* ANY TEXTAREA */
+textarea {
+    resize: none;
+    font-family: var(--mff);
+}
+
+/* WEBKIT SCROLL-BAR */
+::-webkit-scrollbar-corner {
+    width: 0px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--Navy-Blue);
+}
+
+/* Error Dialog */
+.alert1 {
+    margin: auto;
+    height: 200px;
+    width: 90vw;
+    border-radius: 20px;
+    animation: fade 0.7s;
+}
+
+.alert1items {
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert1 h1 {
+    text-align: center;
+}
+
+.exitalert1 {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--Cream);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Follows */
+.Follows {
+    margin: auto;
+    height: 200px;
+    width: 90vw;
+    border-radius: 20px;
+    z-index: 999;
+}
+
+.followsitems {
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.socials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    place-items: center;
+    gap: 20px;
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 10px;
+}
+
+#app a {
+    font-size: 20px;
+}
+
+.Followsclose {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--Cream);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* estefsar */
+#estefsar {
+    margin: auto;
+    height: max-content;
+    width: 90vw;
+    border-radius: 20px;
+    z-index: 999;
+    padding: 20px;
+}
+
+.estefsarclose {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--Cream);
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+.close {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 999;
+}
+
+.estefsaritems {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    height: 87vh;
+}
+
+.estefsarname {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.estefsarsend {
+    background: var(--Cream);
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    font-family: var(--sff);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#estefsartext {
+    background: var(--Cream);
+    border-radius: 10px;
+    color: var(--Black);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.additions {
+    display: none;
+}
+
+/* header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.rightdevsection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.leftdevsection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftdevsection ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.FollowMe,
+.contact,
+.estefsar {
+    font-size: 25px;
+    background: none;
+    font-family: var(--sff);
+    font-weight: 700;
+    transition: 1s;
+    position: relative;
+    display: inline-block
+}
+
+.leftdevsection ul li button::before,
+a::before {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    background: var(--Green);
+    height: 3px;
+    width: 0%;
+    transition: 0.3s ease-in-out;
+}
+
+.leftdevsection ul li button:hover::before,
+a:hover::before {
+    width: 100%;
+}
+
+.hidden,
+.screen_tabs {
+    display: none;
+}
+
+.screen_condition {
+    background: none;
+}
+
+/* navbar */
+.tabs {
+    border-bottom: 3px solid var(--Gold);
+    border-top: 3px solid var(--Gold);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tab-label {
+    font-size: 25px;
+    font-weight: 700;
+    font-family: var(--sff);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab-label:hover {
+    background: var(--Gold);
+}
+
+.active {
+    display: inline;
+}
+
+section:not(.active) {
+    display: none;
+}
+
+/* headers */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 10px 0 0;
+    order: 2;
+}
+
+/* HolyQuran */
+.surahs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 20px;
+    padding: 20px 20px 70px 20px;
+
+}
+
+.surah {
+    border: 3px solid var(--Black);
+    width: 100%;
+    border-radius: 20px 0px;
+    padding: 20px;
+    font-family: var(--mff);
+    cursor: pointer;
+    transition: 0.5s ease;
+    text-align: center;
+}
+
+.surah:hover {
+    transform: translateY(-10px);
+    border-color: var(--Gold)
+}
+
+.surahName {
+    font-size: 30px;
+}
+
+.surahOrder,
+.surahVerses,
+.surahType,
+.surahJuz,
+.surahhizb {
+    font-size: 20px;
+}
+
+.surah>button {
+    width: 100%;
+    border-radius: 10px;
+    background: var(--Cream);
+    color: var(--Navy-Blue);
+    font-family: var(--mff);
+    font-size: 30px;
+    font-weight: 600;
+    transition: 0.4s;
+}
+
+.surah>button:hover {
+    background: var(--Gold);
+}
+
+/* Names Of Allah */
+.names {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+    padding: 10px 10px 70px 10px;
+    gap: 20px;
+    margin-top: 8px;
+}
+
+.name {
+    padding: 10px;
+    border-radius: 10px 0px;
+    border: 3px solid var(--Black);
+    cursor: pointer;
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.name:hover {
+    transform: translateY(-10px);
+    border-color: var(--Gold);
+}
+
+/* Counter Azkar */
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: calc(100vh - 320px);
+}
+
+#counter_azkar {
+    font-size: 60px;
+    color: var(--Navy-Blue);
+    font-weight: 700;
+    font-family: var(--sff);
+}
+
+.counter_azkar {
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 0px 50px;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: var(--sff);
+    background: var(--Gold);
+    color: var(--Navy-Blue);
+    transition: 0.1s ease;
+    margin-top: 10px;
+
+    &:hover {
+        background-color: var(--Cream);
+    }
+}
+
+/* prayers */
+.pray {
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.prayers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px 20px 70px 20px;
+}
+
+#prayer {
+    padding: 20px;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    border: 3px solid black;
+    border-radius: 20px 0px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+#prayer:hover {
+    transform: translateY(-10px);
+    border-color: var(--Gold)
+}
+
+#prayer>h3 {
+    font-size: 30px;
+}
+
+#prayer>p {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#prayer>img {
+    width: 100px;
+}
+
+footer {
+    color: var(--Cream);
+    text-align: center;
+    padding: 10px 0 10px 0;
+    background-color: var(--Navy-Blue);
+    position: fixed;
+    z-index: 999;
+    bottom: 0px;
+    width: 100%;
+}
+
+@media screen and (max-width:910px) {
+    .surahs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:781px) {
+    .tab-label {
+        font-size: 20px;
+    }
+
+    .prayers {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:685px) {
+    .surahs {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width:625px) {
+    .tab-label {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:575px) {
+    footer {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:587px) {
+    .tabs {
+        display: grid;
+        height: max-content;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tab-label {
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .leftdevsection {
+        display: none;
+    }
+
+    .hidden {
+        display: inline;
+    }
+
+    .prayers {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width:400px) {
+    #counter_azkar {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+}
