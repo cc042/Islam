@@ -4,7 +4,7 @@ const adder = document.querySelector(".counter_azkar")
 const saved_azkar = document.querySelector("#saved_azkar")
 
 // Numbers
-var counter1 = -1
+var counter1 = 0
 var counter2 = 0
 
 // texts
