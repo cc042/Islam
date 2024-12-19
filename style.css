@@ -552,6 +552,7 @@ section:not(.active) {
 .name:hover {
     transform: translateY(-10px);
     border-color: var(--Gold);
+    box-shadow: 0 0 10px black;
 }
 
 /* Counter Azkar */
