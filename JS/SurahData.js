@@ -143,7 +143,7 @@ function makeSurahs(bool) {
 				<h3 class="surahVerses">عدد الآيات: ${surahs[i].verses}</h3>
 				<h3 class="surahVerses">النزول: ${surahs[i].type}</h3>
 				<button style="margin-bottom: 10px;" window.open("quran/${surahs[i].name}.html")>اقرأ</button>
-				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التلخيص</button>
+				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التفسير</button>
 			</div>`
 			document.querySelector(".surah").style.width = "100%"
 		}
@@ -164,7 +164,7 @@ function findObject() {
 				<h3 class="surahVerses">عدد الآيات: ${foundObject.verses}</h3>
 				<h3 class="surahVerses">النزول: ${foundObject.type}</h3>
 				<button style="margin-bottom: 10px;" window.open("quran/${foundObject.name}.html")>اقرأ</button>
-				<button>التلخيص</button>
+				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التفسير</button>
 			</div>`
 		SurahsWrapper.style.display = "flex"
 		SurahsWrapper.style.justifyContent = "center"
