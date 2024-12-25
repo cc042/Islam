@@ -1,16 +1,41 @@
-var data = null;
+const countryInputWrapper = document.querySelector(".countryInputWrapper")
+const prayers = document.querySelector(".prayers")
+const countryfinder = document.querySelector(".countryfinder")
 
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+const AzanStatus = document.querySelector(".status2")
 
-xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === this.DONE) {
-        console.log(this.responseText);
-    }
-});
+// Prayers Times
+const Fajr = document.querySelector(".El-Fajr")
+const Shurooq = document.querySelector(".El-Shurooq")
+const Dhuhrs = document.querySelector(".El-Dhuhr")
+const Asr = document.querySelector(".El-Asr")
+const Maghrib = document.querySelector(".El-Maghrib")
+const Isha = document.querySelector(".El-Isha")
 
-xhr.open("GET", "https://api.collectapi.com/economy/currencyToAll?int=10&base=USD");
-xhr.setRequestHeader("content-type", "application/json");
-xhr.setRequestHeader("authorization", "apikey 7vYK4fTthpxYRuneG1QRrY:1fjWgJ4GcMzMnP3eHMO3TQ");
+function GetTimes() {
+    jQuery(function ($) {
+        $.getJSON(`https://muslimsalat.com/${countryfinder.value.trim()}/daily.json?jsoncallback=?`, function (times) {
+            countryfinder.value = ""
+            if (times.status_description = "Succses.") {
+                // Make The Wrapper Appears
+                prayers.style.display = "flex";
 
-xhr.send(data);
+                // Prayers Api Times
+                Fajr.innerHTML = times.items[0].fajr;
+                Shurooq.innerHTML = times.items[0].shurooq;
+                Dhuhrs.innerHTML = times.items[0].dhuhr;
+                Asr.innerHTML = times.items[0].asr;
+                Maghrib.innerHTML = times.items[0].maghrib;
+                Isha.innerHTML = times.items[0].isha;
+
+                // Country and City
+                AzanStatus.innerHTML = "البلد: " + times.country + " / " + "المدينة: " + times.city
+            }
+            else {
+                prayers.style.display = "none";
+            }
+        });
+    });
+}
+
+countryInputWrapper.addEventListener("submit", (e) => { e.preventDefault(); GetTimes(); })
