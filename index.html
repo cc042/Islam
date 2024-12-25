@@ -18,13 +18,12 @@
     <link rel="icon" href="assets/headers_assets/read-quran.png">
 
     <!-- Scripts -->
-    <script src="JS/index.js" defer></script>
-    <script src="JS/azan.js" defer></script>
-    <script src="JS/surahs.js" defer></script>
-    <script src="JS/services.js" defer></script>
-    <script src="JS/tabs.js" defer></script>
-    <script src="JS/quran.js" defer></script>
     <script src="JS/azkar.js" defer></script>
+    <script src="JS/azan.js" defer></script>
+    <script src="JS/index.js" defer></script>
+    <script src="JS/services.js" defer></script>
+    <script src="JS/SurahData.js" defer></script>
+    <script src="JS/tabs.js" defer></script>
 </head>
 
 <body>
@@ -85,7 +84,7 @@
     <!-- Alert Dialog -->
     <dialog class="alert1">
         <div class="alert1items">
-            <button class="exitalert1" aria-label="Close Alert">
+            <button class="exitalert1" aria-label="Close Alert" onclick="document.querySelector('.alert1').close()">
                 <img src="assets/icons/close.svg" alt="إغلاق">
             </button>
             <h1></h1>
@@ -143,7 +142,22 @@
                 <h2>المصحف</h2>
             </div>
 
-            <div class="surahs"></div>
+            <div class="surahinput">
+                <form class="surahInputWrapper">
+                    <input type="text" placeholder="أدخل أسم السورة" class="surahfinder">
+                    <button type="submit" class="findsurah">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"
+                            fill="black">
+                            <path
+                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                        </svg>
+                    </button>
+                </form>
+                <h1 class="status" align="center">أدخل أسم السورة لكى أظهرها لك</h1>
+            </div>
+
+            <div class="surahs" style="width: 100%;">
+            </div>
         </section>
 
         <section class="NamesOfAllah" id="content2">
@@ -173,36 +187,62 @@
                 <h2>أوقات الصلاة</h2>
             </div>
 
+            <div class="countryinput">
+                <form class="countryInputWrapper">
+                    <input type="text" placeholder="أدخل أسم المدينة" class="countryfinder">
+                    <button type="submit" class="findcountry">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"
+                            fill="black">
+                            <path
+                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                        </svg>
+                    </button>
+                </form>
+                <h1 class="status2" align="center">أدخل أسم المدينة لكى اظهر لك الأوقات</h1>
+            </div>
+
             <div class="prayers">
                 <div class="fajr" id="prayer">
-                    <h3>الفجر</h3>
-                    <img src="assets/pray_assets/1.png" alt="صورة الصلاة">
-                    <p>00:00</p>
+                    <div class="maindata">
+                        <h3>الفجر</h3>
+                        <img src="assets/pray_assets/1.png" alt="صورة الصلاة">
+                    </div>
+                    <p style="direction: ltr;" class="El-Fajr">00:00</p>
                 </div>
                 <div class="sunrise" id="prayer">
-                    <h3>الشروق</h3>
-                    <img src="assets/pray_assets/sunrise.png" alt="صورة الصلاة">
-                    <p>00:00</p>
+                    <div class="maindata">
+                        <h3>الشروق</h3>
+                        <img src="assets/pray_assets/sunrise.png" alt="صورة الصلاة">
+                    </div>
+                    <p style="direction: ltr;" class="El-Shurooq">00:00</p>
                 </div>
                 <div class="dhuhur" id="prayer">
-                    <h3>الظهر</h3>
-                    <img src="assets/pray_assets/dhuhr.png" alt="صورة الصلاة">
-                    <p>00:00</p>
+                    <div class="maindata">
+                        <h3>الظهر</h3>
+                        <img src="assets/pray_assets/dhuhr.png" alt="صورة الصلاة">
+                    </div>
+                    <p style="direction: ltr;" class="El-Dhuhr">00:00</p>
                 </div>
                 <div class="Asr" id="prayer">
-                    <h3>العصر</h3>
-                    <img src="assets/pray_assets/asr.png" alt="صورة الصلاة">
-                    <p>00:00</p>
+                    <div class="maindata">
+                        <h3>العصر</h3>
+                        <img src="assets/pray_assets/asr.png" alt="صورة الصلاة">
+                    </div>
+                    <p style="direction: ltr;" class="El-Asr">00:00</p>
                 </div>
                 <div class="Maghrib" id="prayer">
-                    <h3>المغرب</h3>
-                    <img src="assets/pray_assets/maghrib.png" alt="صورة الصلاة">
-                    <p>00:00</p>
+                    <div class="maindata">
+                        <h3>المغرب</h3>
+                        <img src="assets/pray_assets/maghrib.png" alt="صورة الصلاة">
+                    </div>
+                    <p style="direction: ltr;" class="El-Maghrib">00:00</p>
                 </div>
                 <div class="Isha" id="prayer">
-                    <h3>العشاء</h3>
-                    <img src="assets/pray_assets/isha.png" alt="صورة الصلاة">
-                    <p>00:00</p>
+                    <div class="maindata">
+                        <h3>العشاء</h3>
+                        <img src="assets/pray_assets/isha.png" alt="صورة الصلاة">
+                    </div>
+                    <p style="direction: ltr;" class="El-Isha">00:00</p>
                 </div>
             </div>
         </section>
