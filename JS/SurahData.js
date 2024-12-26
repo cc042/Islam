@@ -115,71 +115,6 @@ const surahs = [
 	{ Order: 114, name: "الناس", verses: 6, type: "مكية", summary: "الاستعاذة من الوسواس." }
 ];
 
-const findsurah = document.querySelector(".surahInputWrapper")
-const Status = document.querySelector(".status")
-const SurahsWrapper = document.querySelector(".surahs")
-const alert1 = document.querySelector(".alert1")
-const alertText = document.querySelector(".alert1 h1")
-const surahWrapper = document.createElement("div")
-surahWrapper.className = "surah"
-
-function resize() {
-	const screen = window.innerWidth
-	if (screen > 910) SurahsWrapper.style.gridTemplateColumns = "repeat(3, 1fr)"
-	if (screen < 910) SurahsWrapper.style.gridTemplateColumns = "repeat(2, 1fr)"
-	if (screen < 685) SurahsWrapper.style.gridTemplateColumns = "repeat(1, 1fr)"
-}
-
-resize()
-
-window.addEventListener("resize", resize)
-
-function makeSurahs(bool) {
-	if (bool) {
-		for (let i = 0; i < 114; i++) {
-			SurahsWrapper.innerHTML += `<div class="surah">
-				<h3 class="surahName">سورة ${surahs[i].name}</h3>
-				<h3 class="surahOrder">رقم السورة: ${surahs[i].Order}</h3>
-				<h3 class="surahVerses">عدد الآيات: ${surahs[i].verses}</h3>
-				<h3 class="surahVerses">النزول: ${surahs[i].type}</h3>
-				<button style="margin-bottom: 10px;" window.open("quran/${surahs[i].name}.html")>اقرأ</button>
-				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التفسير</button>
-			</div>`
-			document.querySelector(".surah").style.width = "100%"
-		}
-	}
-}
-
-function findObject() {
-	makeSurahs(false)
-
-	const surahfinder = document.querySelector(".surahfinder").value
-	const foundObject = surahs.find(obj => obj.name === surahfinder);
-
-	if (foundObject) {
-		makeSurahs(false)
-		SurahsWrapper.innerHTML = `<div class="surah">
-				<h3 class="surahName">سورة ${foundObject.name}</h3>
-				<h3 class="surahOrder">رقم السورة: ${foundObject.Order}</h3>
-				<h3 class="surahVerses">عدد الآيات: ${foundObject.verses}</h3>
-				<h3 class="surahVerses">النزول: ${foundObject.type}</h3>
-				<button style="margin-bottom: 10px;" window.open("quran/${foundObject.name}.html")>اقرأ</button>
-				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التفسير</button>
-			</div>`
-		SurahsWrapper.style.display = "flex"
-		SurahsWrapper.style.justifyContent = "center"
-		SurahsWrapper.style.alignItems = "center"
-		document.querySelector(".surah").style.width = "482px"
-	}
-	else {
-		SurahsWrapper.innerHTML = null
-		SurahsWrapper.style.display = "grid"
-		SurahsWrapper.style.gridTemplateColumns = "repeat(3, 1fr)"
-		Status.innerHTML = `لا توجد سورة ${surahfinder}`
-		makeSurahs(true)
-	}
-}
-findsurah.addEventListener("submit", e => { e.preventDefault(); findObject(); })
 const namesOfAllah = [
 	{ name: "ٱلرَّحْمَٰن", meaning: "الَّذِي يَرْحَمُ جَمِيعَ مَخْلُوقَاتِهِ بِرَحْمَةٍ وَاسِعَةٍ، لَا تَقْتَصِرُ عَلَى الْمُؤْمِنِينَ فَقَطْ" },
 	{ name: "ٱلرَّحِيم", meaning: "الَّذِي يَرْحَمُ الْمُؤْمِنِينَ بِرَحْمَةٍ خَاصَّةٍ، وَيَغْفِرُ لَهُمْ" },
@@ -282,8 +217,99 @@ const namesOfAllah = [
 	{ name: "ٱلصَّبُور", meaning: "ٱلَّذِي يَتَحَلَّى بِٱلصَّبْرِ فِي ٱلتَّعَامُلِ مَعَ عِبَادِهِ" }
 ];
 
-const Allah_names = document.querySelector(".names");
+const findsurah = document.querySelector(".surahInputWrapper")
+const Status = document.querySelector(".status")
+const SurahsWrapper = document.querySelector(".surahs")
+const alert1 = document.querySelector(".alert1")
+const alertText = document.querySelector(".alert1 h1")
+const surahWrapper = document.createElement("div")
+surahWrapper.className = "surah"
 
+function resize() {
+	const screen = window.innerWidth
+	if (screen > 910) SurahsWrapper.style.gridTemplateColumns = "repeat(3, 1fr)"
+	if (screen < 910) SurahsWrapper.style.gridTemplateColumns = "repeat(2, 1fr)"
+	if (screen < 685) SurahsWrapper.style.gridTemplateColumns = "repeat(1, 1fr)"
+}
+
+function makeSurahs(bool) {
+	if (bool) {
+		SurahsWrapper.innerHTML = ""
+		for (let i = 0; i < 114; i++) {
+			SurahsWrapper.innerHTML += `<div class="surah">
+				<h3 class="surahName">سورة ${surahs[i].name}</h3>
+				<h3 class="surahOrder">رقم السورة: ${surahs[i].Order}</h3>
+				<h3 class="surahVerses">عدد الآيات: ${surahs[i].verses}</h3>
+				<h3 class="surahVerses">النزول: ${surahs[i].type}</h3>
+				<button style="margin-bottom: 10px;" onclick= "window.open('quran/${surahs[i].name}.html')">اقرأ</button>
+				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التفسير</button>
+			</div>
+			`
+			document.querySelector(".surah").style.width = "100%"
+		}
+	}
+	else {
+		SurahsWrapper.innerHTML = ""
+	}
+}
+
+function makesurah(foundObject, surahfinder) {
+	for (let l = 0; l > 2; l++) {
+		SurahsWrapper.innerHTML = null
+	}
+
+	// make the surahs disappear
+	makeSurahs(false);
+
+	// make the surah wrapper appear With The Contents inside it
+	SurahsWrapper.innerHTML += `<div class="surah">
+				<h3 class="surahName">سورة ${foundObject.name}</h3>
+				<h3 class="surahOrder">رقم السورة: ${foundObject.Order}</h3>
+				<h3 class="surahVerses">عدد الآيات: ${foundObject.verses}</h3>
+				<h3 class="surahVerses">النزول: ${foundObject.type}</h3>
+				<button style="margin-bottom: 10px;" onclick= "window.open('quran/${foundObject.name}.html')">اقرأ</button>
+				<button onclick="alert1.showModal();alertText.innerHTML = '${foundObject.summary}'">التفسير</button>
+			</div>`;
+
+	// Clear The Surahs Contents If Needed
+	document.querySelector(".Clear").addEventListener("click", () => {
+		SurahsWrapper.innerHTML = ""
+	})
+	Status.innerHTML = `تم العثور على سورة ${surahfinder}`
+
+	surahfinder = "";
+}
+
+function makeError(surahfinder) {
+	SurahsWrapper.innerHTML = null
+	Status.innerHTML = `لا توجد  ${surahfinder}`
+	makeSurahs(true)
+}
+
+function findObject() {
+	// make the surahs disappers
+	makeSurahs(false)
+
+	// Declering Two New Contant
+	const surahfinder = document.querySelector(".surahfinder").value;
+	const foundObject = surahs.find(obj => obj.name === surahfinder);
+
+	// Check if the object is found
+	if (foundObject) {
+		makesurah(foundObject, surahfinder)
+	}
+	else {
+		makeError(surahfinder)
+	}
+}
+
+// Events Listeners
+resize()
+findsurah.addEventListener("submit", e => { e.preventDefault(); findObject(); })
+window.addEventListener("resize", resize)
+
+// أسماء الله الحسنى
+const Allah_names = document.querySelector(".names");
 for (let i = 0; i < namesOfAllah.length; i++) {
 	Allah_names.innerHTML += `<div class="name"><h1>الاسم: ${namesOfAllah[i].name}</h1><p>المعنى: ${namesOfAllah[i].meaning}</p></div>`
 }

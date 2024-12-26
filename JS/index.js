@@ -1,5 +1,5 @@
 window.onload = () => { document.querySelector(".Load").close() }
-document.addEventListener('contextmenu', (e) => { e.preventDefault() });
+// document.addEventListener('contextmenu', (e) => { e.preventDefault() });
 document.addEventListener("dblclick", e => { e.preventDefault(); return false })
 document.onkeydown = function (e) {
     if (event.keyCode == 123) return false;
