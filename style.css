@@ -297,65 +297,50 @@ textarea {
 /* estefsar */
 #estefsar {
     margin: auto;
-    height: max-content;
     width: 90vw;
+    height: 90vh;
     border-radius: 20px;
-    z-index: 999;
     padding: 20px;
-}
-
-.estefsarclose {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--Cream);
-    padding: 10px;
-    border-radius: 10px;
-    z-index: 999;
+    position: relative;
 }
 
 .close {
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 999;
 }
 
-.estefsaritems {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    height: 87vh;
+.estefsarclose {
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--Cream);
 }
 
 .estefsarname {
-    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
 }
 
+.estefsaritems {
+    height: 79%;
+    margin-top: 10px;
+}
+
 .estefsarsend {
+    width: 100%;
     background: var(--Cream);
+    font-size: 15px;
     padding: 10px;
     border-radius: 10px;
-    width: 100%;
     font-family: var(--sff);
-    font-size: 20px;
     font-weight: 700;
 }
 
 #estefsartext {
-    background: var(--Cream);
-    border-radius: 10px;
-    color: var(--Black);
     width: 100%;
     height: 100%;
+    border-radius: 10px;
+    background: var(--Cream);
     padding: 10px;
     font-size: 20px;
 }
@@ -505,10 +490,25 @@ section:not(.active) {
 
 .surahOrder,
 .surahVerses,
-.surahType,
-.surahJuz,
-.surahhizb {
+.surahType {
     font-size: 20px;
+}
+
+.clearButton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.Clear {
+    display: flex;
+    border-radius: 10px;
+    background: var(--Gold);
+    font-size: 20px;
+    font-family: var(--sff);
+    font-weight: 700;
+    padding: 10px;
 }
 
 .surah>button {
@@ -757,6 +757,12 @@ footer {
     }
 }
 
+@media screen and (max-width:720px) {
+    .alert1 {
+        height: 250px;
+    }
+}
+
 @media screen and (max-width:685px) {
     .surahs {
         grid-template-columns: repeat(1, 1fr);
@@ -771,7 +777,7 @@ footer {
 
 @media screen and (max-width:575px) {
     footer {
-        font-size: 10px;
+        font-size: 2.5vw;
     }
 }
 
@@ -806,13 +812,21 @@ footer {
     }
 }
 
+@media screen and (max-width: 450px) {
+    .additions {
+        display: inline;
+    }
+
+    .estefsarname {
+        display: none;
+    }
+}
+
 @media screen and (max-width:440px) {
 
-    .surahinput,
     .surahInputWrapper,
-    .countryInputWrapper,
-    .countryinput {
-        width: 95vw;
+    .countryInputWrapper {
+        width: 90vw;
         justify-content: center;
         align-items: center;
     }
@@ -822,5 +836,32 @@ footer {
     #counter_azkar {
         font-size: 40px;
         margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width:385px) {
+    .additions {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:313px) {
+
+    .surahInputWrapper>input {
+        font-size: 20px;
+    }
+
+    .status {
+        font-size: 15px;
+    }
+
+    #two {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:292px) {
+    .additions {
+        font-size: 15px;
     }
 }
