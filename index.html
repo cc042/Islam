@@ -24,6 +24,8 @@
     <script src="JS/services.js" defer></script>
     <script src="JS/SurahData.js" defer></script>
     <script src="JS/tabs.js" defer></script>
+    <script src="JS/time.js" defer></script>
+    <script src="JS/Responsive.js" defer></script>
 </head>
 
 <body>
@@ -92,10 +94,15 @@
     </dialog>
 
     <!-- Screen Condition -->
-    <div class="screen_tabs">
-        <a href="tel:+201225073533" class="contact">اتصل بنا</a>
-        <button class="FollowMe">تابعني</button>
-        <button id="estefsar">استفسار</button>
+    <div class="screen_tabs" data-opened="false">
+        <button class="ScreenClose" aria-label="Close">
+            <img src="assets/icons/close.svg" alt="إغلاق">
+        </button>
+        <div class="componants">
+            <a href="tel:+201225073533" class="contact">اتصل بنا</a>
+            <button class="FollowMe">تابعني</button>
+            <button class="estefsar">استفسار</button>
+        </div>
     </div>
 
     <!-- Header -->
@@ -127,11 +134,13 @@
         <input type="radio" id="tab2" name="tab" class="tab">
         <input type="radio" id="tab3" name="tab" class="tab">
         <input type="radio" id="tab4" name="tab" class="tab">
+        <input type="radio" id="tab5" name="tab" class="tab">
 
         <label for="tab1" class="tab-label" id="one">القرآن الكريم</label>
         <label for="tab2" class="tab-label" id="two">أسماء الله الحسنى</label>
         <label for="tab3" class="tab-label" id="three">عداد الأذكار</label>
         <label for="tab4" class="tab-label" id="four">أوقات الصلاة</label>
+        <label for="tab5" class="tab-label" id="five">الوقت</label>
     </nav>
 
     <!-- Main Tab Content -->
@@ -247,6 +256,17 @@
                     </div>
                     <p style="direction: ltr;" class="El-Isha">00:00</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="time" id="content5">
+            <div class="card">
+                <p class="time-text">
+                    <span class="hour_Minutes">11:11</span>
+                    <span class="time-sub-text">PM</span>
+                </p>
+                <p class="day-text">Wednesday, June 15th</p>
+                <div class="dayornight"></div>
             </div>
         </section>
     </main>
