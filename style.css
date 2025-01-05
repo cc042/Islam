@@ -189,8 +189,12 @@ a {
 }
 
 /* ANY DIALOG WHEN IT OPENS */
-dialog[open] {
+dialog[data-opened="true"] {
     animation: fade 0.5s ease;
+}
+
+dialog[data-opened="false"] {
+    animation: fadeout 0.5s ease;
 }
 
 /* ANY BACKDROP DIALOG */
@@ -261,9 +265,6 @@ textarea {
 }
 
 .exitalert1 {
-    position: absolute;
-    top: 15px;
-    right: 15px;
     background: var(--Cream);
     padding: 10px;
     border-radius: 10px;
@@ -272,46 +273,129 @@ textarea {
 /* Follows */
 .Follows {
     margin: auto;
-    height: 200px;
+    height: max-content;
     width: 90vw;
     border-radius: 20px;
     z-index: 999;
+    overflow: hidden;
+    padding: 20px;
 }
 
 .followsitems {
-    padding: 20px;
     position: relative;
     width: 100%;
     height: 100%;
 }
 
+.followHeader {
+    display: flex;
+    gap: 15px;
+}
+
 .socials {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
     place-items: center;
+    width: 100%;
     gap: 20px;
 }
 
-#app {
+.social-item {
+    padding: 10px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: max-content;
     gap: 10px;
+    border: 2px solid;
+    border-radius: 15px 0;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 0 10px var(--Black);
+        border-color: var(--Gold);
+    }
 }
 
-#app a {
-    font-size: 20px;
+.social-item a {
+    font-size: 1.2rem;
+    font-weight: 600
+}
+
+.social-item a::before {
+    width: 0;
+    height: 0;
+    background: none;
 }
 
 .Followsclose {
-    position: absolute;
-    top: 15px;
-    right: 15px;
     background: var(--Cream);
     padding: 10px;
     border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contact Us */
+.callus {
+    margin: auto;
+    height: max-content;
+    width: 90vw;
+    border-radius: 20px;
+    z-index: 999;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.callusitems {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.callusHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.callusclose {
+    background: var(--Cream);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+    width: 100%;
+}
+
+.number {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    gap: 10px;
+    border: 2px solid;
+    border-radius: 15px 0;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        transform: translateY(-7px);
+        box-shadow: 0 0 10px var(--Black);
+        border-color: var(--Gold);
+    }
+}
+
+.number a {
+    width: 100%;
 }
 
 /* estefsar */
@@ -383,6 +467,10 @@ header {
     gap: 10px;
 }
 
+.rightdevsection>img {
+    border-radius: 20px;
+}
+
 .leftdevsection {
     display: flex;
     align-items: center;
@@ -409,8 +497,7 @@ header {
     display: inline-block
 }
 
-.leftdevsection ul li button::before,
-a::before {
+.leftdevsection ul li button::before {
     content: "";
     position: absolute;
     bottom: -8px;
@@ -420,46 +507,13 @@ a::before {
     transition: 0.3s ease-in-out;
 }
 
-.leftdevsection ul li button:hover::before,
-a:hover::before {
+.leftdevsection ul li button:hover::before {
     width: 100%;
 }
 
 .hidden,
 .screen_tabs {
     display: none;
-}
-
-.ScreenClose {
-    background: var(--Cream);
-    padding: 10px;
-    border-radius: 10px;
-    float: left;
-}
-
-.componants {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    height: 100%;
-    width: 100%;
-    padding-top: 20px;
-}
-
-.componants button,
-.componants a {
-    padding: 10px;
-    border-radius: 10px;
-    width: 100%;
-    background: var(--Cream);
-    text-align: center;
-}
-
-.componants>a::before {
-    width: 0;
-    height: 0;
-    background: none;
 }
 
 .screen_condition {
@@ -565,7 +619,8 @@ section:not(.active) {
     padding: 10px;
 }
 
-.surah>button {
+.surah>button,
+.listen>button {
     width: 100%;
     border-radius: 10px;
     background: var(--Cream);
@@ -574,9 +629,11 @@ section:not(.active) {
     font-size: 30px;
     font-weight: 600;
     transition: 0.4s;
+    height: 56px;
 }
 
-.surah>button:hover {
+.surah>button:hover,
+.listen>button:hover {
     background: var(--Gold);
 }
 
@@ -620,6 +677,13 @@ section:not(.active) {
     height: 56px;
     background: none;
     border-right: 2px solid var(--Black);
+}
+
+.listen {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 /* Names Of Allah */
@@ -788,71 +852,10 @@ section:not(.active) {
     border-right: 2px solid var(--Black);
 }
 
-/* Time */
+/* My Projects */
 
-.time {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
-}
 
-.card {
-    direction: ltr;
-    width: 280px;
-    height: 150px;
-    background: rgb(17, 4, 134);
-    border-radius: 15px;
-    box-shadow: rgb(0, 0, 0, 0.7) 5px 10px 50px, rgb(0, 0, 0, 0.7) -5px 0px 250px;
-    display: flex;
-    color: white;
-    justify-content: center;
-    position: relative;
-    flex-direction: column;
-    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
-}
-
-.card:hover {
-    box-shadow: rgb(0, 0, 0) 5px 10px 50px, rgb(0, 0, 0) -5px 0px 250px;
-}
-
-.time-text {
-    font-size: 50px;
-    margin-top: 0px;
-    margin-left: 15px;
-    font-weight: 600;
-    font-family: var(--sff);
-}
-
-.time-sub-text {
-    font-size: 15px;
-    margin-left: 5px;
-}
-
-.day-text {
-    font-size: 18px;
-    margin-top: 0px;
-    margin-left: 15px;
-    font-weight: 500;
-    font-family: var(--sff);
-}
-
-.moon,
-.sun {
-    font-size: 20px;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    transition: all 0.3s ease-in-out;
-}
-
-.card:hover>.moon {
-    font-size: 23px;
-}
-
+/* Footer */
 footer {
     color: var(--Cream);
     text-align: center;
@@ -864,6 +867,7 @@ footer {
     width: 100%;
 }
 
+/* Media Querys */
 @media screen and (max-width:910px) {
     .surahs {
         grid-template-columns: repeat(2, 1fr);
@@ -908,6 +912,16 @@ footer {
     .prayers {
         padding: 10px 10px 70px 10px;
     }
+
+    .socials,
+    .numbers {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .callus,
+    .Follows {
+        max-height: 90vh;
+    }
 }
 
 @media screen and (max-width:587px) {
@@ -928,31 +942,6 @@ footer {
 
     .hidden {
         display: inline;
-    }
-
-    .screen_tabs {
-        flex-direction: column;
-        justify-content: center;
-        padding: 20px;
-        height: 100vh;
-        height: 100dvh;
-        width: 70vw;
-        width: 70vw;
-        position: absolute;
-        left: 0px;
-        z-index: 9999;
-        backdrop-filter: blur(10px);
-        border-radius: 0 20px 20px 0;
-        border: 1px solid var(--Navy-Blue);
-        border-right: 3px solid var(--Navy-Blue);
-    }
-
-    .screen_tabs[data-opened="false"] {
-        animation: rightleft 1s ease;
-    }
-
-    .screen_tabs[data-opened="true"] {
-        animation: leftright 1s ease;
     }
 }
 

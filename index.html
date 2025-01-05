@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Title -->
-    <title>روحانيات</title>
+    <title>إسلامى</title>
 
     <!-- Libraries -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -15,16 +15,15 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/headers_assets/read-quran.png">
+    <link rel="icon" href="assets/headers_assets/read-quran.jpg">
 
     <!-- Scripts -->
-    <script src="JS/azkar.js" defer></script>
     <script src="JS/azan.js" defer></script>
+    <script src="JS/tabs.js" defer></script>
+    <script src="JS/azkar.js" defer></script>
     <script src="JS/index.js" defer></script>
     <script src="JS/services.js" defer></script>
     <script src="JS/SurahData.js" defer></script>
-    <script src="JS/tabs.js" defer></script>
-    <script src="JS/time.js" defer></script>
     <script src="JS/Responsive.js" defer></script>
 </head>
 
@@ -38,7 +37,7 @@
     </dialog>
 
     <!-- Inquiry Dialog -->
-    <dialog id="estefsar">
+    <dialog id="estefsar" data-opened="false">
         <div class="close">
             <button class="estefsarclose" aria-label="Close Inquiry">
                 <img src="assets/icons/close.svg" alt="إغلاق">
@@ -57,19 +56,22 @@
     </dialog>
 
     <!-- Follow Us Dialog -->
-    <dialog class="Follows">
+    <dialog class="Follows" data-opened="false">
         <div class="followsitems">
-            <button class="Followsclose" aria-label="Close Follow Us">
-                <img src="assets/icons/close.svg" alt="إغلاق">
-            </button>
+            <div class="followHeader">
+                <button class="Followsclose" aria-label="Close Follow Us">
+                    <img src="assets/icons/close.svg" alt="إغلاق">
+                </button>
+                <h1>الحسابات</h1>
+            </div>
             <div class="socials">
                 <div class="social-item">
                     <img src="assets/icons/youtube.svg" alt="YouTube" width="32" height="32">
-                    <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+                    <a href="https://youtube.com/@unknown_user.395" target="_blank">YouTube</a>
                 </div>
                 <div class="social-item">
                     <img src="assets/icons/instagram.svg" alt="Instagram" width="32" height="32">
-                    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                    <a href="https://www.instagram.com/islam_yourguide/profilecard" target="_blank">Instagram</a>
                 </div>
                 <div class="social-item">
                     <img src="assets/icons/twitter.svg" alt="Twitter" width="32" height="32">
@@ -83,8 +85,37 @@
         </div>
     </dialog>
 
+    <!-- Call Us Dialog -->
+    <dialog class="callus" data-opened="false">
+        <div class="callusitems">
+            <div class="callusHeader">
+                <button class="callusclose" aria-label="Close Call Us">
+                    <img src="assets/icons/close.svg" alt="إغلاق">
+                </button>
+                <h1>أتصل بنا</h1>
+            </div>
+            <div class="numbers">
+                <div class="number">
+                    <a href="tel:+201005836845">Abd - Allah</a>
+                </div>
+                <div class="number">
+                    <a href="tel:+201096725599">Omar Ashraf</a>
+                </div>
+                <div class="number">
+                    <a href="tel:+201091216883">Youssef Ayman</a>
+                </div>
+                <div class="number">
+                    <a href="tel:+201069373730">Mohamed Hossam</a>
+                </div>
+                <div class="number">
+                    <a href="tel:+2001225073533">Code Comet</a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
     <!-- Alert Dialog -->
-    <dialog class="alert1">
+    <dialog class="alert1" data-opened="false">
         <div class="alert1items">
             <button class="exitalert1" aria-label="Close Alert" onclick="document.querySelector('.alert1').close()">
                 <img src="assets/icons/close.svg" alt="إغلاق">
@@ -93,27 +124,15 @@
         </div>
     </dialog>
 
-    <!-- Screen Condition -->
-    <div class="screen_tabs" data-opened="false">
-        <button class="ScreenClose" aria-label="Close">
-            <img src="assets/icons/close.svg" alt="إغلاق">
-        </button>
-        <div class="componants">
-            <a href="tel:+201225073533" class="contact">اتصل بنا</a>
-            <button class="FollowMe">تابعني</button>
-            <button class="estefsar">استفسار</button>
-        </div>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="rightdevsection">
-            <img src="assets/headers_assets/read-quran.png" alt="Logo">
-            <h1>روحانيات</h1>
+            <img src="assets/headers_assets/read-quran.jpg" alt="Logo" width="60">
+            <h1>إسلامى</h1>
         </div>
         <div class="leftdevsection">
             <ul>
-                <li><a href="tel:+201225073533" class="contact">اتصل بنا</a></li>
+                <li><button class="contact">اتصل بنا</button></li>
                 <li><button class="FollowMe">تابعني</button></li>
                 <li><button class="estefsar">استفسار</button></li>
             </ul>
@@ -140,7 +159,7 @@
         <label for="tab2" class="tab-label" id="two">أسماء الله الحسنى</label>
         <label for="tab3" class="tab-label" id="three">عداد الأذكار</label>
         <label for="tab4" class="tab-label" id="four">أوقات الصلاة</label>
-        <label for="tab5" class="tab-label" id="five">الوقت</label>
+        <label for="tab5" class="tab-label" id="five">مشاريعى</label>
     </nav>
 
     <!-- Main Tab Content -->
@@ -260,13 +279,9 @@
         </section>
 
         <section class="time" id="content5">
-            <div class="card">
-                <p class="time-text">
-                    <span class="hour_Minutes">11:11</span>
-                    <span class="time-sub-text">PM</span>
-                </p>
-                <p class="day-text">Wednesday, June 15th</p>
-                <div class="dayornight"></div>
+            <div class="header">
+                <img src="assets/headers_assets/prayer.png" alt="مشاريع" width="50">
+                <h2>مشاريعى</h2>
             </div>
         </section>
     </main>
