@@ -34,3 +34,23 @@ FollowMe.forEach(follow => {
 Follows_exit.addEventListener("click", () => {
     follow_dialog.close()
 })
+
+// Call Us
+const callus = document.querySelector(".callus")
+const contacts = document.querySelectorAll(".contact")
+const callusclose = document.querySelector(".callusclose")
+
+
+contacts.forEach((contact) => {
+    contact.addEventListener("click", () => {
+        callus.showModal()
+        callus.setAttribute("data-opened", true)
+    })
+})
+
+callusclose.addEventListener("click", () => {
+    callus.setAttribute("data-opened", false)
+    setTimeout(() => {
+        callus.close()
+    },400)
+})
