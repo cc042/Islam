@@ -40,17 +40,5 @@ const callus = document.querySelector(".callus")
 const contacts = document.querySelectorAll(".contact")
 const callusclose = document.querySelector(".callusclose")
 
-
-contacts.forEach((contact) => {
-    contact.addEventListener("click", () => {
-        callus.showModal()
-        callus.setAttribute("data-opened", true)
-    })
-})
-
-callusclose.addEventListener("click", () => {
-    callus.setAttribute("data-opened", false)
-    setTimeout(() => {
-        callus.close()
-    },400)
-})
+contacts.forEach((contact) => { contact.addEventListener("click", () => { callus.showModal() }) })
+callusclose.addEventListener("click", () => { callus.close() })

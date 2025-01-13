@@ -36,9 +36,9 @@
     </dialog>
 
     <!-- Inquiry Dialog -->
-    <dialog id="estefsar" data-opened="false">
+    <dialog id="estefsar">
         <div class="close">
-            <button class="estefsarclose" aria-label="Close Inquiry">
+            <button class="estefsarclose" aria-label="Close Inquiry" id="close-button">
                 <img src="assets/icons/close.svg" alt="إغلاق">
             </button>
             <div class="estefsarname">
@@ -55,10 +55,10 @@
     </dialog>
 
     <!-- Follow Us Dialog -->
-    <dialog class="Follows" data-opened="false">
+    <dialog class="Follows">
         <div class="followsitems">
             <div class="followHeader">
-                <button class="Followsclose" aria-label="Close Follow Us">
+                <button class="Followsclose" aria-label="Close Follow Us" id="close-button">
                     <img src="assets/icons/close.svg" alt="إغلاق">
                 </button>
                 <h1>الحسابات</h1>
@@ -85,10 +85,10 @@
     </dialog>
 
     <!-- Call Us Dialog -->
-    <dialog class="callus" data-opened="false">
+    <dialog class="callus">
         <div class="callusitems">
             <div class="callusHeader">
-                <button class="callusclose" aria-label="Close Call Us">
+                <button class="callusclose" aria-label="Close Call Us" id="close-button">
                     <img src="assets/icons/close.svg" alt="إغلاق">
                 </button>
                 <h1>أتصل بنا</h1>
@@ -114,14 +114,36 @@
     </dialog>
 
     <!-- Alert Dialog -->
-    <dialog class="alert1" data-opened="false">
+    <dialog class="alert1">
         <div class="alert1items">
-            <button class="exitalert1" aria-label="Close Alert" onclick="document.querySelector('.alert1').close()">
-                <img src="assets/icons/close.svg" alt="إغلاق">
-            </button>
-            <h1></h1>
+            <div class="alertHeader">
+                <button id="close-button" class="exitalert1" aria-label="Close Alert"
+                    onclick="document.querySelector('.alert1').close()"><img src="assets/icons/close.svg"
+                        alt="إغلاق"></button>
+                <h1>التفسير</h1>
+            </div>
+
+            <h1 class="alert1text"></h1>
         </div>
     </dialog>
+
+    <!-- Side Bar -->
+    <div class="sidebar" aria-opened="false">
+        <div class="sidebarwrapper">
+            <div class="sidebarheader">
+                <button class="sidebarclose"><img src="assets/icons/close.svg" alt="إغلاق"></button>
+                <h1>إسلامى</h1>
+            </div>
+
+            <div class="sidebarcontent">
+                <ul>
+                    <li><button class="contact" id="open-button">اتصل بنا</button></li>
+                    <li><button class="FollowMe" id="open-button">تابعني</button></li>
+                    <li><button class="estefsar" id="open-button">استفسار</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- Header -->
     <header>
@@ -131,9 +153,9 @@
         </div>
         <div class="leftdevsection">
             <ul>
-                <li><button class="contact">اتصل بنا</button></li>
-                <li><button class="FollowMe">تابعني</button></li>
-                <li><button class="estefsar">استفسار</button></li>
+                <li><button class="contact" id="open-button">اتصل بنا</button></li>
+                <li><button class="FollowMe" id="open-button">تابعني</button></li>
+                <li><button class="estefsar" id="open-button">استفسار</button></li>
             </ul>
         </div>
         <div class="hidden">

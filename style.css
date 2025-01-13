@@ -191,12 +191,29 @@ a {
 }
 
 /* ANY DIALOG WHEN IT OPENS */
-dialog[data-opened="true"] {
-    animation: fade 0.5s ease;
+dialog {
+    margin: auto;
+
+    /* Add display */
+    transition: opacity 0.7s ease-in, display 0.7s ease-in;
+
+    /* Add transition-behavior */
+    transition-behavior: allow-discrete;
+
+    /* Style when open */
+    opacity: 1;
 }
 
-dialog[data-opened="false"] {
-    animation: fadeout 0.5s ease;
+/* The style when closed */
+@starting-style {
+    dialog {
+        opacity: 0;
+    }
+}
+
+/* The style when closed */
+dialog:not([open]) {
+    opacity: 0;
 }
 
 /* ANY BACKDROP DIALOG */
@@ -259,7 +276,14 @@ textarea {
     height: 100%;
 }
 
-.alert1 h1 {
+.alertHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.alert1text {
     text-align: center;
 }
 
@@ -450,6 +474,76 @@ textarea {
 
 .additions {
     display: none;
+}
+
+/* Side Bar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    height: 100dvh;
+    width: 100dvw;
+}
+
+.sidebar[aria-opened="false"] {
+    left: -100%;
+}
+
+.sidebar[aria-opened="true"] {
+    left: 0;
+}
+
+.sidebarwrapper {
+    border-radius: 20px 0 0 20px;
+    padding: 20px;
+    height: 100%;
+    width: max-content;
+    background: var(--Black);
+    transition: all 0.7s ease;
+}
+
+.sidebarheader {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    color: var(--White);
+}
+
+.sidebarclose {
+    border-radius: 10px;
+    background: var(--Cream);
+    padding: 10px;
+}
+
+.sidebarcontent {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebarcontent ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: max-content;
+    gap: 15px;
+}
+
+.sidebarcontent button {
+    width: 300px;
+    color: black;
+    background: var(--White);
+    border-radius: 10px;
+    padding: 15px 15px
 }
 
 /* header */
@@ -915,7 +1009,7 @@ footer {
 }
 
 /* Media Querys */
-@media screen and (max-width:910px) {
+@media screen and (max-width:930px) {
     .surahs {
         grid-template-columns: repeat(2, 1fr);
     }

@@ -23,7 +23,6 @@ const surahs = [
 	{ link: "https:/server6.mp3quran.net/qtm/022.mp3", Order: "022", verses: "078", name: "الحج", type: "مدنية", summary: "عبودية الله وأحكام الحج." },
 	{ link: "https:/server6.mp3quran.net/qtm/023.mp3", Order: "023", verses: "118", name: "المؤمنون", type: "مكية", summary: "صفات المؤمنين، الخلق، والحساب." },
 	{ link: "https:/server6.mp3quran.net/qtm/024.mp3", Order: "024", verses: "064", name: "النور", type: "مدنية", summary: "أحكام اجتماعية وآداب الاستئذان." },
-	{ link: "https:/server6.mp3quran.net/qtm/024.mp3", Order: "024", verses: "064", name: "النور", type: "مدنية", summary: "أحكام اجتماعية وآداب الاستئذان." },
 	{ link: "https:/server6.mp3quran.net/qtm/025.mp3", Order: "025", verses: "077", name: "الفرقان", type: "مكية", summary: "الفرق بين المؤمنين والكافرين." },
 	{ link: "https:/server6.mp3quran.net/qtm/026.mp3", Order: "026", verses: "227", name: "الشعراء", type: "مكية", summary: "قصص الأنبياء والدعوة." },
 	{ link: "https:/server6.mp3quran.net/qtm/027.mp3", Order: "027", verses: "093", name: "النمل", type: "مكية", summary: "قصة سليمان، وملكة سبأ." },
@@ -231,13 +230,15 @@ const clear = document.querySelector(".Clear")
 
 // Alerts
 const alert1 = document.querySelector(".alert1")
-const alertText = document.querySelector(".alert1 h1")
+const alertText = document.querySelector(".alert1text")
 
 // Player
 const Player = document.querySelector("audio")
 
 // Additions
 var number = 0
+var number2 = 0
+let currentAudio = null;
 
 // Make All Surahs
 function makeSurahs(bool) {
@@ -251,9 +252,9 @@ function makeSurahs(bool) {
 				<button style="margin-bottom: 10px;" onclick= "window.open('quran/${surahs[i].name}.html')">اقرأ</button>
 				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التفسير</button>
 				<div class="listen">
-					<button onclick="MakeSurahSoundPlayPause('${surahs[i].link}' ,true)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24" fill="CurrentColor"><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg></button>
-					<button onclick="MakeSurahSoundPlayPause('${surahs[i].link}' ,false)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
-				</div>
+					<button onclick="MakeSurahSoundPlayPause('${surahs[i].link}', true)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg></button>
+                    <button onclick="MakeSurahSoundPlayPause('${surahs[i].link}', false)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
+                </div>
 			</div>
 			`
 			clear.addEventListener("click", () => { SurahsWrapper.innerHTML = "" })
@@ -264,87 +265,77 @@ function makeSurahs(bool) {
 		SurahsWrapper.innerHTML = ""
 	}
 }
-function MakeSurahSoundPlayPause(path, IsPause) {
-	// Create a new audio element
-	var audio = new Audio(path);
-	audio.src = path
 
-	if (!IsPause) {
-		// Play the audio
-		audio.play();
-	}
-	else {
-		audio.pause();
-	}
-}
-
-
-
-function gridSurahs() {
-	number += 1
-
-	if (innerWidth > 910) {
-		// set the Surahs to a grid by it`s number
-		SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
-		if (number > 3) {
-			number = 3
-			SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
+function MakeSurahSoundPlayPause(path, isPause) {
+	// Check if no audio exists or if a different audio source is selected
+	if (!currentAudio || currentAudio.src !== path) {
+		if (currentAudio) {
+			currentAudio.pause(); // Pause the previous audio
 		}
+		currentAudio = new Audio(path); // Create a new audio instance for the new surah
 	}
-	else if (innerHeight > 685) {
-		// set the Surahs to a grid by it`s number
-		SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
-		if (number > 2) {
-			number = 2
-			SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
+
+	if (isPause) {
+		// Pause the audio if it's currently playing
+		if (!currentAudio.paused) {
+			currentAudio.pause();
 		}
+	} else {
+		// Play the audio from its current position
+		currentAudio.play();
 	}
 }
 
 function findObject() {
-	var surahfinder = document.querySelector(".surahfinder").value;
-	if (surahfinder) {
-		gridSurahs()
-		window.addEventListener("resize", gridSurahs)
+	var surahfinder = document.querySelector(".surahfinder").value; // Get user input
 
-		// Declering Two New Contant
+	if (surahfinder) {
+		// Find the surah object matching the user input
 		const foundObject = surahs.find(obj => obj.name === surahfinder);
 
-		// Check if the object is found
 		if (foundObject) {
-			// make the surahs disappear
-			makeSurahs(false);
+			// Add the found surah to the SurahsWrapper
+			SurahsWrapper.innerHTML += `
+                <div class="surah">
+                    <h3 class="surahName">سورة ${foundObject.name}</h3>
+                    <h3 class="surahOrder">رقم السورة: ${foundObject.Order}</h3>
+                    <h3 class="surahVerses">عدد الآيات: ${foundObject.verses}</h3>
+                    <h3 class="surahVerses">النزول: ${foundObject.type}</h3>
+                    <button style="margin-bottom: 10px;" onclick="window.open('quran/${foundObject.name}.html')">اقرأ</button>
+                    <button onclick="alert1.showModal();alertText.innerHTML = '${foundObject.summary}'">التفسير</button>
+                    <div class="listen">
+						<button onclick="MakeSurahSoundPlayPause('${foundObject.link}', true)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg></button>
+                        <button onclick="MakeSurahSoundPlayPause('${foundObject.link}', false)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
+                    </div>
+                </div>
+            `;
 
-			// make the surah wrapper appear With The Contents inside it
-			SurahsWrapper.innerHTML += `<div class="surah">
-				<h3 class="surahName">سورة ${foundObject.name}</h3>
-				<h3 class="surahOrder">رقم السورة: ${foundObject.Order}</h3>
-				<h3 class="surahVerses">عدد الآيات: ${foundObject.verses}</h3>
-				<h3 class="surahVerses">النزول: ${foundObject.type}</h3>
-				<button style="margin-bottom: 10px;" onclick= "window.open('quran/${foundObject.name}.html')">اقرأ</button>
-				<button onclick="alert1.showModal();alertText.innerHTML = '${foundObject.summary}'">التفسير</button>
-				<div class="listen">
-					<button onclick="MakeSurahSoundPlayPause('${foundObject.link}' ,true)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24" fill="CurrentColor"><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg></button>
-					<button onclick="MakeSurahSoundPlayPause('${foundObject.link}' ,false)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
-				</div>
-			</div>`;
-
-			// Clear The Surahs Contents If Needed
-			clear.addEventListener("click", () => { SurahsWrapper.innerHTML = "" })
-			Status.innerHTML = `تم العثور على سورة ${surahfinder}`
-			surahfinder = null;
-		}
-		else {
-			Status.innerHTML = `لم يتم العثور على: ${surahfinder}`
+			// Update the status
+			Status.innerHTML = `تم العثور على سورة ${surahfinder}`;
+		} else {
+			// If surah not found, update the status
+			Status.innerHTML = `لم يتم العثور على: ${surahfinder}`;
 		}
 	} else {
-		Status.innerHTML = `برجاء إدخال أى سورة`
+		// If input is empty, update the status
+		Status.innerHTML = `برجاء إدخال أى سورة`;
 	}
 }
 
 // Events Listeners
-findsurah.addEventListener("submit", e => { e.preventDefault(); findObject(); })
-showall.addEventListener("click", () => { SurahsWrapper.innerHTML = ""; makeSurahs(true) })
+findsurah.addEventListener("submit", e => {
+	for (let i = 0; i > 1; i++) {
+		makeSurahs(false);
+		clear.click()
+	}
+	e.preventDefault();
+	findObject()
+})
+
+showall.addEventListener("click", () => {
+	makeSurahs(false);
+	makeSurahs(true);
+})
 
 // أسماء الله الحسنى
 const Allah_names = document.querySelector(".names");
