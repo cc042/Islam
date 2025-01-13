@@ -171,6 +171,8 @@
 html {
     width: 100vw;
     height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
     font-size: 16px;
     font-family: var(--sff);
     overflow-x: hidden;
@@ -244,7 +246,7 @@ textarea {
 /* Error Dialog */
 .alert1 {
     margin: auto;
-    height: 200px;
+    height: max-content;
     width: 90vw;
     border-radius: 20px;
     animation: fade 0.7s;
@@ -255,9 +257,6 @@ textarea {
     position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .alert1 h1 {
@@ -602,6 +601,19 @@ section:not(.active) {
     font-size: 20px;
 }
 
+.showall {
+    width: 436px;
+    height: 56px;
+    border-radius: 0 0 10px 10px;
+    background: var(--White);
+    font-weight: 600;
+    font-size: 25px;
+    font-family: var(--sff);
+    border: 2px solid var(--Black);
+    border-top: none;
+    box-shadow: 0 0 10px var(--Black);
+}
+
 .clearButton {
     display: flex;
     justify-content: center;
@@ -643,7 +655,6 @@ section:not(.active) {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
     margin: 10px 0 10px 0;
 }
 
@@ -651,7 +662,7 @@ section:not(.active) {
     width: max-content;
     height: max-content;
     border: 2px solid var(--Black);
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -853,7 +864,43 @@ section:not(.active) {
 }
 
 /* My Projects */
+.Projects {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    width: 100%;
+    padding: 10px 10px 70px 10px;
+    margin-top: 8px;
+}
 
+.project {
+    padding: 10px;
+    border-radius: 10px 0px;
+    border: 3px solid var(--Black);
+    cursor: pointer;
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project p {
+    font-size: 1.1rem
+}
+
+.project a {
+    color: var(--Navy-Blue);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.project:hover {
+    transform: translateY(-10px);
+    border-color: var(--Gold);
+    box-shadow: 0 0 10px black;
+}
 
 /* Footer */
 footer {
@@ -875,14 +922,8 @@ footer {
 }
 
 @media screen and (max-width:781px) {
-    .tab-label {
-        font-size: 20px;
-    }
-}
-
-@media screen and (max-width:720px) {
-    .alert1 {
-        height: 250px;
+    .tabs {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -893,8 +934,14 @@ footer {
 }
 
 @media screen and (max-width:625px) {
+    .tabs {
+        grid-template-columns: repeat(2, 1fr);
+        height: max-content;
+    }
+
     .tab-label {
-        font-size: 15px;
+        height: 50px;
+        font-size: 20px;
     }
 }
 
@@ -925,17 +972,6 @@ footer {
 }
 
 @media screen and (max-width:587px) {
-    .tabs {
-        display: grid;
-        height: max-content;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tab-label {
-        height: 50px;
-        font-size: 20px;
-    }
-
     .leftdevsection {
         display: none;
     }
@@ -958,8 +994,9 @@ footer {
 @media screen and (max-width:440px) {
 
     .surahInputWrapper,
-    .countryInputWrapper {
-        width: 90vw;
+    .countryInputWrapper,
+    .showall {
+        width: 93vw;
         justify-content: center;
         align-items: center;
     }

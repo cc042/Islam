@@ -15,12 +15,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/headers_assets/read-quran.jpg">
+    <link rel="icon" href="assets/headers_assets/belief.png">
 
     <!-- Scripts -->
     <script src="JS/azan.js" defer></script>
     <script src="JS/tabs.js" defer></script>
-    <script src="JS/azkar.js" defer></script>
     <script src="JS/index.js" defer></script>
     <script src="JS/services.js" defer></script>
     <script src="JS/SurahData.js" defer></script>
@@ -127,7 +126,7 @@
     <!-- Header -->
     <header>
         <div class="rightdevsection">
-            <img src="assets/headers_assets/read-quran.jpg" alt="Logo" width="60">
+            <img src="assets/headers_assets/belief.png" alt="Logo" width="60">
             <h1>إسلامى</h1>
         </div>
         <div class="leftdevsection">
@@ -181,14 +180,15 @@
                         </svg>
                     </button>
                 </form>
-                <h1 class="status" align="center">أدخل أسم السورة لكى أظهرها لك</h1>
+                <button class="showall">إظهار كل السور</button>
+                <h1 style="margin-top:10px;" class="status" align="center">أدخل أسم السورة لكى أظهرها لك</h1>
             </div>
 
             <div class="clearButton">
                 <button class="Clear">محو الكل</button>
             </div>
 
-            <div class="surahs" style="width: 100%;"></div>
+            <div class="surahs"></div>
         </section>
 
         <section class="NamesOfAllah" id="content2">
@@ -278,11 +278,13 @@
             </div>
         </section>
 
-        <section class="time" id="content5">
+        <section class="projects" id="content5">
             <div class="header">
-                <img src="assets/headers_assets/prayer.png" alt="مشاريع" width="50">
+                <img src="assets/headers_assets/projects.png" alt="مشاريع" width="50">
                 <h2>مشاريعى</h2>
             </div>
+
+            <div class="Projects"></div>
         </section>
     </main>
 

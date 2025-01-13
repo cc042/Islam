@@ -1,346 +1,119 @@
 const surahs = [
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "1", name: "الفاتحة", verses: 7, type: "مكية", summary: "أم الكتاب، تتضمن الثناء على الله، طلب الهداية، والدعاء بالثبات على الصراط المستقيم."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "2", name: "البقرة", verses: 286, type: "مدنية", summary: "أطول سورة، تعالج أحكام الشريعة، القصص، الإيمان، التعاملات، والاختبار بالإيمان والعمل."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "3", name: "آل عمران", verses: 200, type: "مدنية", summary: "تؤكد أهمية الثبات في الإيمان، الدعوة، وحدة الأمة، وأحداث غزوة أحد."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "4", name: "النساء", verses: 176, type: "مدنية", summary: "تعالج قضايا الأسرة، الميراث، العدل، وحماية الحقوق."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "5", name: "المائدة", verses: 120, type: "مدنية", summary: "تتحدث عن العهود والمواثيق، الحلال والحرام، وأخلاقيات المعاملات."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "6", name: "الأنعام", verses: 165, type: "مكية", summary: "تركز على التوحيد، الدلائل الكونية، والرد على الشرك."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "7", name: "الأعراف", verses: 206, type: "مكية", summary: "قصص الأمم السابقة، الدعوة للإصلاح، وعواقب التكذيب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "8", name: "الأنفال", verses: 75, type: "مدنية", summary: "تناقش الغنائم وأخلاقيات القتال."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "9", name: "التوبة", verses: 129, type: "مدنية", summary: "تُعنى بالمنافقين، الجهاد، والتحذير من الخيانة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "10", name: "يونس", verses: 109, type: "مكية", summary: "دعوة للتوحيد، قصص الأنبياء، ووعد الله للمؤمنين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "11", name: "هود", verses: 123, type: "مكية", summary: "تثبيت النبي بقصص الأنبياء السابقين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "12", name: "يوسف", verses: 111, type: "مكية", summary: "قصة النبي يوسف عبرةً في الصبر والتوكل على الله."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "13", name: "الرعد", verses: 43, type: "مدنية", summary: "دلائل قدرة الله وتوحيده."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "14", name: "إبراهيم", verses: 52, type: "مكية", summary: "شكر النعم والتحذير من الكفر."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "15", name: "الحجر", verses: 99, type: "مكية", summary: "وعد الله بالحفظ، وتحذير المكذبين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "16", name: "النحل", verses: 128, type: "مكية", summary: "نعم الله، توحيده، وتثبيت النبي."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "17", name: "الإسراء", verses: 111, type: "مكية", summary: "الإسراء والمعراج، الأخلاقيات، وأحكام فردية."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "18", name: "الكهف", verses: 110, type: "مكية", summary: "قصص الفتية، الكنز، موسى والخضر، وذي القرنين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "19", name: "مريم", verses: 98, type: "مكية", summary: "قصة مريم، عيسى، وزكريا."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "20", name: "طه", verses: 135, type: "مكية", summary: "قصة موسى وفرعون، وأهمية القرآن."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "21", name: "الأنبياء", verses: 112, type: "مكية", summary: "قصص الأنبياء، الحساب، وعظمة الخالق."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "22", name: "الحج", verses: 78, type: "مدنية", summary: "عبودية الله وأحكام الحج."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "23", name: "المؤمنون", verses: 118, type: "مكية", summary: "صفات المؤمنين، الخلق، والحساب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "24", name: "النور", verses: 64, type: "مدنية", summary: "أحكام اجتماعية وآداب الاستئذان."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "25", name: "الفرقان", verses: 77, type: "مكية", summary: "الفرق بين المؤمنين والكافرين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "26", name: "الشعراء", verses: 227, type: "مكية", summary: "قصص الأنبياء والدعوة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "27", name: "النمل", verses: 93, type: "مكية", summary: "قصة سليمان، وملكة سبأ."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "28", name: "القصص", verses: 88, type: "مكية", summary: "قصة موسى وفرعون."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "29", name: "العنكبوت", verses: 69, type: "مكية", summary: "الابتلاءات وثبات المؤمنين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "30", name: "الروم", verses: 60, type: "مكية", summary: "أحداث تاريخية ودلائل الإيمان."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "31", name: "لقمان", verses: 34, type: "مكية", summary: "الحكمة والنصائح للأبناء."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "32", name: "السجدة", verses: 30, type: "مكية", summary: "دلائل البعث وتوحيد الله."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "33", name: "الأحزاب", verses: 73, type: "مدنية", summary: "غزوة الأحزاب وأحكام اجتماعية."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "34", name: "سبأ", verses: 54, type: "مكية", summary: "النعم وشكرها."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "35", name: "فاطر", verses: 45, type: "مكية", summary: "عظمة خلق الله."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "36", name: "يس", verses: 83, type: "مكية", summary: "دلائل القدرة الإلهية."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "37", name: "الصافات", verses: 182, type: "مكية", summary: "توحيد الله وقصص الأنبياء."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "38", name: "ص", verses: 88, type: "مكية", summary: "دعوة للتوحيد وعاقبة المكذبين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "39", name: "الزمر", verses: 75, type: "مكية", summary: "الإخلاص في العبادة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "40", name: "غافر", verses: 85, type: "مكية", summary: "العاقبة للمتقين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "41", name: "فصلت", verses: 54, type: "مكية", summary: "دلائل الوحي والتوحيد."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "42", name: "الشورى", verses: 53, type: "مكية", summary: "أهمية الشورى."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "43", name: "الزخرف", verses: 89, type: "مكية", summary: "الحياة الدنيا وزخرفها."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "44", name: "الدخان", verses: 59, type: "مكية", summary: "التحذير من يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "45", name: "الجاثية", verses: 37, type: "مكية", summary: "عاقبة المكذبين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "46", name: "الأحقاف", verses: 35, type: "مكية", summary: "قصص عاد وثمود."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "47", name: "محمد", verses: 38, type: "مدنية", summary: "الجهاد وأخلاق المسلمين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "48", name: "الفتح", verses: 29, type: "مدنية", summary: "صلح الحديبية."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "49", name: "الحجرات", verses: 18, type: "مدنية", summary: "آداب المجتمع."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "50", name: "ق", verses: 45, type: "مكية", summary: "البعث والحساب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "51", name: "الذاريات", verses: 60, type: "مكية", summary: "عاقبة المتقين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "52", name: "الطور", verses: 49, type: "مكية", summary: "دلائل التوحيد."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "53", name: "النجم", verses: 62, type: "مكية", summary: "معجزة المعراج."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "54", name: "القمر", verses: 55, type: "مكية", summary: "أحداث يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "55", name: "الرحمن", verses: 78, type: "مدنية", summary: "نعم الله المتكررة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "56", name: "الواقعة", verses: 96, type: "مكية", summary: "أهوال يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "57", name: "الحديد", verses: 29, type: "مدنية", summary: "الإنفاق في سبيل الله."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "58", name: "المجادلة", verses: 22, type: "مدنية", summary: "أحكام اجتماعية."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "59", name: "الحشر", verses: 24, type: "مدنية", summary: "تطهير المجتمع."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "60", name: "الممتحنة", verses: 13, type: "مدنية", summary: "العلاقات مع غير المسلمين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "61", name: "الصف", verses: 14, type: "مدنية", summary: "الجهاد والوحدة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "62", name: "الجمعة", verses: 11, type: "مدنية", summary: "أهمية صلاة الجمعة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "63", name: "المنافقون", verses: 11, type: "مدنية", summary: "أخلاق المنافقين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "64", name: "التغابن", verses: 18, type: "مدنية", summary: "الإيمان بالله واليوم الآخر."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "65", name: "الطلاق", verses: 12, type: "مدنية", summary: "أحكام الطلاق."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "66", name: "التحريم", verses: 12, type: "مدنية", summary: "أخلاقيات الأسرة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "67", name: "الملك", verses: 30, type: "مكية", summary: "ملك الله وقدرته."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "68", name: "القلم", verses: 52, type: "مكية", summary: "الأخلاق والآداب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "69", name: "الحاقة", verses: 52, type: "مكية", summary: "أهوال يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "70", name: "المعارج", verses: 44, type: "مكية", summary: "عاقبة المكذبين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "71", name: "نوح", verses: 28, type: "مكية", summary: "قصة النبي نوح ودعوته."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "72", name: "الجن", verses: 28, type: "مكية", summary: "إيمان الجن بالقرآن."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "73", name: "المزمل", verses: 20, type: "مكية", summary: "أوامر للنبي في العبادة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "74", name: "المدثر", verses: 56, type: "مكية", summary: "الدعوة والإعداد لها."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "75", name: "القيامة", verses: 40, type: "مكية", summary: "البعث والحساب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "76", name: "الإنسان", verses: 31, type: "مدنية", summary: "جزاء المتقين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "77", name: "المرسلات", verses: 50, type: "مكية", summary: "إنذار يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "78", name: "النبأ", verses: 40, type: "مكية", summary: "أهوال يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "79", name: "النازعات", verses: 46, type: "مكية", summary: "دلائل البعث."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "80", name: "عبس", verses: 42, type: "مكية", summary: "إهمال النبي للأعمى."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "81", name: "التكوير", verses: 29, type: "مكية", summary: "أهوال القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "82", name: "الإنفطار", verses: 19, type: "مكية", summary: "دلائل يوم الحساب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "83", name: "المطففين", verses: 36, type: "مكية", summary: "التحذير من الغش."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "84", name: "الإنشقاق", verses: 25, type: "مكية", summary: "دلائل الآخرة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "85", name: "البروج", verses: 22, type: "مكية", summary: "التحذير من عاقبة الظلم."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "86", name: "الطارق", verses: 17, type: "مكية", summary: "دلائل قدرة الله."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "87", name: "الأعلى", verses: 19, type: "مكية", summary: "الحث على التذكر والتسبيح."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "88", name: "الغاشية", verses: 26, type: "مكية", summary: "الحساب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "89", name: "الفجر", verses: 30, type: "مكية", summary: "عاقبة الطغاة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "90", name: "البلد", verses: 20, type: "مكية", summary: "التحديات في الحياة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "91", name: "الشمس", verses: 15, type: "مكية", summary: "أهمية تزكية النفس."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "92", name: "الليل", verses: 21, type: "مكية", summary: "العمل في الدنيا."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "93", name: "الضحى", verses: 11, type: "مكية", summary: "فضل الله على النبي."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "94", name: "الشرح", verses: 8, type: "مكية", summary: "تخفيف العبء عن النبي."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "95", name: "التين", verses: 8, type: "مكية", summary: "خلق الإنسان في أحسن تقويم."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "96", name: "العلق", verses: 19, type: "مكية", summary: "بداية الوحي."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "97", name: "القدر", verses: 5, type: "مكية", summary: "ليلة القدر."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "98", name: "البينة", verses: 8, type: "مدنية", summary: "الفرق بين الحق والباطل."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "99", name: "الزلزلة", verses: 8, type: "مدنية", summary: "أحداث يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "100", name: "العاديات", verses: 11, type: "مكية", summary: "صفة الخيل في الجهاد."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "101", name: "القارعة", verses: 11, type: "مكية", summary: "أهوال يوم القيامة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "102", name: "التكاثر", verses: 8, type: "مكية", summary: "التحذير من حب المال."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "103", name: "العصر", verses: 3, type: "مكية", summary: "أهمية الوقت."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "104", name: "الهمزة", verses: 9, type: "مكية", summary: "عاقبة السخرية."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "105", name: "الفيل", verses: 5, type: "مكية", summary: "حادثة الفيل."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "106", name: "قريش", verses: 4, type: "مكية", summary: "فضل قريش."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "107", name: "الماعون", verses: 7, type: "مكية", summary: "أفعال المنافقين."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "108", name: "الكوثر", verses: 3, type: "مكية", summary: "نعمة الكوثر."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "109", name: "الكافرون", verses: 6, type: "مكية", summary: "البراءة من الشرك."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "110", name: "النصر", verses: 3, type: "مدنية", summary: "وعد النصر."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "111", name: "المسد", verses: 5, type: "مكية", summary: "مصير أبي لهب."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "112", name: "الإخلاص", verses: 4, type: "مكية", summary: "توحيد الله."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "113", name: "الفلق", verses: 5, type: "مكية", summary: "الاستعاذة."
-	},
-	{
-		link: "https:\\server6.mp3quran.net\\akdr\\", Order: "114", name: "الناس", verses: 6, type: "مكية", summary: "الاستعاذة من الوسواس."
-	}
+	{ link: "https:/server6.mp3quran.net/qtm/001.mp3", Order: "001", verses: "007", name: "الفاتحة", type: "مكية", summary: "أم الكتاب، تتضمن الثناء على الله، طلب الهداية، والدعاء بالثبات على الصراط المستقيم." },
+	{ link: "https:/server6.mp3quran.net/qtm/002.mp3", Order: "002", verses: "286", name: "البقرة", type: "مدنية", summary: "أطول سورة، تعالج أحكام الشريعة، القصص، الإيمان، التعاملات، والاختبار بالإيمان والعمل." },
+	{ link: "https:/server6.mp3quran.net/qtm/003.mp3", Order: "003", verses: "200", name: "آل عمران", type: "مدنية", summary: "تؤكد أهمية الثبات في الإيمان، الدعوة، وحدة الأمة، وأحداث غزوة أحد." },
+	{ link: "https:/server6.mp3quran.net/qtm/004.mp3", Order: "004", verses: "176", name: "النساء", type: "مدنية", summary: "تعالج قضايا الأسرة، الميراث، العدل، وحماية الحقوق." },
+	{ link: "https:/server6.mp3quran.net/qtm/005.mp3", Order: "005", verses: "120", name: "المائدة", type: "مدنية", summary: "تتحدث عن العهود والمواثيق، الحلال والحرام، وأخلاقيات المعاملات." },
+	{ link: "https:/server6.mp3quran.net/qtm/006.mp3", Order: "006", verses: "165", name: "الأنعام", type: "مكية", summary: "تركز على التوحيد، الدلائل الكونية، والرد على الشرك." },
+	{ link: "https:/server6.mp3quran.net/qtm/007.mp3", Order: "007", verses: "206", name: "الأعراف", type: "مكية", summary: "قصص الأمم السابقة، الدعوة للإصلاح، وعواقب التكذيب." },
+	{ link: "https:/server6.mp3quran.net/qtm/008.mp3", Order: "008", verses: "075", name: "الأنفال", type: "مدنية", summary: "تناقش الغنائم وأخلاقيات القتال." },
+	{ link: "https:/server6.mp3quran.net/qtm/009.mp3", Order: "009", verses: "129", name: "التوبة", type: "مدنية", summary: "تُعنى بالمنافقين، الجهاد، والتحذير من الخيانة." },
+	{ link: "https:/server6.mp3quran.net/qtm/010.mp3", Order: "010", verses: "109", name: "يونس", type: "مكية", summary: "دعوة للتوحيد، قصص الأنبياء، ووعد الله للمؤمنين." },
+	{ link: "https:/server6.mp3quran.net/qtm/011.mp3", Order: "011", verses: "123", name: "هود", type: "مكية", summary: "تثبيت النبي بقصص الأنبياء السابقين." },
+	{ link: "https:/server6.mp3quran.net/qtm/012.mp3", Order: "012", verses: "111", name: "يوسف", type: "مكية", summary: "قصة النبي يوسف عبرةً في الصبر والتوكل على الله." },
+	{ link: "https:/server6.mp3quran.net/qtm/013.mp3", Order: "013", verses: "043", name: "الرعد", type: "مدنية", summary: "دلائل قدرة الله وتوحيده." },
+	{ link: "https:/server6.mp3quran.net/qtm/014.mp3", Order: "014", verses: "052", name: "إبراهيم", type: "مكية", summary: "شكر النعم والتحذير من الكفر." },
+	{ link: "https:/server6.mp3quran.net/qtm/015.mp3", Order: "015", verses: "099", name: "الحجر", type: "مكية", summary: "وعد الله بالحفظ، وتحذير المكذبين." },
+	{ link: "https:/server6.mp3quran.net/qtm/016.mp3", Order: "016", verses: "128", name: "النحل", type: "مكية", summary: "نعم الله، توحيده، وتثبيت النبي." },
+	{ link: "https:/server6.mp3quran.net/qtm/017.mp3", Order: "017", verses: "111", name: "الإسراء", type: "مكية", summary: "الإسراء والمعراج، الأخلاقيات، وأحكام فردية." },
+	{ link: "https:/server6.mp3quran.net/qtm/018.mp3", Order: "018", verses: "110", name: "الكهف", type: "مكية", summary: "قصص الفتية، الكنز، موسى والخضر، وذي القرنين." },
+	{ link: "https:/server6.mp3quran.net/qtm/019.mp3", Order: "019", verses: "098", name: "مريم", type: "مكية", summary: "قصة مريم، عيسى، وزكريا." },
+	{ link: "https:/server6.mp3quran.net/qtm/020.mp3", Order: "020", verses: "135", name: "طه", type: "مكية", summary: "قصة موسى وفرعون، وأهمية القرآن." },
+	{ link: "https:/server6.mp3quran.net/qtm/021.mp3", Order: "021", verses: "112", name: "الأنبياء", type: "مكية", summary: "قصص الأنبياء، الحساب، وعظمة الخالق." },
+	{ link: "https:/server6.mp3quran.net/qtm/022.mp3", Order: "022", verses: "078", name: "الحج", type: "مدنية", summary: "عبودية الله وأحكام الحج." },
+	{ link: "https:/server6.mp3quran.net/qtm/023.mp3", Order: "023", verses: "118", name: "المؤمنون", type: "مكية", summary: "صفات المؤمنين، الخلق، والحساب." },
+	{ link: "https:/server6.mp3quran.net/qtm/024.mp3", Order: "024", verses: "064", name: "النور", type: "مدنية", summary: "أحكام اجتماعية وآداب الاستئذان." },
+	{ link: "https:/server6.mp3quran.net/qtm/024.mp3", Order: "024", verses: "064", name: "النور", type: "مدنية", summary: "أحكام اجتماعية وآداب الاستئذان." },
+	{ link: "https:/server6.mp3quran.net/qtm/025.mp3", Order: "025", verses: "077", name: "الفرقان", type: "مكية", summary: "الفرق بين المؤمنين والكافرين." },
+	{ link: "https:/server6.mp3quran.net/qtm/026.mp3", Order: "026", verses: "227", name: "الشعراء", type: "مكية", summary: "قصص الأنبياء والدعوة." },
+	{ link: "https:/server6.mp3quran.net/qtm/027.mp3", Order: "027", verses: "093", name: "النمل", type: "مكية", summary: "قصة سليمان، وملكة سبأ." },
+	{ link: "https:/server6.mp3quran.net/qtm/028.mp3", Order: "028", verses: "088", name: "القصص", type: "مكية", summary: "قصة موسى وفرعون." },
+	{ link: "https:/server6.mp3quran.net/qtm/029.mp3", Order: "029", verses: "069", name: "العنكبوت", type: "مكية", summary: "الابتلاءات وثبات المؤمنين." },
+	{ link: "https:/server6.mp3quran.net/qtm/030.mp3", Order: "030", verses: "060", name: "الروم", type: "مكية", summary: "أحداث تاريخية ودلائل الإيمان." },
+	{ link: "https:/server6.mp3quran.net/qtm/031.mp3", Order: "031", verses: "034", name: "لقمان", type: "مكية", summary: "الحكمة والنصائح للأبناء." },
+	{ link: "https:/server6.mp3quran.net/qtm/032.mp3", Order: "032", verses: "030", name: "السجدة", type: "مكية", summary: "دلائل البعث وتوحيد الله." },
+	{ link: "https:/server6.mp3quran.net/qtm/033.mp3", Order: "033", verses: "073", name: "الأحزاب", type: "مدنية", summary: "غزوة الأحزاب وأحكام اجتماعية." },
+	{ link: "https:/server6.mp3quran.net/qtm/034.mp3", Order: "034", verses: "054", name: "سبأ", type: "مكية", summary: "النعم وشكرها." },
+	{ link: "https:/server6.mp3quran.net/qtm/035.mp3", Order: "035", verses: "045", name: "فاطر", type: "مكية", summary: "عظمة خلق الله." },
+	{ link: "https:/server6.mp3quran.net/qtm/036.mp3", Order: "036", verses: "083", name: "يس", type: "مكية", summary: "دلائل القدرة الإلهية." },
+	{ link: "https:/server6.mp3quran.net/qtm/037.mp3", Order: "037", verses: "182", name: "الصافات", type: "مكية", summary: "توحيد الله وقصص الأنبياء." },
+	{ link: "https:/server6.mp3quran.net/qtm/038.mp3", Order: "038", verses: "088", name: "ص", type: "مكية", summary: "دعوة للتوحيد وعاقبة المكذبين." },
+	{ link: "https:/server6.mp3quran.net/qtm/039.mp3", Order: "039", verses: "075", name: "الزمر", type: "مكية", summary: "الإخلاص في العبادة." },
+	{ link: "https:/server6.mp3quran.net/qtm/040.mp3", Order: "040", verses: "085", name: "غافر", type: "مكية", summary: "العاقبة للمتقين." },
+	{ link: "https:/server6.mp3quran.net/qtm/041.mp3", Order: "041", verses: "054", name: "فصلت", type: "مكية", summary: "دلائل الوحي والتوحيد." },
+	{ link: "https:/server6.mp3quran.net/qtm/042.mp3", Order: "042", verses: "053", name: "الشورى", type: "مكية", summary: "أهمية الشورى." },
+	{ link: "https:/server6.mp3quran.net/qtm/043.mp3", Order: "043", verses: "089", name: "الزخرف", type: "مكية", summary: "الحياة الدنيا وزخرفها." },
+	{ link: "https:/server6.mp3quran.net/qtm/044.mp3", Order: "044", verses: "059", name: "الدخان", type: "مكية", summary: "التحذير من يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/045.mp3", Order: "045", verses: "037", name: "الجاثية", type: "مكية", summary: "عاقبة المكذبين." },
+	{ link: "https:/server6.mp3quran.net/qtm/046.mp3", Order: "046", verses: "035", name: "الأحقاف", type: "مكية", summary: "قصص عاد وثمود." },
+	{ link: "https:/server6.mp3quran.net/qtm/047.mp3", Order: "047", verses: "038", name: "محمد", type: "مدنية", summary: "الجهاد وأخلاق المسلمين." },
+	{ link: "https:/server6.mp3quran.net/qtm/048.mp3", Order: "048", verses: "029", name: "الفتح", type: "مدنية", summary: "صلح الحديبية." },
+	{ link: "https:/server6.mp3quran.net/qtm/049.mp3", Order: "049", verses: "018", name: "الحجرات", type: "مدنية", summary: "آداب المجتمع." },
+	{ link: "https:/server6.mp3quran.net/qtm/050.mp3", Order: "050", verses: "045", name: "ق", type: "مكية", summary: "البعث والحساب." },
+	{ link: "https:/server6.mp3quran.net/qtm/051.mp3", Order: "051", verses: "060", name: "الذاريات", type: "مكية", summary: "عاقبة المتقين." },
+	{ link: "https:/server6.mp3quran.net/qtm/052.mp3", Order: "052", verses: "049", name: "الطور", type: "مكية", summary: "دلائل التوحيد." },
+	{ link: "https:/server6.mp3quran.net/qtm/053.mp3", Order: "053", verses: "062", name: "النجم", type: "مكية", summary: "معجزة المعراج." },
+	{ link: "https:/server6.mp3quran.net/qtm/054.mp3", Order: "054", verses: "055", name: "القمر", type: "مكية", summary: "أحداث يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/055.mp3", Order: "055", verses: "078", name: "الرحمن", type: "مدنية", summary: "نعم الله المتكررة." },
+	{ link: "https:/server6.mp3quran.net/qtm/056.mp3", Order: "056", verses: "096", name: "الواقعة", type: "مكية", summary: "أهوال يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/057.mp3", Order: "057", verses: "029", name: "الحديد", type: "مدنية", summary: "الإنفاق في سبيل الله." },
+	{ link: "https:/server6.mp3quran.net/qtm/058.mp3", Order: "058", verses: "022", name: "المجادلة", type: "مدنية", summary: "أحكام اجتماعية." },
+	{ link: "https:/server6.mp3quran.net/qtm/059.mp3", Order: "059", verses: "024", name: "الحشر", type: "مدنية", summary: "تطهير المجتمع." },
+	{ link: "https:/server6.mp3quran.net/qtm/060.mp3", Order: "060", verses: "013", name: "الممتحنة", type: "مدنية", summary: "العلاقات مع غير المسلمين." },
+	{ link: "https:/server6.mp3quran.net/qtm/061.mp3", Order: "061", verses: "014", name: "الصف", type: "مدنية", summary: "الجهاد والوحدة." },
+	{ link: "https:/server6.mp3quran.net/qtm/062.mp3", Order: "062", verses: "011", name: "الجمعة", type: "مدنية", summary: "أهمية صلاة الجمعة." },
+	{ link: "https:/server6.mp3quran.net/qtm/063.mp3", Order: "063", verses: "011", name: "المنافقون", type: "مدنية", summary: "أخلاق المنافقين." },
+	{ link: "https:/server6.mp3quran.net/qtm/064.mp3", Order: "064", verses: "018", name: "التغابن", type: "مدنية", summary: "الإيمان بالله واليوم الآخر." },
+	{ link: "https:/server6.mp3quran.net/qtm/065.mp3", Order: "065", verses: "012", name: "الطلاق", type: "مدنية", summary: "أحكام الطلاق." },
+	{ link: "https:/server6.mp3quran.net/qtm/066.mp3", Order: "066", verses: "012", name: "التحريم", type: "مدنية", summary: "أخلاقيات الأسرة." },
+	{ link: "https:/server6.mp3quran.net/qtm/067.mp3", Order: "067", verses: "030", name: "الملك", type: "مكية", summary: "ملك الله وقدرته." },
+	{ link: "https:/server6.mp3quran.net/qtm/068.mp3", Order: "068", verses: "052", name: "القلم", type: "مكية", summary: "الأخلاق والآداب." },
+	{ link: "https:/server6.mp3quran.net/qtm/069.mp3", Order: "069", verses: "052", name: "الحاقة", type: "مكية", summary: "أهوال يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/070.mp3", Order: "070", verses: "044", name: "المعارج", type: "مكية", summary: "عاقبة المكذبين." },
+	{ link: "https:/server6.mp3quran.net/qtm/071.mp3", Order: "071", verses: "028", name: "نوح", type: "مكية", summary: "قصة النبي نوح ودعوته." },
+	{ link: "https:/server6.mp3quran.net/qtm/072.mp3", Order: "072", verses: "028", name: "الجن", type: "مكية", summary: "إيمان الجن بالقرآن." },
+	{ link: "https:/server6.mp3quran.net/qtm/073.mp3", Order: "073", verses: "020", name: "المزمل", type: "مكية", summary: "أوامر للنبي في العبادة." },
+	{ link: "https:/server6.mp3quran.net/qtm/074.mp3", Order: "074", verses: "056", name: "المدثر", type: "مكية", summary: "الدعوة والإعداد لها." },
+	{ link: "https:/server6.mp3quran.net/qtm/075.mp3", Order: "075", verses: "040", name: "القيامة", type: "مكية", summary: "البعث والحساب." },
+	{ link: "https:/server6.mp3quran.net/qtm/076.mp3", Order: "076", verses: "031", name: "الإنسان", type: "مدنية", summary: "جزاء المتقين." },
+	{ link: "https:/server6.mp3quran.net/qtm/077.mp3", Order: "077", verses: "050", name: "المرسلات", type: "مكية", summary: "إنذار يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/078.mp3", Order: "078", verses: "040", name: "النبأ", type: "مكية", summary: "أهوال يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/079.mp3", Order: "079", verses: "046", name: "النازعات", type: "مكية", summary: "دلائل البعث." },
+	{ link: "https:/server6.mp3quran.net/qtm/080.mp3", Order: "080", verses: "042", name: "عبس", type: "مكية", summary: "إهمال النبي للأعمى." },
+	{ link: "https:/server6.mp3quran.net/qtm/081.mp3", Order: "081", verses: "029", name: "التكوير", type: "مكية", summary: "أهوال القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/082.mp3", Order: "082", verses: "019", name: "الإنفطار", type: "مكية", summary: "دلائل يوم الحساب." },
+	{ link: "https:/server6.mp3quran.net/qtm/083.mp3", Order: "083", verses: "036", name: "المطففين", type: "مكية", summary: "التحذير من الغش." },
+	{ link: "https:/server6.mp3quran.net/qtm/084.mp3", Order: "084", verses: "025", name: "الإنشقاق", type: "مكية", summary: "دلائل الآخرة." },
+	{ link: "https:/server6.mp3quran.net/qtm/085.mp3", Order: "085", verses: "022", name: "البروج", type: "مكية", summary: "التحذير من عاقبة الظلم." },
+	{ link: "https:/server6.mp3quran.net/qtm/086.mp3", Order: "086", verses: "017", name: "الطارق", type: "مكية", summary: "دلائل قدرة الله." },
+	{ link: "https:/server6.mp3quran.net/qtm/087.mp3", Order: "087", verses: "019", name: "الأعلى", type: "مكية", summary: "الحث على التذكر والتسبيح." },
+	{ link: "https:/server6.mp3quran.net/qtm/088.mp3", Order: "088", verses: "026", name: "الغاشية", type: "مكية", summary: "الحساب." },
+	{ link: "https:/server6.mp3quran.net/qtm/089.mp3", Order: "089", verses: "030", name: "الفجر", type: "مكية", summary: "عاقبة الطغاة." },
+	{ link: "https:/server6.mp3quran.net/qtm/090.mp3", Order: "090", verses: "020", name: "البلد", type: "مكية", summary: "التحديات في الحياة." },
+	{ link: "https:/server6.mp3quran.net/qtm/091.mp3", Order: "091", verses: "015", name: "الشمس", type: "مكية", summary: "أهمية تزكية النفس." },
+	{ link: "https:/server6.mp3quran.net/qtm/092.mp3", Order: "092", verses: "021", name: "الليل", type: "مكية", summary: "العمل في الدنيا." },
+	{ link: "https:/server6.mp3quran.net/qtm/093.mp3", Order: "093", verses: "011", name: "الضحى", type: "مكية", summary: "فضل الله على النبي." },
+	{ link: "https:/server6.mp3quran.net/qtm/094.mp3", Order: "094", verses: "008", name: "الشرح", type: "مكية", summary: "تخفيف العبء عن النبي." },
+	{ link: "https:/server6.mp3quran.net/qtm/095.mp3", Order: "095", verses: "008", name: "التين", type: "مكية", summary: "خلق الإنسان في أحسن تقويم." },
+	{ link: "https:/server6.mp3quran.net/qtm/096.mp3", Order: "096", verses: "019", name: "العلق", type: "مكية", summary: "بداية الوحي." },
+	{ link: "https:/server6.mp3quran.net/qtm/097.mp3", Order: "097", verses: "005", name: "القدر", type: "مكية", summary: "ليلة القدر." },
+	{ link: "https:/server6.mp3quran.net/qtm/098.mp3", Order: "098", verses: "008", name: "البينة", type: "مدنية", summary: "الفرق بين الحق والباطل." },
+	{ link: "https:/server6.mp3quran.net/qtm/099.mp3", Order: "099", verses: "008", name: "الزلزلة", type: "مدنية", summary: "أحداث يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/100.mp3", Order: "100", verses: "011", name: "العاديات", type: "مكية", summary: "صفة الخيل في الجهاد." },
+	{ link: "https:/server6.mp3quran.net/qtm/101.mp3", Order: "101", verses: "011", name: "القارعة", type: "مكية", summary: "أهوال يوم القيامة." },
+	{ link: "https:/server6.mp3quran.net/qtm/102.mp3", Order: "102", verses: "008", name: "التكاثر", type: "مكية", summary: "التحذير من حب المال." },
+	{ link: "https:/server6.mp3quran.net/qtm/103.mp3", Order: "103", verses: "003", name: "العصر", type: "مكية", summary: "أهمية الوقت." },
+	{ link: "https:/server6.mp3quran.net/qtm/104.mp3", Order: "104", verses: "009", name: "الهمزة", type: "مكية", summary: "عاقبة السخرية." },
+	{ link: "https:/server6.mp3quran.net/qtm/105.mp3", Order: "105", verses: "005", name: "الفيل", type: "مكية", summary: "حادثة الفيل." },
+	{ link: "https:/server6.mp3quran.net/qtm/106.mp3", Order: "106", verses: "004", name: "قريش", type: "مكية", summary: "فضل قريش." },
+	{ link: "https:/server6.mp3quran.net/qtm/107.mp3", Order: "107", verses: "007", name: "الماعون", type: "مكية", summary: "أفعال المنافقين." },
+	{ link: "https:/server6.mp3quran.net/qtm/108.mp3", Order: "108", verses: "003", name: "الكوثر", type: "مكية", summary: "نعمة الكوثر." },
+	{ link: "https:/server6.mp3quran.net/qtm/109.mp3", Order: "109", verses: "006", name: "الكافرون", type: "مكية", summary: "البراءة من الشرك." },
+	{ link: "https:/server6.mp3quran.net/qtm/110.mp3", Order: "110", verses: "003", name: "النصر", type: "مدنية", summary: "وعد النصر." },
+	{ link: "https:/server6.mp3quran.net/qtm/111.mp3", Order: "111", verses: "005", name: "المسد", type: "مكية", summary: "مصير أبي لهب." },
+	{ link: "https:/server6.mp3quran.net/qtm/112.mp3", Order: "112", verses: "004", name: "الإخلاص", type: "مكية", summary: "توحيد الله." },
+	{ link: "https:/server6.mp3quran.net/qtm/113.mp3", Order: "113", verses: "005", name: "الفلق", type: "مكية", summary: "الاستعاذة." },
+	{ link: "https:/server6.mp3quran.net/qtm/114.mp3", Order: "114", verses: "006", name: "الناس", type: "مكية", summary: "الاستعاذة من الوسواس." }
 ];
 
 const namesOfAllah = [
@@ -445,18 +218,30 @@ const namesOfAllah = [
 	{ name: "ٱلصَّبُور", meaning: "ٱلَّذِي يَتَحَلَّى بِٱلصَّبْرِ فِي ٱلتَّعَامُلِ مَعَ عِبَادِهِ" }
 ];
 
+// Wrappers
 const findsurah = document.querySelector(".surahInputWrapper")
-const Status = document.querySelector(".status")
 const SurahsWrapper = document.querySelector(".surahs")
+
+// Statues
+const Status = document.querySelector(".status")
+
+// Show And Hide Surahs Buttons
+const showall = document.querySelector(".showall")
+const clear = document.querySelector(".Clear")
+
+// Alerts
 const alert1 = document.querySelector(".alert1")
 const alertText = document.querySelector(".alert1 h1")
-const surahWrapper = document.createElement("div")
-surahWrapper.className = "surah"
+
+// Player
+const Player = document.querySelector("audio")
+
+// Additions
+var number = 0
 
 // Make All Surahs
 function makeSurahs(bool) {
 	if (bool) {
-		SurahsWrapper.innerHTML = ""
 		for (let i = 0; i < 114; i++) {
 			SurahsWrapper.innerHTML += `<div class="surah">
 				<h3 class="surahName">سورة ${surahs[i].name}</h3>
@@ -466,32 +251,72 @@ function makeSurahs(bool) {
 				<button style="margin-bottom: 10px;" onclick= "window.open('quran/${surahs[i].name}.html')">اقرأ</button>
 				<button onclick="alert1.showModal();alertText.innerHTML = '${surahs[i].summary}'">التفسير</button>
 				<div class="listen">
-					<button onclick=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24" fill="CurrentColor"><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg></button>
-					<button onclick=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
+					<button onclick="MakeSurahSoundPlayPause('${surahs[i].link}' ,true)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24" fill="CurrentColor"><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg></button>
+					<button onclick="MakeSurahSoundPlayPause('${surahs[i].link}' ,false)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
 				</div>
 			</div>
 			`
+			clear.addEventListener("click", () => { SurahsWrapper.innerHTML = "" })
+			Status.innerHTML = `تم إظهار جميع السور`
 		}
 	}
 	else {
 		SurahsWrapper.innerHTML = ""
 	}
 }
+function MakeSurahSoundPlayPause(path, IsPause) {
+	// Create a new audio element
+	var audio = new Audio(path);
+	audio.src = path
 
-// make a function that add zero
-function padzero(num) {
-	// Checks The Length Of the Number
-	if (length == 0) return "00" + num;
-	else if (length == 1) return "0" + num;
-	else if (length == 2) return num
+	if (!IsPause) {
+		// Play the audio
+		audio.play();
+	}
+	else {
+		audio.pause();
+	}
 }
 
-function makesurah(foundObject, surahfinder) {
-	// make the surahs disappear
-	makeSurahs(false);
 
-	// make the surah wrapper appear With The Contents inside it
-	SurahsWrapper.innerHTML += `<div class="surah">
+
+function gridSurahs() {
+	number += 1
+
+	if (innerWidth > 910) {
+		// set the Surahs to a grid by it`s number
+		SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
+		if (number > 3) {
+			number = 3
+			SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
+		}
+	}
+	else if (innerHeight > 685) {
+		// set the Surahs to a grid by it`s number
+		SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
+		if (number > 2) {
+			number = 2
+			SurahsWrapper.style.gridTemplateColumns = `repeat(${number},1fr)`
+		}
+	}
+}
+
+function findObject() {
+	var surahfinder = document.querySelector(".surahfinder").value;
+	if (surahfinder) {
+		gridSurahs()
+		window.addEventListener("resize", gridSurahs)
+
+		// Declering Two New Contant
+		const foundObject = surahs.find(obj => obj.name === surahfinder);
+
+		// Check if the object is found
+		if (foundObject) {
+			// make the surahs disappear
+			makeSurahs(false);
+
+			// make the surah wrapper appear With The Contents inside it
+			SurahsWrapper.innerHTML += `<div class="surah">
 				<h3 class="surahName">سورة ${foundObject.name}</h3>
 				<h3 class="surahOrder">رقم السورة: ${foundObject.Order}</h3>
 				<h3 class="surahVerses">عدد الآيات: ${foundObject.verses}</h3>
@@ -499,40 +324,27 @@ function makesurah(foundObject, surahfinder) {
 				<button style="margin-bottom: 10px;" onclick= "window.open('quran/${foundObject.name}.html')">اقرأ</button>
 				<button onclick="alert1.showModal();alertText.innerHTML = '${foundObject.summary}'">التفسير</button>
 				<div class="listen">
-					<button onclick="play()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24" fill="CurrentColor"><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg></button>
-					<button onclick="pause()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
+					<button onclick="MakeSurahSoundPlayPause('${foundObject.link}' ,true)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24" fill="CurrentColor"><path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/></svg></button>
+					<button onclick="MakeSurahSoundPlayPause('${foundObject.link}' ,false)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="CurrentColor"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
 				</div>
 			</div>`;
 
-	// Clear The Surahs Contents If Needed
-	document.querySelector(".Clear").addEventListener("click", () => { SurahsWrapper.innerHTML = "" })
-	Status.innerHTML = `تم العثور على سورة ${surahfinder}`
-	surahfinder = "";
-}
-
-function findObject() {
-	const surahfinder = document.querySelector(".surahfinder").value;
-	if (surahfinder) {
-		// make the surahs disappers
-		makeSurahs(false)
-
-		// Declering Two New Contant
-		const foundObject = surahs.find(obj => obj.name === surahfinder);
-
-		// Check if the object is found
-		if (foundObject) {
-			makesurah(foundObject, surahfinder)
+			// Clear The Surahs Contents If Needed
+			clear.addEventListener("click", () => { SurahsWrapper.innerHTML = "" })
+			Status.innerHTML = `تم العثور على سورة ${surahfinder}`
+			surahfinder = null;
 		}
 		else {
-
+			Status.innerHTML = `لم يتم العثور على: ${surahfinder}`
 		}
 	} else {
-
+		Status.innerHTML = `برجاء إدخال أى سورة`
 	}
 }
 
 // Events Listeners
 findsurah.addEventListener("submit", e => { e.preventDefault(); findObject(); })
+showall.addEventListener("click", () => { SurahsWrapper.innerHTML = ""; makeSurahs(true) })
 
 // أسماء الله الحسنى
 const Allah_names = document.querySelector(".names");
