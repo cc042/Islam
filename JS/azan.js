@@ -1,9 +1,6 @@
 const countryInputWrapper = document.querySelector(".countryInputWrapper")
 const prayers = document.querySelector(".prayers")
-const countryfinder = document.querySelector(".countryfinder")
-
-// Status
-const AzanStatus = document.querySelector(".status2")
+const countryfinder = document.querySelector(".countryfinder") 
 
 // Prayers Times
 const Fajr = document.querySelector(".El-Fajr")
@@ -29,19 +26,17 @@ function GetTimes() {
                     Asr.innerHTML = times.items[0].asr;
                     Maghrib.innerHTML = times.items[0].maghrib;
                     Isha.innerHTML = times.items[0].isha;
-    
-                    // Country and City
-                    AzanStatus.innerHTML = "البلد: " + times.country + " / " + "المدينة: " + times.city
                 }
                 else {
+                    alertText.innerHTML = "فشلت العملية."
                     prayers.style.display = "none";
-                    AzanStatus.innerHTML = "أدخل أسم مدينة صحيحة"
                 }
             });
         });
     }
     else {
-        AzanStatus.innerHTML = "أدخل أسم مدينة"
+        alert1.showModal()
+        alertText.innerHTML = "أدخل أسم المدينة."
     }
 }
 
