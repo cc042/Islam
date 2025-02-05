@@ -681,7 +681,7 @@ body.dark-mode .darkmode>svg:last-child {
     border-bottom: none;
     border-radius: 20px 20px 0 0;
     transition: max-height 0.5s ease-in-out;
-    z-index: 9999;
+    z-index: 999;
 }
 
 .NavScreen summary {
