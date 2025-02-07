@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="auto">
+<html dir="auto" lang="ar">
 
 <head>
     <!-- Meta -->
@@ -18,15 +18,33 @@
 
     <!-- Scripts -->
     <script src="JS/azan.js" defer></script>
+    <script src="JS/Data.js" defer></script>
     <script src="JS/tabs.js" defer></script>
+    <script src="JS/filter.js" defer></script>
     <script src="JS/index.js" defer></script>
-    <script src="JS/services.js" defer></script>
-    <script src="JS/SurahData.js" defer></script>
     <script src="JS/Responsive.js" defer></script>
+    <script src="JS/services.js" defer></script>
+    <script src="JS/sounds.js" defer></script>
+    <script src="JS/SurahData.js" defer></script>
     <script src="JS/themes.js" defer></script>
 </head>
 
 <body>
+    <!-- Extra Button -->
+    <button class="scrollup">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="25" height="25" fill="currentColor">
+            <path
+                d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z" />
+        </svg>
+    </button>
+
+    <button class="scrolldown">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="25" height="25" fill="currentColor">
+            <path
+                d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+        </svg>
+    </button>
+
     <!-- Loading Dialog -->
     <dialog class="Load" open>
         <div class="loader">
@@ -36,12 +54,38 @@
     </dialog>
 
     <!-- Inquiry Dialog -->
+    <dialog class="Estefsar">
+        <div class="EstefsarItems">
+            <div class="estefsarheader">
+                <div class="one">
+                    <button class="closeEstefsar"><img src="assets/icons/close.svg" alt="close"></button>
+                    <div>
+                        <video src="assets/icons/phone.mp4" width="50" class="estefsarvideo" preload="metadata" autoplay
+                            muted></video>
+                        <h1>قسم الاستفسار</h1>
+                    </div>
+                </div>
+                <div class="two">
+                    <button class="closeEstefsar" id="close-dialog"><img src="assets/icons/close.svg"
+                            alt="close"></button>
+                    <h1>قسم الاستفسار</h1>
+                </div>
+            </div>
+            <div class="estefsarcontent">
+                <form class="estefsarform">
+                    <textarea required class="estefsartext" placeholder="ما الذى تريد الاستفسار عنه ؟"></textarea>
+                    <input required type="text" class="estefsarname" placeholder="اسمك">
+                    <input type="submit" value="أرسل">
+                </form>
+            </div>
+        </div>
+    </dialog>
 
     <!-- Follow Us Dialog -->
     <dialog class="Follows">
         <div class="followsitems">
             <div class="followHeader">
-                <button class="Followsclose" aria-label="Close Follow Us" id="close-button">
+                <button class="Followsclose">
                     <img src="assets/icons/close.svg" alt="إغلاق">
                 </button>
                 <h1>الحسابات</h1>
@@ -56,7 +100,7 @@
                     <a href="https://www.instagram.com/islam_yourguide/profilecard" target="_blank">Instagram</a>
                 </div>
                 <div class="social-item">
-                    <img style="filter:invert(1)" src="assets/icons/twitter.svg" alt="Twitter" width="32" height="32">
+                    <img class="X" src="assets/icons/twitter.svg" alt="Twitter" width="32" height="32">
                     <a href="https://www.twitter.com/" target="_blank">Twitter</a>
                 </div>
                 <div class="social-item">
@@ -71,7 +115,7 @@
     <dialog class="callus">
         <div class="callusitems">
             <div class="callusHeader">
-                <button class="callusclose" aria-label="Close Call Us" id="close-button">
+                <button class="callusclose" aria-label="Close Call Us">
                     <img src="assets/icons/close.svg" alt="إغلاق">
                 </button>
                 <h1>أتصل بنا</h1>
@@ -97,13 +141,28 @@
     <dialog class="alert1">
         <div class="alert1items">
             <div class="alertHeader">
-                <button id="close-button" class="exitalert1" aria-label="Close Alert"
-                    onclick="document.querySelector('.alert1').close()"><img src="assets/icons/close.svg"
-                        alt="إغلاق"></button>
-                <h1>التفسير</h1>
+                <button class="alertclose" onclick="document.querySelector('.alert1').close()"><img
+                        src="assets/icons/close.svg" alt="إغلاق"></button>
+                <h1 class="alertheader">التفسير</h1>
             </div>
 
             <h1 class="alert1text"></h1>
+        </div>
+    </dialog>
+
+    <!-- filter -->
+    <dialog class="filter">
+        <div class="filteritems">
+            <div class="filterheader">
+                <button class="filterclose"><img src="assets/icons/close.svg" alt="إغلاق"></button>
+                <h1>التصفية</h1>
+            </div>
+            <div class="filterItems">
+                <input type="radio" name="chooser" id="byletter" checked>
+                <input type="radio" name="chooser" id="byname">
+                <label for="byletter">التصفية بالحرف</label>
+                <label for="byname">التصفية بالأسم</label>
+            </div>
         </div>
     </dialog>
 
@@ -117,10 +176,30 @@
 
             <div class="sidebarcontent">
                 <ul>
-                    <li><button class="contact"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="currentColor"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" /></svg></button></li>
-                    <li><button class="FollowMe"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="24" height="24" fill="currentColor"><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" /></svg></button></li>
-                    <li><button class="estefsar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="currentColor"><path d="M192 0c-41.8 0-77.4 26.7-90.5 64L64 64C28.7 64 0 92.7 0 128L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64l-37.5 0C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM105.8 229.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L216 328.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM160 416a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" /></svg></button></li>
-                    <li><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="currentColor"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" /></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="currentColor"><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2c0 0 0 0 0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4c0 0 0 0 0 0c19.8 27.1 39.7 54.4 49.2 86.2l160 0zM192 512c44.2 0 80-35.8 80-80l0-16-160 0 0 16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg></li>
+                    <li><button id="open-dialog" class="contact"><svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
+                                <path
+                                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                            </svg></button></li>
+                    <li><button id="open-dialog" class="FollowMe"><svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 640 512" width="24" height="24" fill="currentColor">
+                                <path
+                                    d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                            </svg></button></li>
+                    <li><button id="open-dialog" class="estefsar"><svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 384 512" width="24" height="24" fill="currentColor">
+                                <path
+                                    d="M192 0c-41.8 0-77.4 26.7-90.5 64L64 64C28.7 64 0 92.7 0 128L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64l-37.5 0C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM105.8 229.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L216 328.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM160 416a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
+                            </svg></button></li>
+                    <li><button id="open-dialog" class="darkmode"><svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 384 512" width="24" height="24" fill="currentColor">
+                                <path
+                                    d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24"
+                                fill="currentColor">
+                                <path
+                                    d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2c0 0 0 0 0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4c0 0 0 0 0 0c19.8 27.1 39.7 54.4 49.2 86.2l160 0zM192 512c44.2 0 80-35.8 80-80l0-16-160 0 0 16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z" />
+                            </svg></li>
                 </ul>
             </div>
         </div>
@@ -134,14 +213,38 @@
         </div>
         <div class="leftdevsection">
             <ul>
-                <li><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="currentColor"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" /></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="currentColor"><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2c0 0 0 0 0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4c0 0 0 0 0 0c19.8 27.1 39.7 54.4 49.2 86.2l160 0zM192 512c44.2 0 80-35.8 80-80l0-16-160 0 0 16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></svg></button></li>
-                <li><button class="contact"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="currentColor"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" /></svg></button></li>
-                <li><button class="FollowMe"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="24" height="24" fill="currentColor"><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" /></svg></button></li>
-                <li><button class="estefsar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24" fill="currentColor"><path d="M192 0c-41.8 0-77.4 26.7-90.5 64L64 64C28.7 64 0 92.7 0 128L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64l-37.5 0C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM105.8 229.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L216 328.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM160 416a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" /></svg></button></li>
+                <li><button id="open-dialog" class="darkmode"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 384 512" width="24" height="24" fill="currentColor">
+                            <path
+                                d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
+                        </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24"
+                            fill="currentColor">
+                            <path
+                                d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2c0 0 0 0 0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4c0 0 0 0 0 0c19.8 27.1 39.7 54.4 49.2 86.2l160 0zM192 512c44.2 0 80-35.8 80-80l0-16-160 0 0 16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z" />
+                        </svg></button></li>
+                <li><button id="open-dialog" class="contact"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
+                            <path
+                                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
+                        </svg></button></li>
+                <li><button id="open-dialog" class="FollowMe"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 512" width="24" height="24" fill="currentColor">
+                            <path
+                                d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                        </svg></button></li>
+                <li><button id="open-dialog" class="estefsar"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 384 512" width="24" height="24" fill="currentColor">
+                            <path
+                                d="M192 0c-41.8 0-77.4 26.7-90.5 64L64 64C28.7 64 0 92.7 0 128L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64l-37.5 0C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM105.8 229.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L216 328.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM160 416a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
+                        </svg></button></li>
             </ul>
         </div>
         <div class="hidden">
-            <button class="screen_condition"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 512 512" fill="currentColor"><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" /></svg></button>
+            <button class="screen_condition"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="24"
+                    viewBox="0 0 512 512" fill="currentColor">
+                    <path
+                        d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
+                </svg></button>
         </div>
     </header>
 
@@ -184,21 +287,28 @@
             <div class="surahinput">
                 <form class="surahInputWrapper">
                     <input type="text" placeholder="أدخل أسم السورة" class="surahfinder">
-                    <button type="submit" class="findsurah">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"
-                            fill="currentColor">
+                    <button type="submit" class="findsurah"><svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
                             <path
                                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-                        </svg>
-                    </button>
+                        </svg></button>
                 </form>
                 <button class="showall">إظهار كل السور</button>
             </div>
 
             <div class="clearButton">
-                <button class="Clear" disabled>محو الكل</button>
+                <button class="Clear" disabled><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="24"
+                        height="24" fill="currentColor">
+                        <path
+                            d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7L288 480l9.4 0L512 480c17.7 0 32-14.3 32-32s-14.3-32-32-32l-124.1 0L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416l-9.4 0-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z" />
+                    </svg></button>
+                <button class="filtersearch"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24"
+                        height="24" fill="currentColor">
+                        <path
+                            d="M3.9 54.9C10.5 40.9 24.5 32 40 32l432 0c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9 320 448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6l0-79.1L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z" />
+                    </svg></button>
             </div>
-
+            <h1 class="length"></h1>
             <div class="surahs"></div>
         </section>
 

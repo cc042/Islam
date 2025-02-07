@@ -19,6 +19,65 @@
     --sff: "Rubik";
 }
 
+/* HTML */
+html {
+    width: 100vw;
+    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
+    font-size: 16px;
+    font-family: var(--sff);
+    scrollbar-gutter: force;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* body */
+body {
+    width: 100%;
+    height: 100%;
+    background: var(--White);
+
+    /* Traditional */
+    --Green: rgb(0, 128, 0);
+    --Gold: rgb(255, 215, 0);
+    --Black: rgb(0, 0, 0);
+    --White: rgb(255, 255, 255);
+
+    /* Modern and Elegant Colors */
+    --Navy-Blue: rgb(0, 0, 128);
+    --Soft-Gray: rgb(128, 128, 128);
+    --Cream: rgb(255, 240, 200);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --Green: rgb(0, 64, 0);
+    --Gold: rgb(255, 180, 0);
+    --Black: rgb(255, 255, 255);
+    --White: rgb(0, 0, 0);
+
+    /* Modern and Elegant Colors */
+    --Navy-Blue: rgb(0, 0, 150);
+    --Soft-Gray: rgb(96, 96, 96);
+    --Cream: rgb(255, 240, 200);
+}
+
+/* Make the scrollbar overlay the content */
+::-webkit-scrollbar {
+    background: var(--Navy-Blue);
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--Gold);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--Navy-Blue);
+}
+
 /* Animations */
 @keyframes fade {
     0% {
@@ -122,15 +181,11 @@
 
 /* loader */
 .Load {
-    height: 100vh;
-    overflow: hidden;
-    margin: auto;
+    height: 100dvh;
+    width: 100dvw;
     position: fixed;
     z-index: 9999;
-}
-
-.Load::backdrop {
-    backdrop-filter: blur(5px);
+    border-radius: 0px;
 }
 
 .loader {
@@ -164,97 +219,10 @@
     transform-origin: 0 1.5cm;
 }
 
-/* HTML */
-html {
-    width: 100vw;
-    height: 100vh;
-    width: 100dvw;
-    height: 100dvh;
-    font-size: 16px;
-    font-family: var(--sff);
-    overflow-x: hidden;
-}
-
-/* Dark Mode */
-.dark-mode {
-    --Green: rgb(0, 64, 0);
-    --Gold: rgb(255, 180, 0);
-    --Black: rgb(255, 255, 255);
-    --White: rgb(0, 0, 0);
-
-    /* Modern and Elegant Colors */
-    --Navy-Blue: rgb(0, 0, 150);
-    --Soft-Gray: rgb(96, 96, 96);
-    --Cream: rgb(255, 240, 200);
-}
-
-/* body */
-body {
-    width: 100%;
-    height: 100%;
-    background: var(--White);
-
-    /* Traditional */
-    --Green: rgb(0, 128, 0);
-    --Gold: rgb(255, 215, 0);
-    --Black: rgb(0, 0, 0);
-    --White: rgb(255, 255, 255);
-
-    /* Modern and Elegant Colors */
-    --Navy-Blue: rgb(0, 0, 128);
-    --Soft-Gray: rgb(128, 128, 128);
-    --Cream: rgb(255, 240, 200);
-}
-
 /* ANY ANCHOR TAG */
 a {
     text-decoration: none;
     color: black;
-}
-
-/* ANY DIALOG WHEN IT OPENS */
-dialog {
-    background: none;
-    margin: auto;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px var(--Black);
-    /* Add display */
-    transition: opacity 0.7s ease-in, display 0.7s ease-in;
-
-    /* Add transition-behavior */
-    transition-behavior: allow-discrete;
-
-    /* Style when open */
-    opacity: 1;
-}
-
-/* The style when closed */
-@starting-style {
-    dialog {
-        animation: blurin 0.7s ease-in 1 alternate;
-        opacity: 0;
-    }
-}
-
-dialog::backdrop {
-    animation: blurin 0.7s ease-in 1 alternate;
-}
-
-/* The style when opened */
-dialog:has([open])+body {
-    overflow: hidden;
-}
-
-/* The style when closed */
-dialog:not([open]) {
-    animation: blurin 0.7s ease-in 1 alternate;
-    z-index: 999999;
-    opacity: 0;
-}
-
-/* ANY BACKDROP DIALOG */
-dialog::backdrop {
-    backdrop-filter: blur(10px);
 }
 
 /* ANY INPUT WITH TYPE RADIO */
@@ -283,17 +251,79 @@ textarea {
     font-family: var(--mff);
 }
 
-/* WEBKIT SCROLL-BAR */
-::-webkit-scrollbar-corner {
-    width: 0px;
+/* ANY DIALOG WHEN IT OPENS */
+dialog {
+    height: max-content;
+    width: 90vw;
+    border-radius: 20px;
+    z-index: 999;
+    overflow: hidden;
+    background: none;
+    margin: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px var(--Black);
+    transition: opacity 0.7s ease-in, display 0.7s ease-in;
+    transition-behavior: allow-discrete;
+    opacity: 1;
 }
 
-::-webkit-scrollbar {
-    width: 5px;
+/* The style when closed */
+@starting-style {
+    dialog {
+        margin: auto;
+        animation: blurin 0.7s ease-in 1 alternate;
+        opacity: 0;
+    }
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--Navy-Blue);
+dialog::backdrop {
+    animation: blurin 0.7s ease-in 1 alternate;
+    backdrop-filter: blur(10px);
+}
+
+/* The style when closed */
+dialog:not([open]) {
+    margin: auto;
+    animation: blurin 0.7s ease-in 1 alternate;
+    z-index: 999999;
+    opacity: 0;
+}
+
+/* dialogs commons */
+.estefsarheader,
+.followHeader,
+.callusHeader,
+.alertHeader,
+.filterheader {
+    color: var(--Black);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 20px;
+    gap: 15px;
+    height: max-content;
+}
+
+.EstefsarItems,
+.followsitems,
+.callusitems,
+.alert1items,
+.filteritems {
+    padding: 20px;
+    background: var(--White);
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.filterclose,
+.callusclose,
+.Followsclose,
+.closeEstefsar,
+.alertclose {
+    background: var(--Cream);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 /* Error Dialog */
@@ -313,47 +343,91 @@ textarea {
     height: 100%;
 }
 
-.alertHeader {
-    color: var(--Black);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
 .alert1text {
     color: var(--Black);
     text-align: center;
 }
 
-.exitalert1 {
-    background: var(--Cream);
+/* Estefsar */
+.Estefsar {
+    overflow: auto;
+    height: 90dvh;
+}
+
+.one {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.one>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.two {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+body.dark-mode .estefsarvideo {
+    filter: invert(1);
+}
+
+.estefsarcontent {
+    width: 100%;
+    height: calc(100% - (50px + 20px));
+    max-height: 90dvh;
+}
+
+.estefsarform {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 15px;
+    overflow: auto
+}
+
+.estefsarform input[type="submit"],
+.estefsarform input[type="text"],
+.estefsarform textarea {
+    width: 100%;
     padding: 10px;
-    border-radius: 10px;
+    background: var(--Cream);
+    font-family: var(--mff);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 20px;
+    color: var(--Navy-Blue);
+}
+
+.estefsarform input[type="text"] {
+    flex-basis: 5%;
+}
+
+.estefsarform input[type="submit"] {
+    flex-basis: 5%;
+    cursor: pointer;
+}
+
+.estefsarform textarea {
+    flex-basis: 80%;
 }
 
 /* Follows */
 .Follows {
-    margin: auto;
     height: max-content;
     width: 90vw;
     border-radius: 20px;
     z-index: 999;
     overflow: hidden;
-}
-
-.followsitems {
-    padding: 20px;
-    background: var(--White);
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.followHeader {
-    color: var(--Black);
-    display: flex;
-    gap: 15px;
 }
 
 .socials {
@@ -362,6 +436,10 @@ textarea {
     place-items: center;
     width: 100%;
     gap: 20px;
+}
+
+body.dark-mode .X {
+    filter: invert(1);
 }
 
 .social-item {
@@ -375,7 +453,7 @@ textarea {
     cursor: pointer;
 
     &:hover {
-        transform: translateY(-7px);
+        transform: translateY(-10px);
         box-shadow: 0 0 10px var(--Black);
         border-color: var(--Gold);
     }
@@ -393,45 +471,7 @@ textarea {
     background: none;
 }
 
-.Followsclose {
-    background: var(--Cream);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
 /* Contact Us */
-.callus {
-    margin: auto;
-    height: max-content;
-    width: 90vw;
-    border-radius: 20px;
-    z-index: 999;
-    overflow: hidden;
-}
-
-.callusitems {
-    padding: 20px;
-    background: var(--White);
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.callusHeader {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    color: var(--Black);
-}
-
-.callusclose {
-    background: var(--Cream);
-    padding: 10px;
-    border-radius: 10px;
-}
-
 .numbers {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -455,7 +495,7 @@ textarea {
 
     &:hover {
         text-decoration: underline;
-        transform: translateY(-7px);
+        transform: translateY(-10px);
         box-shadow: 0 0 10px var(--Black);
         border-color: var(--Gold);
     }
@@ -470,6 +510,38 @@ textarea {
     display: none;
 }
 
+/* Filter */
+.filterItems {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#byletter:checked ~ label {
+    display: inline;
+    background: var(--Gold);
+    color: var(--Navy-Blue);
+}
+
+.filterItems>label {
+    text-align: center;
+    padding: 10px;
+    border: 2px solid var(--Black);
+    color: var(--Black);
+    border-radius: 20px 0;
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+        transform: translateY(-10px);
+        border-color: var(--Gold);
+        box-shadow: 0 0 20px var(--Black);
+    }
+}
+
 /* Side Bar */
 .sidebar {
     position: fixed;
@@ -482,7 +554,7 @@ textarea {
 }
 
 .sidebar[aria-opened="false"] {
-    right: -101%;
+    right: -120%;
 }
 
 .sidebar[aria-opened="true"] {
@@ -725,8 +797,7 @@ body.dark-mode .darkmode>svg:last-child {
     text-align: center;
 }
 
-.active {
-    display: block;
+section.active {
     animation: fade 1s ease 1 alternate;
 }
 
@@ -738,8 +809,9 @@ section:not(.active) {
 .header {
     display: flex;
     align-items: center;
+    width: 100%;
     gap: 10px;
-    margin: 10px 10px 0 10px;
+    padding: 10px;
     order: 2;
     color: var(--Black);
 }
@@ -749,7 +821,7 @@ section:not(.active) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
     opacity: 1;
     transition: all 0.5s ease-in-out;
 }
@@ -769,6 +841,15 @@ section:not(.active) {
     transform: translateY(-10px);
     border-color: var(--Gold);
     box-shadow: 0 0 10px var(--Black);
+}
+
+.length {
+    padding-right: 10px;
+    color: var(--Black);
+
+    &::before {
+        content: "عدد السور: ";
+    }
 }
 
 .tafser {
@@ -804,7 +885,7 @@ section:not(.active) {
 }
 
 .showall {
-    width: 436px;
+    width: calc(436px + 50px);
     height: 56px;
     border-radius: 0 0 10px 10px;
     background: var(--White);
@@ -819,12 +900,12 @@ section:not(.active) {
 .clearButton {
     display: flex;
     justify-content: center;
+    gap: 10px;
     width: 100%;
     position: relative;
 }
 
-.Clear {
-    display: flex;
+.clearButton>button {
     border-radius: 10px;
     background: var(--Gold);
     font-size: 20px;
@@ -848,11 +929,10 @@ section:not(.active) {
     font-weight: 600;
     transition: 0.4s;
     height: 56px;
-}
 
-.surah>button:hover,
-.listen>button:hover {
-    background: var(--Gold);
+    &:hover {
+        background-color: var(--Gold);
+    }
 }
 
 .surahinput {
@@ -887,13 +967,14 @@ section:not(.active) {
     font-family: var(--sff);
     color: var(--Black);
     background: var(--White);
-}
 
-.surahInputWrapper>input::placeholder {
-    color: var(--Black);
+    &::placeholder {
+        color: var(--Black);
+    }
 }
 
 .showall {
+    width: 436px;
     color: var(--Black);
     box-shadow: 0 0 20px var(--Black);
     background: var(--White);
@@ -920,9 +1001,8 @@ section:not(.active) {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     width: 100%;
-    padding: 20px;
     gap: 20px;
-    margin-top: 8px;
+    padding: 10px;
 }
 
 .name {
@@ -935,12 +1015,12 @@ section:not(.active) {
     flex-direction: column;
     gap: 10px;
     color: var(--Black);
-}
 
-.name:hover {
-    transform: translateY(-10px);
-    border-color: var(--Gold);
-    box-shadow: 0 0 10px var(--Black);
+    &:hover {
+        transform: translateY(-10px);
+        border-color: var(--Gold);
+        box-shadow: 0 0 10px var(--Black);
+    }
 }
 
 /* Counter Azkar */
@@ -950,7 +1030,7 @@ section:not(.active) {
     align-items: center;
     align-content: center;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     height: calc(100vh - 320px);
 }
 
@@ -988,55 +1068,12 @@ section:not(.active) {
 }
 
 /* prayers */
-.pray {
-    width: 100%;
-    margin-bottom: 100px;
-}
-
 .prayers {
     display: none;
     align-items: center;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
-}
-
-#prayer {
-    padding: 20px;
-    background: var(--Gold);
-    color: var(--Green);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 500px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-#prayer:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px var(--Black);
-}
-
-#prayer>h3 {
-    font-size: 30px;
-}
-
-#prayer>p {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-#prayer img {
-    width: 50px;
-}
-
-.maindata {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
+    padding: 10px;
 }
 
 .countryinput {
@@ -1071,10 +1108,10 @@ section:not(.active) {
     font-family: var(--sff);
     color: var(--Black);
     background: var(--White);
-}
 
-.countryInputWrapper>input::placeholder {
-    color: var(--Black)
+    &::placeholder {
+        color: var(--Black)
+    }
 }
 
 .findcountry {
@@ -1085,9 +1122,48 @@ section:not(.active) {
     color: var(--Black);
 }
 
+#prayer {
+    padding: 20px;
+    background: var(--Gold);
+    color: var(--Green);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px var(--Black);
+    }
+}
+
+#prayer>h3 {
+    font-size: 30px;
+}
+
+#prayer>p {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#prayer img {
+    width: 50px;
+}
+
+.maindata {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Date */
 .timeshow {
-    height: calc(100dvh - (120px + 80px + 60px));
+    width: 100%;
+    height: calc(100dvh - (120px + 80px + 60px + 10px));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1100,8 +1176,7 @@ section:not(.active) {
     display: grid;
     gap: 20px;
     width: 100%;
-    padding: 20px;
-    margin-top: 8px;
+    padding: 10px;
 }
 
 .project {
@@ -1136,6 +1211,24 @@ section:not(.active) {
     &:hover {
         text-decoration: underline;
     }
+}
+
+/* Extra Elements */
+.scrollup,
+.scrolldown {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    background: var(--Black);
+    color: var(--Navy-Blue);
+    border-radius: 50%;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
 }
 
 /* Media Querys */
@@ -1191,10 +1284,6 @@ section:not(.active) {
         width: 90vw;
     }
 
-    .prayers {
-        padding: 10px 10px 70px 10px;
-    }
-
     .socials,
     .numbers {
         grid-template-columns: repeat(1, 1fr);
@@ -1204,19 +1293,6 @@ section:not(.active) {
     .Follows {
         max-height: 90vh;
     }
-}
-
-@media screen and (max-width: 450px) {
-    .additions {
-        display: inline;
-    }
-
-    .estefsarname {
-        display: none;
-    }
-}
-
-@media screen and (max-width:440px) {
 
     .surahInputWrapper,
     .countryInputWrapper,
@@ -1224,6 +1300,16 @@ section:not(.active) {
         width: 93vw;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .one {
+        display: none;
+    }
+
+    .two {
+        display: flex;
     }
 
     .leftdevsection {
@@ -1242,29 +1328,9 @@ section:not(.active) {
     }
 }
 
-@media screen and (max-width:385px) {
-    .additions {
-        font-size: 20px;
-    }
-}
-
 @media screen and (max-width:313px) {
 
     .surahInputWrapper>input {
         font-size: 20px;
-    }
-
-    .status {
-        font-size: 15px;
-    }
-
-    #two {
-        font-size: 15px;
-    }
-}
-
-@media screen and (max-width:292px) {
-    .additions {
-        font-size: 15px;
     }
 }
