@@ -1,6 +1,6 @@
 const countryInputWrapper = document.querySelector(".countryInputWrapper")
 const prayers = document.querySelector(".prayers")
-const countryfinder = document.querySelector(".countryfinder") 
+const countryfinder = document.querySelector(".countryfinder")
 
 // Prayers Times
 const Fajr = document.querySelector(".El-Fajr")
@@ -10,15 +10,26 @@ const Asr = document.querySelector(".El-Asr")
 const Maghrib = document.querySelector(".El-Maghrib")
 const Isha = document.querySelector(".El-Isha")
 
+function validateArabicInput(event) {
+    const inputValue = event.target.value;
+    const arabicRegex = /^[\u0600-\u06FF\s]+$/; // Regex for Arabic letters and spaces
+
+    if (!arabicRegex.test(inputValue)) {
+        event.target.setCustomValidity('يُسمح فقط بالأحرف العربية والمسافات.'); // Set custom validation message
+    } else {
+        event.target.setCustomValidity(''); // Clear custom validation message
+    }
+}
+
 function GetTimes() {
     if (countryfinder.value.trim()) {
         jQuery(function ($) {
             $.getJSON(`https://muslimsalat.com/${countryfinder.value.trim()}/daily.json?jsoncallback=?`, function (times) {
                 countryfinder.value = ""
-                if (times.status_description = "Succses." ) {
+                if (times.status_description = "Succses.") {
                     // Make The Wrapper Appears
                     prayers.style.display = "flex";
-    
+
                     // Prayers Api Times
                     Fajr.innerHTML = times.items[0].fajr;
                     Shurooq.innerHTML = times.items[0].shurooq;
@@ -28,16 +39,16 @@ function GetTimes() {
                     Isha.innerHTML = times.items[0].isha;
                 }
                 else {
-                    alertText.innerHTML = "فشلت العملية."
+                    findoff("فشلت العملية.", "تنبيه")
                     prayers.style.display = "none";
                 }
             });
         });
     }
     else {
-        alert1.showModal()
-        alertText.innerHTML = "أدخل أسم المدينة."
+        findoff("أدخل أسم المدينة", "تنبية")
     }
 }
 
+countryInputWrapper.addEventListener('input', validateArabicInput);
 countryInputWrapper.addEventListener("submit", (e) => { e.preventDefault(); GetTimes(); })
