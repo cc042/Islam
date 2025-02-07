@@ -8,6 +8,8 @@
     box-sizing: border-box;
 }
 
+
+
 ::-webkit-scrollbar {
     background-color: black;
     width: 5px;
@@ -21,12 +23,26 @@ body {
     font-family: "Amiri Quran";
     pointer-events: none;
     padding: 0 20px;
+    pointer-events: none;
+    background: var(--white);
+    --white: white;
+    --black: black;
+}
+
+body.dark {
+    --white: black;
+    --black: white;
+}
+
+body.dark img {
+    filter: invert(1)
 }
 
 p {
     font-size: 30px;
     margin-top: 20px;
     text-align: justify;
+    color: var(--black);
 }
 
 img,
