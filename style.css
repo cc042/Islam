@@ -1,8 +1,10 @@
 /* Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&display=swap');
 
 /* ALL */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,13 +15,17 @@
     transition: all 0.5s ease;
 }
 
+
 /* Variables */
+
 :root {
     --mff: "Cairo Play";
     --sff: "Rubik";
 }
 
+
 /* HTML */
+
 html {
     width: 100vw;
     height: 100vh;
@@ -32,38 +38,41 @@ html {
     overflow-x: hidden;
 }
 
+
 /* body */
+
 body {
     width: 100%;
     height: 100%;
     background: var(--White);
-
     /* Traditional */
     --Green: rgb(0, 128, 0);
     --Gold: rgb(255, 215, 0);
     --Black: rgb(0, 0, 0);
     --White: rgb(255, 255, 255);
-
     /* Modern and Elegant Colors */
     --Navy-Blue: rgb(0, 0, 128);
     --Soft-Gray: rgb(128, 128, 128);
     --Cream: rgb(255, 240, 200);
 }
 
+
 /* Dark Mode */
+
 body.dark-mode {
     --Green: rgb(0, 64, 0);
     --Gold: rgb(255, 180, 0);
     --Black: rgb(255, 255, 255);
     --White: rgb(0, 0, 0);
-
     /* Modern and Elegant Colors */
     --Navy-Blue: rgb(0, 0, 150);
     --Soft-Gray: rgb(96, 96, 96);
     --Cream: rgb(255, 240, 200);
 }
 
+
 /* Make the scrollbar overlay the content */
+
 ::-webkit-scrollbar {
     background: var(--Navy-Blue);
     width: 5px;
@@ -78,12 +87,13 @@ body.dark-mode {
     background: var(--Navy-Blue);
 }
 
+
 /* Animations */
+
 @keyframes fade {
     0% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }
@@ -99,7 +109,6 @@ body.dark-mode {
     0% {
         transform: translateY(0);
     }
-
     100% {
         transform: translateY(-10px);
     }
@@ -109,7 +118,6 @@ body.dark-mode {
     0% {
         transform: translateX(-100%);
     }
-
     100% {
         transform: translateX(0);
     }
@@ -119,7 +127,6 @@ body.dark-mode {
     0% {
         transform: translateX(0);
     }
-
     100% {
         transform: translateX(-100%);
     }
@@ -129,19 +136,15 @@ body.dark-mode {
     0% {
         transform: rotateZ(0deg);
     }
-
     25% {
         transform: rotateZ(0deg);
     }
-
     50% {
         transform: rotateZ(180deg);
     }
-
     75% {
         transform: rotateZ(180deg);
     }
-
     100% {
         transform: rotateZ(360deg);
     }
@@ -151,19 +154,15 @@ body.dark-mode {
     0% {
         transform: rotateZ(0deg);
     }
-
     25% {
         transform: rotateZ(180deg);
     }
-
     50% {
         transform: rotateZ(180deg);
     }
-
     75% {
         transform: rotateZ(360deg);
     }
-
     100% {
         transform: rotateZ(360deg);
     }
@@ -173,13 +172,14 @@ body.dark-mode {
     0% {
         backdrop-filter: blur(0px);
     }
-
     100% {
         backdrop-filter: blur(10px);
     }
 }
 
+
 /* loader */
+
 .Load {
     height: 100dvh;
     width: 100dvw;
@@ -219,25 +219,33 @@ body.dark-mode {
     transform-origin: 0 1.5cm;
 }
 
+
 /* ANY ANCHOR TAG */
+
 a {
     text-decoration: none;
     color: black;
 }
 
+
 /* ANY INPUT WITH TYPE RADIO */
+
 input[type="radio"] {
     display: none;
 }
 
+
 /* ANY IMAGE OR SVG OR VIDEO */
+
 img,
 svg,
 video {
     pointer-events: none;
 }
 
+
 /* ANY BUTTONS */
+
 button {
     display: flex;
     align-items: center;
@@ -245,13 +253,17 @@ button {
     cursor: pointer;
 }
 
+
 /* ANY TEXTAREA */
+
 textarea {
     resize: none;
     font-family: var(--mff);
 }
 
+
 /* ANY DIALOG WHEN IT OPENS */
+
 dialog {
     height: max-content;
     width: 90vw;
@@ -267,7 +279,9 @@ dialog {
     opacity: 1;
 }
 
+
 /* The style when closed */
+
 @starting-style {
     dialog {
         margin: auto;
@@ -281,7 +295,9 @@ dialog::backdrop {
     backdrop-filter: blur(10px);
 }
 
+
 /* The style when closed */
+
 dialog:not([open]) {
     margin: auto;
     animation: blurin 0.7s ease-in 1 alternate;
@@ -289,7 +305,9 @@ dialog:not([open]) {
     opacity: 0;
 }
 
+
 /* dialogs commons */
+
 .estefsarheader,
 .followHeader,
 .callusHeader,
@@ -316,17 +334,19 @@ dialog:not([open]) {
     height: 100%;
 }
 
-.filterclose,
 .callusclose,
 .Followsclose,
 .closeEstefsar,
-.alertclose {
+.alertclose,
+.filterclose {
     background: var(--Cream);
     padding: 10px;
     border-radius: 10px;
 }
 
+
 /* Error Dialog */
+
 .alert1 {
     margin: auto;
     height: max-content;
@@ -348,7 +368,9 @@ dialog:not([open]) {
     text-align: center;
 }
 
+
 /* Estefsar */
+
 .Estefsar {
     overflow: auto;
     height: 90dvh;
@@ -421,7 +443,9 @@ body.dark-mode .estefsarvideo {
     flex-basis: 80%;
 }
 
+
 /* Follows */
+
 .Follows {
     height: max-content;
     width: 90vw;
@@ -451,7 +475,6 @@ body.dark-mode .X {
     border: 2px solid var(--Black);
     border-radius: 15px 0;
     cursor: pointer;
-
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0 0 10px var(--Black);
@@ -471,7 +494,9 @@ body.dark-mode .X {
     background: none;
 }
 
+
 /* Contact Us */
+
 .numbers {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -492,7 +517,6 @@ body.dark-mode .X {
     border: 2px solid var(--Black);
     border-radius: 15px 0;
     cursor: pointer;
-
     &:hover {
         text-decoration: underline;
         transform: translateY(-10px);
@@ -510,39 +534,20 @@ body.dark-mode .X {
     display: none;
 }
 
+
 /* Filter */
+
 .filterItems {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
     gap: 20px;
 }
 
-#byletter:checked ~ label {
-    display: inline;
-    background: var(--Gold);
-    color: var(--Navy-Blue);
-}
-
-.filterItems>label {
-    text-align: center;
-    padding: 10px;
-    border: 2px solid var(--Black);
-    color: var(--Black);
-    border-radius: 20px 0;
-    font-size: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-
-    &:hover {
-        transform: translateY(-10px);
-        border-color: var(--Gold);
-        box-shadow: 0 0 20px var(--Black);
-    }
-}
 
 /* Side Bar */
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -615,7 +620,6 @@ body.dark-mode .X {
     font-size: 25px;
     border-radius: 10px;
     transition: 0.4s ease-in-out;
-
     &:hover {
         background: var(--Gold);
     }
@@ -625,7 +629,9 @@ body.dark-mode .X {
     color: var(--Black)
 }
 
+
 /* header */
+
 header {
     display: flex;
     align-items: center;
@@ -714,7 +720,9 @@ body.dark-mode .darkmode>svg:last-child {
     background: none;
 }
 
+
 /* navbar */
+
 .tabs {
     border-bottom: 3px solid var(--Gold);
     border-top: 3px solid var(--Gold);
@@ -805,7 +813,9 @@ section:not(.active) {
     display: none;
 }
 
+
 /* headers */
+
 .header {
     display: flex;
     align-items: center;
@@ -816,7 +826,9 @@ section:not(.active) {
     color: var(--Black);
 }
 
+
 /* HolyQuran */
+
 .surahs {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -844,9 +856,8 @@ section:not(.active) {
 }
 
 .length {
-    padding-right: 10px;
+    padding: 10px 10px 10px 0;
     color: var(--Black);
-
     &::before {
         content: "عدد السور: ";
     }
@@ -929,7 +940,6 @@ section:not(.active) {
     font-weight: 600;
     transition: 0.4s;
     height: 56px;
-
     &:hover {
         background-color: var(--Gold);
     }
@@ -967,7 +977,6 @@ section:not(.active) {
     font-family: var(--sff);
     color: var(--Black);
     background: var(--White);
-
     &::placeholder {
         color: var(--Black);
     }
@@ -996,7 +1005,9 @@ section:not(.active) {
     gap: 10px;
 }
 
+
 /* Names Of Allah */
+
 .names {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -1015,7 +1026,6 @@ section:not(.active) {
     flex-direction: column;
     gap: 10px;
     color: var(--Black);
-
     &:hover {
         transform: translateY(-10px);
         border-color: var(--Gold);
@@ -1023,7 +1033,9 @@ section:not(.active) {
     }
 }
 
+
 /* Counter Azkar */
+
 .counter {
     display: flex;
     justify-content: center;
@@ -1061,13 +1073,14 @@ section:not(.active) {
     color: var(--Navy-Blue);
     transition: 0.1s ease;
     margin-top: 10px;
-
     &:hover {
         background-color: var(--Cream);
     }
 }
 
+
 /* prayers */
+
 .prayers {
     display: none;
     align-items: center;
@@ -1108,7 +1121,6 @@ section:not(.active) {
     font-family: var(--sff);
     color: var(--Black);
     background: var(--White);
-
     &::placeholder {
         color: var(--Black)
     }
@@ -1132,7 +1144,6 @@ section:not(.active) {
     width: 500px;
     border-radius: 10px;
     cursor: pointer;
-
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0 0 20px var(--Black);
@@ -1160,7 +1171,9 @@ section:not(.active) {
     justify-content: center;
 }
 
+
 /* Date */
+
 .timeshow {
     width: 100%;
     height: calc(100dvh - (120px + 80px + 60px + 10px));
@@ -1171,7 +1184,9 @@ section:not(.active) {
     color: var(--Black);
 }
 
+
 /* My Projects */
+
 .Projects {
     display: grid;
     gap: 20px;
@@ -1188,7 +1203,6 @@ section:not(.active) {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     &:hover {
         transform: translateY(-10px);
         border-color: var(--Gold);
@@ -1207,13 +1221,14 @@ section:not(.active) {
 
 .project a {
     color: var(--Navy-Blue);
-
     &:hover {
         text-decoration: underline;
     }
 }
 
+
 /* Extra Elements */
+
 .scrollup,
 .scrolldown {
     position: fixed;
@@ -1231,7 +1246,9 @@ section:not(.active) {
     transition: all 0.7s ease-in-out;
 }
 
+
 /* Media Querys */
+
 @media screen and (max-width:950px) {
     .surahs {
         grid-template-columns: repeat(2, 1fr);
@@ -1254,7 +1271,6 @@ section:not(.active) {
     .tabs>label {
         display: none;
     }
-
     .tabs {
         display: flex;
         align-items: center;
@@ -1262,17 +1278,14 @@ section:not(.active) {
         height: max-content;
         width: 100%;
     }
-
     .NavScreen {
         margin: 20px 20px 0 20px;
         display: block;
         width: 100%;
     }
-
     .timeshow {
         height: calc(100dvh - (156px + 80px + 60px));
     }
-
     .tab-label {
         height: 50px;
         font-size: 20px;
@@ -1283,17 +1296,14 @@ section:not(.active) {
     #prayer {
         width: 90vw;
     }
-
     .socials,
     .numbers {
         grid-template-columns: repeat(1, 1fr);
     }
-
     .callus,
     .Follows {
         max-height: 90vh;
     }
-
     .surahInputWrapper,
     .countryInputWrapper,
     .showall {
@@ -1307,15 +1317,12 @@ section:not(.active) {
     .one {
         display: none;
     }
-
     .two {
         display: flex;
     }
-
     .leftdevsection {
         display: none;
     }
-
     .hidden {
         display: flex;
     }
@@ -1329,7 +1336,6 @@ section:not(.active) {
 }
 
 @media screen and (max-width:313px) {
-
     .surahInputWrapper>input {
         font-size: 20px;
     }
