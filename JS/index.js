@@ -1,7 +1,7 @@
 addEventListener("DOMContentLoaded", () => { document.querySelector(".Load").close() })
 document.addEventListener('contextmenu', (e) => { e.preventDefault() });
 document.addEventListener("dblclick", e => { e.preventDefault(); return false })
-document.onkeydown = function (e) { if (event.keyCode == 123) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)) return false; if (e.ctrlKey && e.key == "C".charCodeAt(0)) return false; if (e.ctrlKey && e.key == "X".charCodeAt(0)) return false; if (e.key == "Escape") return false; }
+document.onkeydown = function(e) { if (event.keyCode == 123) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)) return false; if (e.ctrlKey && e.key == "C".charCodeAt(0)) return false; if (e.ctrlKey && e.key == "X".charCodeAt(0)) return false; if (e.key == "Escape") return false; }
 
 // Projects
 const ProjectsWrapper = document.querySelector(".Projects")
@@ -21,14 +21,15 @@ const saved_azkar = document.querySelector("#saved_azkar")
 
 var counter1 = 0
 var counter2 = 0 || localStorage.getItem("counter")
-var text1 = "عداد التسبيح"
-var text2 = "أخر تسجيل"
+var text1 = "عدد التسابيح: "
+var text2 = "أخر تسجيل: "
 
 function add() {
     counter1 += 1
-    text.textContent = text1 + " " + counter1;
+    text.textContent = text1 + counter1;
     counter2 = counter1
     localStorage.setItem("counter", counter2)
+    saved_azkar.innerHTML = text2 + localStorage.getItem("counter")
 }
 
 function Delete() {
@@ -36,9 +37,7 @@ function Delete() {
     saved_azkar.innerHTML = text2 + ": " + 0
 }
 
-saved_azkar.innerHTML = localStorage.getItem("counter") > 0 ? text2 + ": " + localStorage.getItem("counter") : text2 + ": " + 0
-
-
+saved_azkar.innerHTML = localStorage.getItem("counter") > 0 ? text2 + localStorage.getItem("counter") : text2 + 0
 
 // Times
 const timeshow = document.querySelector(".timeshow")
@@ -60,7 +59,7 @@ scrolldown.addEventListener("click", () => {
 
 function validateArabicInput(event) {
     const inputValue = event.target.value;
-    const arabicRegex = /^[\u0600-\u06FF\s]+$/; // Regex for Arabic letters and spaces
+    const arabicRegex = /^[\u0600-\u06FF\s]/; // Regex for Arabic letters and spaces
 
     if (!arabicRegex.test(inputValue)) {
         event.target.setCustomValidity('يُسمح فقط بالأحرف العربية والمسافات.'); // Set custom validation message
@@ -68,6 +67,13 @@ function validateArabicInput(event) {
         event.target.setCustomValidity(''); // Clear custom validation message
     }
 }
+
+function padzero(unit) {
+    unit = String(unit)
+    if (unit.length <= 3) return unit
+    return unit.length < 2 ? `00${unit}` : `0${unit}`
+}
+
 
 // alert Messages
 const alert1 = document.querySelector(".alert1")

@@ -1,21 +1,11 @@
-// filter
-const filter = document.querySelector(".filter")
-const filteropen = document.querySelector(".filtersearch")
-const filterclose = document.querySelector(".filterclose")
-const filterwl = document.querySelector("#byletter")
-const filterwn = document.querySelector("#byname")
+const filterDialog = document.querySelector(".filter")
+const filterCloser = document.querySelector(".filterclose")
+const filterOpener = document.querySelector(".filtersearch")
 
-// filter settings
-filteropen.addEventListener("click", () => { filter.showModal() })
-filterclose.addEventListener("click", () => { filter.close() })
+filterOpener.addEventListener("click", () => {
+    filterDialog.showModal()
+})
 
-addEventListener("change", () => {
-    if (filterwl.checked) {
-        findersurah.addEventListener("submit", e => { e.preventDefault(); findsurahwithletter() })
-        console.log("it`s Letters");
-    }
-    if (filterwn.checked) {
-        findersurah.addEventListener("submit", e => { e.preventDefault(); FindSurahwithName() })
-        console.log("it`s Words");
-    }
+filterCloser.addEventListener("click", () => {
+    filterDialog.close()
 })
