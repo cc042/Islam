@@ -94,6 +94,7 @@ body.dark-mode {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -109,6 +110,7 @@ body.dark-mode {
     0% {
         transform: translateY(0);
     }
+
     100% {
         transform: translateY(-10px);
     }
@@ -118,6 +120,7 @@ body.dark-mode {
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -127,6 +130,7 @@ body.dark-mode {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-100%);
     }
@@ -136,15 +140,19 @@ body.dark-mode {
     0% {
         transform: rotateZ(0deg);
     }
+
     25% {
         transform: rotateZ(0deg);
     }
+
     50% {
         transform: rotateZ(180deg);
     }
+
     75% {
         transform: rotateZ(180deg);
     }
+
     100% {
         transform: rotateZ(360deg);
     }
@@ -154,15 +162,19 @@ body.dark-mode {
     0% {
         transform: rotateZ(0deg);
     }
+
     25% {
         transform: rotateZ(180deg);
     }
+
     50% {
         transform: rotateZ(180deg);
     }
+
     75% {
         transform: rotateZ(360deg);
     }
+
     100% {
         transform: rotateZ(360deg);
     }
@@ -172,6 +184,7 @@ body.dark-mode {
     0% {
         backdrop-filter: blur(0px);
     }
+
     100% {
         backdrop-filter: blur(10px);
     }
@@ -475,6 +488,7 @@ body.dark-mode .X {
     border: 2px solid var(--Black);
     border-radius: 15px 0;
     cursor: pointer;
+
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0 0 10px var(--Black);
@@ -517,6 +531,7 @@ body.dark-mode .X {
     border: 2px solid var(--Black);
     border-radius: 15px 0;
     cursor: pointer;
+
     &:hover {
         text-decoration: underline;
         transform: translateY(-10px);
@@ -620,6 +635,7 @@ body.dark-mode .X {
     font-size: 25px;
     border-radius: 10px;
     transition: 0.4s ease-in-out;
+
     &:hover {
         background: var(--Gold);
     }
@@ -750,6 +766,7 @@ body.dark-mode .darkmode>svg:last-child {
 
 .tab-label:hover {
     background: var(--Gold);
+    color: var(--Navy-Blue)
 }
 
 .NavScreen {
@@ -765,13 +782,21 @@ body.dark-mode .darkmode>svg:last-child {
 }
 
 .NavScreen summary {
-    list-style-type: '⬇ ';
+    list-style-type: none;
     padding: 20px;
     width: 100%;
     cursor: pointer;
     font-size: 25px;
     color: var(--Black);
     transition: all 0.7s ease-in-out;
+}
+
+.NavScreen summary::before {
+    content: "▼ ";
+}
+
+.NavScreen[open] summary::before {
+    content: "▲ ";
 }
 
 .NavScreen ul {
@@ -858,6 +883,7 @@ section:not(.active) {
 .length {
     padding: 10px 10px 10px 0;
     color: var(--Black);
+
     &::before {
         content: "عدد السور: ";
     }
@@ -908,7 +934,7 @@ section:not(.active) {
     box-shadow: 0 0 10px var(--Black);
 }
 
-.clearButton {
+.settingsButton {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -916,7 +942,7 @@ section:not(.active) {
     position: relative;
 }
 
-.clearButton>button {
+.settingsButton>button {
     border-radius: 10px;
     background: var(--Gold);
     font-size: 20px;
@@ -940,6 +966,7 @@ section:not(.active) {
     font-weight: 600;
     transition: 0.4s;
     height: 56px;
+
     &:hover {
         background-color: var(--Gold);
     }
@@ -977,6 +1004,7 @@ section:not(.active) {
     font-family: var(--sff);
     color: var(--Black);
     background: var(--White);
+
     &::placeholder {
         color: var(--Black);
     }
@@ -1026,6 +1054,7 @@ section:not(.active) {
     flex-direction: column;
     gap: 10px;
     color: var(--Black);
+
     &:hover {
         transform: translateY(-10px);
         border-color: var(--Gold);
@@ -1073,6 +1102,7 @@ section:not(.active) {
     color: var(--Navy-Blue);
     transition: 0.1s ease;
     margin-top: 10px;
+
     &:hover {
         background-color: var(--Cream);
     }
@@ -1121,6 +1151,7 @@ section:not(.active) {
     font-family: var(--sff);
     color: var(--Black);
     background: var(--White);
+
     &::placeholder {
         color: var(--Black)
     }
@@ -1144,6 +1175,7 @@ section:not(.active) {
     width: 500px;
     border-radius: 10px;
     cursor: pointer;
+
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0 0 20px var(--Black);
@@ -1176,12 +1208,13 @@ section:not(.active) {
 
 .timeshow {
     width: 100%;
-    height: calc(100dvh - (120px + 80px + 60px + 10px));
+    height: calc(100dvh - (120px + 80px + 70px));
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--mff);
     color: var(--Black);
+    text-align: center;
 }
 
 
@@ -1203,6 +1236,7 @@ section:not(.active) {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     &:hover {
         transform: translateY(-10px);
         border-color: var(--Gold);
@@ -1221,6 +1255,7 @@ section:not(.active) {
 
 .project a {
     color: var(--Navy-Blue);
+
     &:hover {
         text-decoration: underline;
     }
@@ -1229,21 +1264,20 @@ section:not(.active) {
 
 /* Extra Elements */
 
-.scrollup,
-.scrolldown {
+.scrollup {
     position: fixed;
     bottom: 20px;
-    right: 40px;
-    background: var(--Black);
-    color: var(--Navy-Blue);
+    right: 30px;
+    color: var(--Gold);
+    background: var(--Navy-Blue);
     border-radius: 50%;
     padding: 10px;
-    width: 50px;
-    height: 50px;
-    z-index: 999;
+    width: 45px;
+    height: 45px;
+    z-index: 9999;
     display: none;
-    opacity: 0;
-    transition: all 0.7s ease-in-out;
+    animation: fade 1s ease;
+    box-shadow: 0 0 20px var(--Black);
 }
 
 
@@ -1268,9 +1302,14 @@ section:not(.active) {
 }
 
 @media screen and (max-width:625px) {
+    .timeshow {
+        height: calc(100dvh - (101px + 80px + 70px));
+    }
+
     .tabs>label {
         display: none;
     }
+
     .tabs {
         display: flex;
         align-items: center;
@@ -1278,14 +1317,13 @@ section:not(.active) {
         height: max-content;
         width: 100%;
     }
+
     .NavScreen {
         margin: 20px 20px 0 20px;
         display: block;
         width: 100%;
     }
-    .timeshow {
-        height: calc(100dvh - (156px + 80px + 60px));
-    }
+
     .tab-label {
         height: 50px;
         font-size: 20px;
@@ -1294,16 +1332,19 @@ section:not(.active) {
 
 @media screen and (max-width:520px) {
     #prayer {
-        width: 90vw;
+        width: 93vw;
     }
+
     .socials,
     .numbers {
         grid-template-columns: repeat(1, 1fr);
     }
+
     .callus,
     .Follows {
         max-height: 90vh;
     }
+
     .surahInputWrapper,
     .countryInputWrapper,
     .showall {
@@ -1317,14 +1358,21 @@ section:not(.active) {
     .one {
         display: none;
     }
+
     .two {
         display: flex;
     }
+
     .leftdevsection {
         display: none;
     }
+
     .hidden {
         display: flex;
+    }
+
+    .timeshow {
+        font-size: max(2vw, 20px);
     }
 }
 
