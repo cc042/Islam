@@ -1,7 +1,7 @@
 addEventListener("DOMContentLoaded", () => { document.querySelector(".Load").close() })
 document.addEventListener('contextmenu', (e) => { e.preventDefault() });
 document.addEventListener("dblclick", e => { e.preventDefault(); return false })
-document.onkeydown = function(e) { if (event.keyCode == 123) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)) return false; if (e.ctrlKey && e.key == "C".charCodeAt(0)) return false; if (e.ctrlKey && e.key == "X".charCodeAt(0)) return false; if (e.key == "Escape") return false; }
+document.onkeydown = function (e) { if (event.keyCode == 123) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false; if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false; if (e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)) return false; if (e.ctrlKey && e.key == "C".charCodeAt(0)) return false; if (e.ctrlKey && e.key == "X".charCodeAt(0)) return false; if (e.key == "Escape") return false; }
 
 // Projects
 const ProjectsWrapper = document.querySelector(".Projects")
@@ -25,8 +25,9 @@ var text1 = "عدد التسابيح: "
 var text2 = "أخر تسجيل: "
 
 function add() {
+    counter1 = counter1
     counter1 += 1
-    text.textContent = text1 + counter1;
+    text.textContent = text1 + padzero(counter1);
     counter2 = counter1
     localStorage.setItem("counter", counter2)
     saved_azkar.innerHTML = text2 + localStorage.getItem("counter")
@@ -42,20 +43,40 @@ saved_azkar.innerHTML = localStorage.getItem("counter") > 0 ? text2 + localStora
 // Times
 const timeshow = document.querySelector(".timeshow")
 setInterval(() => {
-    timeshow.innerHTML = new Intl.DateTimeFormat('ar-Fr-u-ca-islamic', { day: 'numeric', month: 'long', weekday: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' }).format(Date.now())
+    timeshow.innerHTML = new Intl.DateTimeFormat('ar-Fr-u-ca-islamic', {
+        day: 'numeric',
+        month: 'long',
+        weekday: 'long',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+    }).format(Date.now()).split()
 }, 1000);
 
 // scrolling
 const scrollup = document.querySelector(".scrollup")
-const scrolldown = document.querySelector(".scrolldown")
-
-scrollup.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+const height = screen.height
+scrollup.addEventListener("click", () => { 
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
 })
 
-scrolldown.addEventListener("click", () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+addEventListener("scrollend", () => {
+    if (scrollY == 0) {
+        scrollup.style.animation = "fadeout 1s ease"
+        scrollup.addEventListener("animationend", () => {
+            scrollup.style.display = "none"
+            scrollup.style.opacity = 0
+        })
+    }
+    else {
+        scrollup.style.animation = "fade 1s ease"
+        scrollup.style.display = "flex"
+        scrollup.style.opacity = 1
+    }
 })
+
+
 
 function validateArabicInput(event) {
     const inputValue = event.target.value;
@@ -73,7 +94,6 @@ function padzero(unit) {
     if (unit.length <= 3) return unit
     return unit.length < 2 ? `00${unit}` : `0${unit}`
 }
-
 
 // alert Messages
 const alert1 = document.querySelector(".alert1")

@@ -21,26 +21,35 @@ function validateArabicInput(event) {
     }
 }
 
-function fetchData() {
-    jQuery(function($) {
-        $.getJSON(`https://muslimsalat.com/${countryfinder.value.trim()}/daily.json?jsoncallback=?`, function(times) {
-            countryfinder.value = ""
-            if (times.status_description = "Succses.") {
-                // Make The Wrapper Appears
-                prayers.style.display = "flex";
+function showTimes(times) {
+    // Prayers Api Times
+    Fajr.innerHTML = times.items[0].fajr;
+    Shurooq.innerHTML = times.items[0].shurooq;
+    Dhuhrs.innerHTML = times.items[0].dhuhr;
+    Asr.innerHTML = times.items[0].asr;
+    Maghrib.innerHTML = times.items[0].maghrib;
+    Isha.innerHTML = times.items[0].isha;
+}
 
-                // Prayers Api Times
-                Fajr.innerHTML = times.items[0].fajr;
-                Shurooq.innerHTML = times.items[0].shurooq;
-                Dhuhrs.innerHTML = times.items[0].dhuhr;
-                Asr.innerHTML = times.items[0].asr;
-                Maghrib.innerHTML = times.items[0].maghrib;
-                Isha.innerHTML = times.items[0].isha;
-            } else {
-                findoff("فشلت العملية.", "تنبيه")
-                prayers.style.display = "none";
-            }
-        });
+function fetchData() {
+    jQuery(function ($) {
+        try {
+            $.getJSON(`https://muslimsalat.com/${countryfinder.value.trim()}/daily.json?jsoncallback=?`, function (times) {
+                countryfinder.value = ""
+                if (times.status_valid == "1") {
+                    // Make The Wrapper Appears
+                    prayers.style.display = "flex";
+                    showTimes(times)
+                }
+                else if (times.status_valid == "0") {
+                    findoff("فشلت العملية.", "تنبيه")
+                    prayers.style.display = "none";
+                }
+            });
+        }
+        catch (error) {
+            findoff("يرجى إدخال مدينة صحيحة", "تنبيه")
+        }
     });
 }
 

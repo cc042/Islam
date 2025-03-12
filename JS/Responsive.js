@@ -1,5 +1,4 @@
 const screen_condition = document.querySelector(".screen_condition")
-const ScreenClose = document.querySelector(".sidebarclose")
 const sidebar = document.querySelector(".sidebar")
 
 function closeSideBar() {
@@ -10,10 +9,6 @@ function ResponsiveSideBar() {
     if (innerWidth < 440) {
         screen_condition.addEventListener("click", () => {
             sidebar.setAttribute("aria-opened", true)
-        })
-
-        ScreenClose.addEventListener("click", () => {
-            closeSideBar()
         })
     }
     else {
