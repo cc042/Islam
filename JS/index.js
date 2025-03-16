@@ -40,6 +40,10 @@ function Delete() {
 
 saved_azkar.innerHTML = localStorage.getItem("counter") > 0 ? text2 + localStorage.getItem("counter") : text2 + 0
 
+// Event Listeners
+adder.addEventListener("click", add)
+saved_azkar.addEventListener("click", Delete)
+
 // Times
 const timeshow = document.querySelector(".timeshow")
 setInterval(() => {
@@ -56,26 +60,31 @@ setInterval(() => {
 
 // scrolling
 const scrollup = document.querySelector(".scrollup")
-const height = screen.height
-scrollup.addEventListener("click", () => { 
-    window.scrollTo({ top: 0, behavior: 'smooth' }); 
-})
-
+const intial = 0
+const final = screen.height
+scrollup.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: 'smooth' }); })
 addEventListener("scrollend", () => {
-    if (scrollY == 0) {
-        scrollup.style.animation = "fadeout 1s ease"
-        scrollup.addEventListener("animationend", () => {
-            scrollup.style.display = "none"
-            scrollup.style.opacity = 0
-        })
-    }
-    else {
+    var ScrollNow = final - scrollY
+    console.log(ScrollNow)
+    //               10   -    1     = 9
+    //               10   -    4     = 6
+    //               10   -    6     = 4
+    //               10   -    7     = 3
+    //               10   -    10    = 0
+    if (scrollY < ScrollNow) {
         scrollup.style.animation = "fade 1s ease"
-        scrollup.style.display = "flex"
-        scrollup.style.opacity = 1
+        scrollup.style.opacity = "1"
+        scrollup.addEventListener("animationend", () => { scrollup.style.animation = "" })
+    }
+    if (ScrollNow > scrollY) {
+        scrollup.style.animation = "fadeout 1s ease"
+        scrollup.addEventListener("animationend", () => { scrollup.style.animation = "" })
+    }
+    if (scrollY == ScrollNow) {
+        // scrollup.style.animation = "fadeout 1s ease"
+        scrollup.addEventListener("animationend", () => { scrollup.style.animation = "" })
     }
 })
-
 
 
 function validateArabicInput(event) {
@@ -106,6 +115,23 @@ function findoff(msg = String, header = String) {
     alertHeaderText.innerHTML = `${header}`
 }
 
-// Event Listeners
-adder.addEventListener("click", add)
-saved_azkar.addEventListener("click", Delete)
+// theme Switcher 
+const switcher = document.querySelectorAll(".darkmode")
+let darkmode = localStorage.getItem("darked")
+switcher.forEach((element) => {
+    element.addEventListener("click", () => {
+        darkmode = localStorage.getItem("darked")
+        darkmode !== "true" ? DarkModeApply() : DarkModeDelete()
+    })
+})
+function DarkModeApply() {
+    localStorage.setItem("darked", "true")
+    document.body.classList.add("dark-mode")
+}
+function DarkModeDelete() {
+    localStorage.setItem("darked", "false")
+    document.body.classList.remove("dark-mode")
+}
+if (darkmode === "true") DarkModeApply()
+if (localStorage.getItem("darked") === "true") { DarkModeApply() }
+else { DarkModeDelete() }
