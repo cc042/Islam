@@ -1,51 +1,79 @@
-const details = document.querySelector(".NavScreen")
+const tabsElement = document.querySelectorAll(".tabs");
+const details = document.querySelector("details");
+const sections = document.querySelectorAll("section");
+const sectionHeaderTitle = document.querySelectorAll(".contentSectionHeader");
 
-function switchTab(tabId, removablesection1, removablesection2, removablesection3, removablesection4, removablesection5) {
-    document.getElementById(tabId).classList.add("active");
-    document.getElementById(removablesection1).classList.remove("active");
-    document.getElementById(removablesection2).classList.remove("active");
-    document.getElementById(removablesection3).classList.remove("active");
-    document.getElementById(removablesection4).classList.remove("active");
-    document.getElementById(removablesection5).classList.remove("active");
-    details.removeAttribute("open")
+class MakeTab {
+    constructor() {
+        this.tabs = {
+            "#content1": "القرآن الكريم",
+            "#content2": "أسماء الله",
+            "#content3": "أوقات الصلاة",
+            "#content4": "عداد الأذكار",
+            "#content5": "المشاريع",
+            "#content6": "الأستماع",
+            "#content7": "الإعدادات",
+            "#content8": "المزيد"
+        };
+        this.filteredKeys = Object.keys(this.tabs);
+        this.filteredValue = Object.values(this.tabs);
+
+        // Set default hash to #content1 if no hash is present
+        if (!location.hash || !this.tabs[location.hash]) {
+            location.hash = "#content1";
+        }
+    }
+
+    makeTabs() {
+        tabsElement.forEach(tabElement => {
+            for (let i = 0; i < this.filteredValue.length; i++) {
+                tabElement.innerHTML += `<li><button onclick='location.href="${this.filteredKeys[i]}"' class="tab-label" data-tab="${this.filteredKeys[i]}">
+                    ${this.filteredValue[i]}
+                </button></li>`;
+            }
+        });
+
+        return this;
+    }
+
+    checkOpened(clickedTabText = null) {
+        // Update section header title with either the clicked tab text or the default for the current hash
+        const currentText = clickedTabText || this.tabs[location.hash] || this.filteredValue[0];
+        sectionHeaderTitle.forEach(title => {
+            title.innerHTML = currentText;
+        });
+
+        this.filteredKeys.forEach(tab => {
+            const element = document.querySelector(tab);
+            if (element) { // Check if element exists before manipulating it
+                if (location.hash.includes(tab)) {
+                    element.classList.add("active");
+                } else {
+                    element.classList.remove("active");
+                }
+            }
+        });
+    }
 }
 
-document.querySelectorAll("#tab1").forEach(element => {
-    element.addEventListener("click", () => {
-        switchTab("content1", "content2", "content3", "content4", "content5", "content6") // 1
-    })
-})
+const makeTab = new MakeTab();
+makeTab.makeTabs();
+makeTab.checkOpened();
 
-document.querySelectorAll("#tab2").forEach(element => {
-    element.addEventListener("click", () => {
-        switchTab("content2", "content1", "content3", "content4", "content5", "content6") // 2
-    })
-})
+// Only add event listeners if elements exist
+const tabLabels = document.querySelectorAll(".tab-label");
+if (tabLabels.length > 0) {
+    tabLabels.forEach(label => {
+        label.addEventListener("click", (e) => {
+            if (details) details.removeAttribute("open");
+            // Get the text content of the clicked button and pass it to checkOpened
+            const clickedTabText = e.target.textContent.trim();
+            makeTab.checkOpened(clickedTabText);
+        });
+    });
+}
 
-document.querySelectorAll("#tab3").forEach(element => {
-    element.addEventListener("click", () => {
-        switchTab("content3", "content1", "content2", "content4", "content5", "content6") // 3
-    })
-})
-
-document.querySelectorAll("#tab4").forEach(element => {
-    element.addEventListener("click", () => {
-        switchTab("content4", "content1", "content2", "content3", "content5", "content6") // 4
-    })
-})
-
-document.querySelectorAll("#tab5").forEach(element => {
-    element.addEventListener("click", () => {
-        switchTab("content5", "content1", "content2", "content3", "content4", "content6") // 5
-    })
-})
-
-document.querySelectorAll("#tab6").forEach(element => {
-    element.addEventListener("click", () => {
-        switchTab("content6", "content1", "content2", "content3", "content4", "content5") // 6
-    })
-})
-
-document.querySelectorAll("#tab1").forEach(i => {
-    i.click()
-})
+// Handle hash changes if user navigates back/forward
+window.addEventListener('hashchange', () => {
+    makeTab.checkOpened();
+});

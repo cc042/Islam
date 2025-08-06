@@ -20,9 +20,6 @@ const openEstefsar = document.querySelectorAll(".estefsar")
 const estefsartext = document.querySelector(".estefsartext")
 const estefsarname = document.querySelector(".estefsarname")
 
-estefsartext.addEventListener("input", validateArabicInput)
-estefsarname.addEventListener("input", validateArabicInput)
-
 EstefsarForm.addEventListener("submit", e => {
     e.preventDefault();
     const message = estefsartext.value
