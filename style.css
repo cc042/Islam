@@ -12,7 +12,7 @@
     outline: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 
@@ -72,6 +72,7 @@ body.dark-mode {
 
 
 /* Make the scrollbar overlay the content */
+
 
 ::-webkit-scrollbar {
     background: var(--Navy-Blue);
@@ -190,6 +191,16 @@ body.dark-mode {
     }
 }
 
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 /* loader */
 
@@ -320,12 +331,10 @@ dialog:not([open]) {
 
 
 /* dialogs commons */
-
 .estefsarheader,
 .followHeader,
 .callusHeader,
-.alertHeader,
-.filterheader {
+.alertHeader {
     color: var(--Black);
     display: flex;
     align-items: center;
@@ -338,8 +347,7 @@ dialog:not([open]) {
 .EstefsarItems,
 .followsitems,
 .callusitems,
-.alert1items,
-.filteritems {
+.alert1items {
     padding: 20px;
     background: var(--White);
     position: relative;
@@ -349,9 +357,7 @@ dialog:not([open]) {
 
 .callusclose,
 .Followsclose,
-.closeEstefsar,
-.alertclose,
-.filterclose {
+.closeEstefsar {
     background: var(--Cream);
     padding: 10px;
     border-radius: 10px;
@@ -381,6 +387,14 @@ dialog:not([open]) {
     text-align: center;
 }
 
+.submitAlert {
+    width: 100%;
+    padding: 10px;
+    font-family: var(--mff);
+    border-radius: 10px;
+    background: var(--Cream);
+    color: var(--)
+}
 
 /* Estefsar */
 
@@ -549,17 +563,49 @@ body.dark-mode .X {
     display: none;
 }
 
-
-/* Filter */
-
-.filterItems {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(1, 1fr);
-    place-items: center;
-    gap: 20px;
+/* user Name */
+.User_Name {
+    width: max-content;
+    border: 3px solid var(--Gold);
 }
 
+.userName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.userName img {
+    margin-bottom: 10px;
+}
+
+.UserNameForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.NameInput,
+.NameSubmit {
+    padding: 10px;
+    font-size: 20px;
+    color: var(--Navy-Blue);
+    font-family: var(--sff);
+    border-radius: 10px;
+    background: none;
+    border: 3px solid var(--Black);
+}
+
+.NameInput::placeholder {
+    color: var(--Navy-Blue)
+}
+
+.NameSubmit {
+    cursor: pointer;
+}
 
 /* Side Bar */
 
@@ -644,7 +690,6 @@ body.dark-mode .X {
 .screen_condition {
     color: var(--Black)
 }
-
 
 /* header */
 
@@ -738,19 +783,33 @@ body.dark-mode .darkmode>svg:last-child {
 
 
 /* navbar */
-
-.tabs {
-    border-bottom: 3px solid var(--Gold);
-    border-top: 3px solid var(--Gold);
+.tab {
     width: 100%;
-    height: 120px;
+    border: 3px solid var(--Gold);
+    border-right: 0;
+    border-left: 0;
+}
+
+.tabs:first-child {
+    width: 100%;
+    height: 114px;
     display: grid;
     align-items: center;
     justify-content: space-between;
     grid-template-columns: repeat(4, 1fr);
 }
 
-.tab-label {
+.tabs:first-child li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tabs:first-child button {
+    background: var(--White);
     font-size: 25px;
     font-weight: 700;
     font-family: var(--sff);
@@ -764,9 +823,15 @@ body.dark-mode .darkmode>svg:last-child {
     transition: 0.3s;
 }
 
-.tab-label:hover {
-    background: var(--Gold);
-    color: var(--Navy-Blue)
+.tabs button {
+    font-family: var(--sff);
+    font-weight: 700;
+    font-size: 25px;
+
+    &:hover {
+        color: var(--Navy-Blue);
+        background-color: var(--Gold);
+    }
 }
 
 .NavScreen {
@@ -792,35 +857,41 @@ body.dark-mode .darkmode>svg:last-child {
 }
 
 .NavScreen summary::before {
-    content: "▼ ";
+    content: "↓ ";
 }
 
 .NavScreen[open] summary::before {
-    content: "▲ ";
+    content: "↑ ";
 }
 
 .NavScreen ul {
+    background: var(--White);
     list-style: none;
     position: fixed;
-    top: 177px;
+    top: calc(95px + 80px);
     left: 50%;
     transform: translateX(-50%);
-    max-height: 60vh;
+    max-height: calc(100vh - (95px + 80px));
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 0 20px;
+    gap: 15px;
+    padding: 20px;
     width: 100%;
     z-index: 10000;
+    animation: fade 1s ease 1;
+}
+
+.NavScreen[open] ul {
+    animation: fade 1s ease 1;
 }
 
 .NavScreen li {
     width: 100%;
 }
 
-.NavScreen label {
+.NavScreen button {
     width: 100%;
     height: 50px;
     border-radius: 20px;
@@ -872,6 +943,7 @@ section:not(.active) {
     cursor: pointer;
     transition: 0.5s ease;
     text-align: center;
+    animation: fade 1s ease;
 }
 
 .surah:hover {
@@ -880,7 +952,8 @@ section:not(.active) {
     box-shadow: 0 0 10px var(--Black);
 }
 
-.length {
+.length,
+.Nameslength {
     padding: 10px 10px 10px 0;
     color: var(--Black);
 
@@ -893,7 +966,8 @@ section:not(.active) {
     margin: 10px 0 10px 0;
 }
 
-.surahName {
+.surahName,
+.Nameslength {
     color: var(--Black);
     font-size: 30px;
 }
@@ -909,6 +983,10 @@ section:not(.active) {
     content: "سورة ";
 }
 
+.Nameslength::before {
+    content: "عدد الأسماء: ";
+}
+
 .surahOrder::before {
     content: "رقم السورة: ";
 }
@@ -921,7 +999,9 @@ section:not(.active) {
     content: "النزول: ";
 }
 
-.showall {
+.showall,
+.showallNames,
+.showallSounds {
     width: calc(436px + 50px);
     height: 56px;
     border-radius: 0 0 10px 10px;
@@ -934,7 +1014,9 @@ section:not(.active) {
     box-shadow: 0 0 10px var(--Black);
 }
 
-.settingsButton {
+.settingsButton,
+.settingsButtonNames,
+.settingsButtonSounds {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -942,7 +1024,9 @@ section:not(.active) {
     position: relative;
 }
 
-.settingsButton>button {
+.settingsButton>button,
+.ClearNames,
+.settingsButtonSounds>.ClearSounds {
     border-radius: 10px;
     background: var(--Gold);
     font-size: 20px;
@@ -951,12 +1035,12 @@ section:not(.active) {
     padding: 10px;
 }
 
-.Clear:disabled {
-    color: var(--Navy-Blue)
+.Clear:disabled,
+.ClearNames:disabled .ClearSounds:disabled {
+    color: var(--Soft-Gray)
 }
 
-.surah>button,
-.listen>button {
+.surah>button {
     width: 100%;
     border-radius: 10px;
     background: var(--Cream);
@@ -972,8 +1056,9 @@ section:not(.active) {
     }
 }
 
-.surahinput {
-    background: var(--White);
+.surahinput,
+.Nameinput,
+.Soundinput {
     width: 100%;
     display: flex;
     align-items: center;
@@ -982,7 +1067,9 @@ section:not(.active) {
     margin: 10px 0 10px 0;
 }
 
-.surahInputWrapper {
+.surahInputWrapper,
+.NameInputWrapper,
+.SoundInputWrapper {
     box-shadow: 0 0 20px var(--Black);
     width: max-content;
     height: max-content;
@@ -993,9 +1080,12 @@ section:not(.active) {
     justify-content: center;
     position: relative;
     color: var(--Black);
+    background: var(--White);
 }
 
-.surahInputWrapper>input {
+.surahInputWrapper>input,
+.NameInputWrapper>input,
+.SoundInputWrapper>input {
     padding: 10px;
     width: 100%;
     height: 100%;
@@ -1010,14 +1100,18 @@ section:not(.active) {
     }
 }
 
-.showall {
+.showall,
+.showallNames,
+.showallSounds {
     width: 436px;
     color: var(--Black);
     box-shadow: 0 0 20px var(--Black);
     background: var(--White);
 }
 
-.findsurah {
+.findsurah,
+.findName,
+.findSound {
     background: var(--White);
     color: var(--Black);
     width: 50px;
@@ -1026,25 +1120,18 @@ section:not(.active) {
     border-right: 2px solid var(--Black);
 }
 
-.listen {
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-
 /* Names Of Allah */
 
 .names {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
     gap: 20px;
     padding: 10px;
 }
 
 .name {
+    animation: fade 1s ease;
     padding: 10px;
     border-radius: 10px 0px;
     border: 3px solid var(--Black);
@@ -1073,6 +1160,13 @@ section:not(.active) {
     flex-direction: column;
     width: 100%;
     height: calc(100vh - 320px);
+}
+
+.counter>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #counter_azkar {
@@ -1261,9 +1355,277 @@ section:not(.active) {
     }
 }
 
+/* Listen */
+.sounds {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.SoundsSetting {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+}
+
+.sound {
+    width: 100%;
+    border: 3px solid var(--Black);
+    border-radius: 20px 0px;
+    padding: 20px;
+    font-family: var(--mff);
+    cursor: pointer;
+    transition: 0.5s ease;
+    text-align: center;
+    animation: fade 1s ease;
+    color: var(--Black);
+}
+
+.sound:hover {
+    transform: translateY(-10px);
+    border-color: var(--Gold);
+    box-shadow: 0 0 10px var(--Black);
+}
+
+.sound h1 {
+    color: var(--Black);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.sound h1::before {
+    content: "سورة ";
+}
+
+.sound p {
+    color: var(--Black);
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.listen {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.primary>button {
+    width: 100%;
+    border-radius: 10px;
+    background: var(--Cream);
+    padding: 15px;
+    color: var(--Navy-Blue);
+}
+
+.listen>button {
+    width: 100%;
+    border-radius: 10px;
+    background: var(--Cream);
+    margin-top: 10px;
+    padding: 15px;
+    color: var(--Navy-Blue);
+}
+
+.primary>button:hover,
+.listen>button:hover {
+    background: var(--Gold);
+    color: var(--Green)
+}
+
+.Sounds {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 20px 0;
+}
+
+.Sounds details {
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.Sounds summary {
+    font-size: 30px;
+    font-weight: 700;
+    border: 2px solid var(--Green);
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    cursor: pointer;
+    color: var(--Black)
+}
+
+.Sounds ul {
+    list-style: none;
+    border: 2px solid var(--Green);
+    border-radius: 0 0 10px 10px;
+    border-top: none;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.Sounds li {
+    padding: 15px;
+    background: var(--Cream);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.Sounds li:hover {
+    background: var(--Gold);
+    color: var(--Green);
+}
+
+/* Audio Player Styles */
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--Green);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--Black);
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: var(--sff);
+}
+
+.listen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.primary,
+.secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.primary button,
+.secondary button {
+    background: var(--Cream);
+    border: 2px solid var(--Gold);
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary button:hover,
+.secondary button:hover {
+    background: var(--Gold);
+    transform: translateY(-2px);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.volume-slider {
+    width: 80px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    height: 5px;
+    background: var(--Soft-Gray);
+    border-radius: 3px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--Green);
+    border-radius: 50%;
+}
+
+body.dark-mode .audioListen,
+body.dark-mode .settingsan,
+body.dark-mode .TranselateAn {
+    filter: invert(1);
+}
+
+/* Settings */
+.setting {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0 15px 15px 15px;
+}
+
+#setting {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    border: 3px solid var(--Gold);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#setting:hover {
+    transform: translateY(-10px);
+}
+
+#setting>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--Black);
+}
+
+#setting button {
+    font-size: 15px;
+    font-family: var(--sff);
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--Gold);
+    background: none;
+    color: var(--Black);
+}
 
 /* Extra Elements */
-
 .scrollup {
     position: fixed;
     bottom: 20px;
@@ -1275,46 +1637,50 @@ section:not(.active) {
     width: 45px;
     height: 45px;
     z-index: 9999;
-    opacity: 0;
+    display: none;
     box-shadow: 0 0 20px var(--Black);
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
 }
 
+.scrollup:hover {
+    opacity: 0.8 !important;
+    transform: translateY(-5px);
+}
 
 /* Media Querys */
 
+@media screen and (max-width:1000px) {
+    .sounds {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width:950px) {
+    .names {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
     .surahs {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width:781px) {
-    .tabs {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media screen and (max-width:800px) {
-    .surahs {
+    .setting {
         grid-template-columns: repeat(1, 1fr);
     }
-}
 
-@media screen and (max-width:625px) {
-    .timeshow {
-        height: calc(100dvh - (101px + 80px + 70px));
-    }
-
-    .tabs>label {
-        display: none;
-    }
-
-    .tabs {
+    .tab {
         display: flex;
         align-items: center;
         justify-content: center;
         height: max-content;
         width: 100%;
+    }
+
+    .tabs:first-child {
+        display: none;
     }
 
     .NavScreen {
@@ -1323,13 +1689,40 @@ section:not(.active) {
         width: 100%;
     }
 
+    .tab>button {
+        display: none;
+    }
+
     .tab-label {
         height: 50px;
         font-size: 20px;
     }
 }
 
+@media screen and (max-width:800px) {
+
+    .surahs,
+    .sounds {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width:625px) {
+    .timeshow {
+        height: calc(100dvh - (101px + 80px + 70px));
+    }
+}
+
 @media screen and (max-width:520px) {
+
+    .leftdevsection {
+        display: none;
+    }
+
+    .hidden {
+        display: flex;
+    }
+
     #prayer {
         width: 93vw;
     }
@@ -1346,7 +1739,11 @@ section:not(.active) {
 
     .surahInputWrapper,
     .countryInputWrapper,
-    .showall {
+    .NameInputWrapper,
+    .showall,
+    .showallNames,
+    .SoundInputWrapper,
+    .showallSounds {
         width: 93vw;
         justify-content: center;
         align-items: center;
