@@ -122,22 +122,6 @@
         </svg>
     </button>
 
-    <!-- Custom Alert Dialog -->
-    <dialog class="custom-alert-dialog" id="customAlertDialog">
-        <div class="custom-alert-content">
-            <div class="custom-alert-header">
-                <h2 class="custom-alert-title">تنبيه</h2> <!-- Default title -->
-                <button class="custom-alert-close-btn" aria-label="إغلاق">&times;</button>
-            </div>
-            <div class="custom-alert-body">
-                <p class="custom-alert-message">هذه رسالة تنبيه.</p> <!-- Default message -->
-            </div>
-            <div class="custom-alert-footer">
-                <button class="custom-alert-ok-btn">موافق</button>
-            </div>
-        </div>
-    </dialog>
-
     <!-- Loading Dialog -->
     <dialog class="Load" open>
         <div class="loader">
@@ -151,7 +135,7 @@
         <div class="EstefsarItems">
             <div class="estefsarheader">
                 <div class="one">
-                    <button class="closeEstefsar"><img src="assets/icons/close.svg" alt="close"></button>
+                    <button class="closeEstefsar" onclick="closeDialog('.Estefsar')"><img src="assets/icons/close.svg" alt="close"></button>
                     <div>
                         <video src="assets/icons/phone.mp4" width="50" class="estefsarvideo" autoplay loop
                             muted></video>
@@ -159,7 +143,7 @@
                     </div>
                 </div>
                 <div class="two">
-                    <button class="closeEstefsar" id="close-dialog"><img src="assets/icons/close.svg"
+                    <button class="closeEstefsar" id="close-dialog" onclick="closeDialog('.Estefsar')"><img src="assets/icons/close.svg"
                             alt="close"></button>
                     <h1>قسم الاستفسار</h1>
                 </div>
@@ -178,7 +162,7 @@
     <dialog class="Follows">
         <div class="followsitems">
             <div class="followHeader">
-                <button class="Followsclose">
+                <button class="Followsclose" onclick="closeDialog('.Follows')">
                     <img src="assets/icons/close.svg" alt="إغلاق">
                 </button>
                 <h1>الحسابات</h1>
@@ -208,7 +192,7 @@
     <dialog class="callus">
         <div class="callusitems">
             <div class="callusHeader">
-                <button class="callusclose" aria-label="Close Call Us">
+                <button class="callusclose" aria-label="Close Call Us" onclick="closeDialog('.callus')">
                     <img src="assets/icons/close.svg" alt="إغلاق">
                 </button>
                 <h1>أتصل بنا</h1>
@@ -237,8 +221,8 @@
                 <h1 class="alertheader">التفسير</h1>
             </div>
 
-            <h1 class="alert1text"></h1>
-            <button class="submitAlert">فهمت</button>
+            <h2 class="alert1text">مرحبا</h2>
+            <button class="submitAlert" onclick="closeDialog('.alert1')">فهمت</button>
         </div>
     </dialog>
 
@@ -251,6 +235,17 @@
                 <input type="submit" value="تم" class="NameSubmit">
             </div>
         </div>
+    </dialog>
+
+    <!-- Shoukh Sound -->
+    <dialog class="ShekhSoundsDialog" open>
+        <div class="ShekhSoundsDialogHeader">
+            <button class="ShekhSoundsDialogclose" aria-label="Close Shekh Sounds Dialog" onclick="closeDialog('.ShekhSoundsDialog')">
+                <img src="assets/icons/close.svg" alt="إغلاق">
+            </button>
+            <h1>أصوات الشيوخ</h1>
+        </div>
+        <ul class="ShekhSounds"></ul>
     </dialog>
 
     <!-- Side Bar -->
@@ -457,7 +452,7 @@
 
         <section class="pray" id="content3">
             <div class="header">
-                <img src="assets/headers_assets/prayer.png" alt="الأذكار" width="50">
+                <img src="assets/headers_assets/prayer.png" alt="الصلاة" width="50">
                 <h1 class="contentSectionHeader"></h1>
             </div>
 
@@ -472,6 +467,7 @@
                         </svg>
                     </button>
                 </form>
+                <button class="UseLocation">أستخدم عنوانى</button>
             </div>
 
             <div class="prayers">
@@ -520,36 +516,12 @@
             </div>
         </section>
 
-        <section class="Counter" id="content4">
-            <div class="header">
-                <img style="filter:invert(1);mix-blend-mode:exclusion;" src="assets/headers_assets/beads.png"
-                    alt="الأذكار" width="50">
-                <h1 class="contentSectionHeader"></h1>
-            </div>
-            <div class="counter">
-                <div>
-                    <p id="counter_azkar">عدد التسابيح: 0</p>
-                    <p id="saved_azkar">أخر تسجيل: 0</p>
-                    <button class="counter_azkar">أضعط</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="time">
-            <div class="header">
-                <img src="assets/headers_assets/calendar.png" alt="Date" width="50">
-                <h1 class="contentSectionHeader"></h1>
-            </div>
-            <h1 class="timeshow"></h1>
-        </section>
-
-        <section class="audios" id="content6">
+        <section class="audios" id="content4">
             <div class="header">
                 <video class="audioListen" src="assets/headers_assets/audio-book.mp4" alt="الأستماع" width="50" muted
                     autoplay loop></video>
                 <h1 class="contentSectionHeader"></h1>
             </div>
-
 
             <div class="Sounds">
                 <div class="SoundsSetting">
@@ -576,19 +548,37 @@
                                         d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7L288 480l9.4 0L512 480c17.7 0 32-14.3 32-32s-14.3-32-32-32l-124.1 0L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416l-9.4 0-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z" />
                                 </svg>
                             </button>
+                            <button class="ShoukhSounds">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="24" height="24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
-                    <details>
-                        <summary>الأصوات</summary>
-                        <ul class="ShekhSounds"></ul>
-                    </details>
                 </div>
             </div>
 
             <div class="sounds"></div>
         </section>
 
-        <section class="Setting" id="content7">
+        <section class="Counter" id="content5">
+            <div class="header">
+                <img style="filter:invert(1);mix-blend-mode:exclusion;" src="assets/headers_assets/beads.png"
+                    alt="الأذكار" width="50">
+                <h1 class="contentSectionHeader"></h1>
+            </div>
+            <div class="counter">
+                <div>
+                    <p id="counter_azkar">عدد التسابيح: 0</p>
+                    <p id="saved_azkar">أخر تسجيل: 0</p>
+                    <button class="counter_azkar">أضعط</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="Setting" id="content6">
             <div class="header">
                 <video class="settingsan" src="assets/headers_assets/gears.mp4" alt="الإعدادات" width="50" muted
                     autoplay loop></video>
@@ -603,24 +593,15 @@
                     </div>
                     <button class="ChangeName">اضغط هنا</button>
                 </div>
-                <div class="setting2" id="setting">
-                    <div>
-                        <video class="TranselateAn" src="assets/icons/translator.mp4" alt="اللغات" muted autoplay loop
-                            width="30"></video>
-                        <h1>تغيير اللغة</h1>
-                    </div>
-                    <button class="ChangeLanguage" data-translate>تغيير</button>
-                </div>
             </div>
         </section>
 
-        <section class="projects" id="content5">
+        <section class="time" id="content7">
             <div class="header">
-                <img src="assets/headers_assets/projects.png" alt="مشاريع" width="50">
+                <img src="assets/headers_assets/calendar.png" alt="Date" width="50">
                 <h1 class="contentSectionHeader"></h1>
             </div>
-
-            <div class="Projects"></div>
+            <h1 class="timeshow"></h1>
         </section>
     </main>
 </body>

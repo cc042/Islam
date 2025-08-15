@@ -391,9 +391,12 @@ dialog:not([open]) {
     width: 100%;
     padding: 10px;
     font-family: var(--mff);
+    font-size: 20px;
     border-radius: 10px;
     background: var(--Cream);
-    color: var(--)
+    color: var(--Black);
+    margin: 15px 0 0 0;
+    font-weight: 600;
 }
 
 /* Estefsar */
@@ -567,6 +570,7 @@ body.dark-mode .X {
 .User_Name {
     width: max-content;
     border: 3px solid var(--Gold);
+    background: var(--White);
 }
 
 .userName {
@@ -588,23 +592,40 @@ body.dark-mode .X {
     gap: 10px;
 }
 
-.NameInput,
 .NameSubmit {
+    color: var(--Black);
+    width: 60px;
     padding: 10px;
-    font-size: 20px;
-    color: var(--Navy-Blue);
-    font-family: var(--sff);
+    font-family: var(--mff);
+    font-size: 15px;
     border-radius: 10px;
-    background: none;
-    border: 3px solid var(--Black);
+    background: var(--Cream);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.NameSubmit:hover {
+    background: var(--Gold);
+    color: var(--Navy-Blue);
+}
+
+.NameInput {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: var(--sff);
+    color: var(--Black);
+    background: var(--White);
+    border: 2px solid var(--Black);
+    border-radius: 10px 0;
+
+    &::placeholder {
+        color: var(--Black);
+    }
 }
 
 .NameInput::placeholder {
     color: var(--Navy-Blue)
-}
-
-.NameSubmit {
-    cursor: pointer;
 }
 
 /* Side Bar */
@@ -1001,7 +1022,8 @@ section:not(.active) {
 
 .showall,
 .showallNames,
-.showallSounds {
+.showallSounds,
+.UseLocation {
     width: calc(436px + 50px);
     height: 56px;
     border-radius: 0 0 10px 10px;
@@ -1058,7 +1080,8 @@ section:not(.active) {
 
 .surahinput,
 .Nameinput,
-.Soundinput {
+.Soundinput,
+.countryinput {
     width: 100%;
     display: flex;
     align-items: center;
@@ -1069,7 +1092,8 @@ section:not(.active) {
 
 .surahInputWrapper,
 .NameInputWrapper,
-.SoundInputWrapper {
+.SoundInputWrapper,
+.countryInputWrapper {
     box-shadow: 0 0 20px var(--Black);
     width: max-content;
     height: max-content;
@@ -1085,7 +1109,8 @@ section:not(.active) {
 
 .surahInputWrapper>input,
 .NameInputWrapper>input,
-.SoundInputWrapper>input {
+.SoundInputWrapper>input,
+.countryInputWrapper>input {
     padding: 10px;
     width: 100%;
     height: 100%;
@@ -1102,7 +1127,8 @@ section:not(.active) {
 
 .showall,
 .showallNames,
-.showallSounds {
+.showallSounds,
+.UseLocation {
     width: 436px;
     color: var(--Black);
     box-shadow: 0 0 20px var(--Black);
@@ -1206,49 +1232,11 @@ section:not(.active) {
 /* prayers */
 
 .prayers {
-    display: none;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto, max-width);
+    place-items: center;
     gap: 20px;
     padding: 10px;
-}
-
-.countryinput {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.countryInputWrapper {
-    box-shadow: 0 0 20px var(--Black);
-    width: max-content;
-    height: max-content;
-    border: 2px solid var(--Black);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.countryInputWrapper>input {
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    font-size: 30px;
-    font-family: var(--sff);
-    color: var(--Black);
-    background: var(--White);
-
-    &::placeholder {
-        color: var(--Black)
-    }
 }
 
 .findcountry {
@@ -1266,7 +1254,7 @@ section:not(.active) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 500px;
+    width: 400px;
     border-radius: 10px;
     cursor: pointer;
 
@@ -1302,57 +1290,14 @@ section:not(.active) {
 
 .timeshow {
     width: 100%;
-    height: calc(100dvh - (120px + 80px + 70px));
+    /* height: calc(100dvh - (120px + 80px + 70px)); */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--mff);
     color: var(--Black);
     text-align: center;
-}
-
-
-/* My Projects */
-
-.Projects {
-    display: grid;
-    gap: 20px;
-    width: 100%;
-    padding: 10px;
-}
-
-.project {
-    padding: 10px;
-    border-radius: 10px 0px;
-    border: 3px solid var(--Black);
-    cursor: pointer;
-    transition: 0.5s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    &:hover {
-        transform: translateY(-10px);
-        border-color: var(--Gold);
-        box-shadow: 0 0 10px var(--Black);
-    }
-}
-
-.project h1 {
-    color: var(--Black);
-}
-
-.project p {
-    color: var(--Black);
-    font-size: 1.1rem
-}
-
-.project a {
-    color: var(--Navy-Blue);
-
-    &:hover {
-        text-decoration: underline;
-    }
 }
 
 /* Listen */
@@ -1403,7 +1348,6 @@ section:not(.active) {
 .sound p {
     color: var(--Black);
     font-size: 20px;
-    margin-bottom: 15px;
 }
 
 .listen {
@@ -1512,9 +1456,35 @@ section:not(.active) {
     transition: width 0.1s linear;
 }
 
+.plays {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.plays button {
+    width: 100%;
+    padding: 10px;
+    font-family: var(--mff);
+    font-size: 15px;
+    border-radius: 10px;
+    background: var(--Cream);
+    color: var(--Black);
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--Gold);
+        color: var(--Navy-Blue);
+    }
+}
+
 .time-display {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     color: var(--Black);
     font-size: 12px;
@@ -1578,6 +1548,14 @@ section:not(.active) {
     height: 15px;
     background: var(--Green);
     border-radius: 50%;
+}
+
+.slider {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 body.dark-mode .audioListen,
@@ -1743,7 +1721,8 @@ body.dark-mode .TranselateAn {
     .showall,
     .showallNames,
     .SoundInputWrapper,
-    .showallSounds {
+    .showallSounds,
+    .UseLocation {
         width: 93vw;
         justify-content: center;
         align-items: center;
@@ -1751,6 +1730,16 @@ body.dark-mode .TranselateAn {
 }
 
 @media screen and (max-width:440px) {
+    .UserNameForm {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .NameSubmit {
+        width: 100%;
+    }
+
     .one {
         display: none;
     }
