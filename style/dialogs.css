@@ -1,0 +1,349 @@
+dialog {
+    height: max-content;
+    width: 90vw;
+    border-radius: 20px;
+    z-index: 999;
+    overflow: hidden;
+    background: none;
+    margin: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px var(--Black);
+    transition: opacity 0.7s ease-in, display 0.7s ease-in;
+    transition-behavior: allow-discrete;
+    opacity: 1;
+}
+
+
+/* The style when closed */
+
+@starting-style {
+    dialog {
+        margin: auto;
+        animation: blurin 0.7s ease-in 1 alternate;
+        opacity: 0;
+    }
+}
+
+dialog::backdrop {
+    animation: blurin 0.7s ease-in 1 alternate;
+    backdrop-filter: blur(10px);
+}
+
+
+/* The style when closed */
+
+dialog:not([open]) {
+    margin: auto;
+    animation: blurin 0.7s ease-in 1 alternate;
+    z-index: 999999;
+    opacity: 0;
+}
+
+
+/* dialogs commons */
+.estefsarheader,
+.followHeader,
+.callusHeader,
+.alertHeader,
+.ShekhSoundsDialogHeader {
+    color: var(--Black);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 20px;
+    gap: 15px;
+    height: max-content;
+}
+
+.EstefsarItems,
+.followsitems,
+.callusitems,
+.alert1items,
+.ShekhSoundsDialogItems {
+    padding: 20px;
+    background: var(--White);
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.callusclose,
+.Followsclose,
+.closeEstefsar,
+.ShekhSoundsDialogclose {
+    background: var(--Cream);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Error Dialog */
+.alert1 {
+    margin: auto;
+    height: max-content;
+    width: max-content;
+    max-width: 90dvw;
+    border-radius: 20px;
+}
+
+.alert1items {
+    background: var(--White);
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.alert1text {
+    color: var(--Black);
+    text-align: center;
+}
+
+.submitAlert {
+    width: 100%;
+    padding: 10px;
+    font-family: var(--mff);
+    font-size: 20px;
+    border-radius: 10px;
+    background: var(--Cream);
+    color: var(--Black);
+    margin: 15px 0 0 0;
+    font-weight: 600;
+}
+
+/* Estefsar */
+.Estefsar {
+    overflow: auto;
+    height: 90dvh;
+}
+
+.one {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.one>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.two {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+body.dark-mode .estefsarvideo {
+    filter: invert(1);
+}
+
+.estefsarcontent {
+    width: 100%;
+    height: calc(100% - (50px + 20px));
+    max-height: 90dvh;
+}
+
+.estefsarform {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 15px;
+    overflow: auto
+}
+
+.estefsarform input[type="submit"],
+.estefsarform input[type="text"],
+.estefsarform textarea {
+    width: 100%;
+    padding: 10px;
+    background: var(--Cream);
+    font-family: var(--mff);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 20px;
+    color: var(--Navy-Blue);
+}
+
+.estefsarform input[type="text"] {
+    flex-basis: 5%;
+}
+
+.estefsarform input[type="submit"] {
+    flex-basis: 5%;
+    cursor: pointer;
+}
+
+.estefsarform textarea {
+    flex-basis: 80%;
+}
+
+
+/* Follows */
+.Follows,
+.ShekhSoundsDialog {
+    height: max-content;
+    width: 90vw;
+    border-radius: 20px;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.socials,
+.ShekhSounds {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+body.dark-mode .X {
+    filter: invert(1);
+}
+
+.social-item,
+.ShekhSounds>li {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid var(--Black);
+    border-radius: 15px 0;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 10px var(--Black);
+        border-color: var(--Gold);
+    }
+}
+
+.social-item a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--Black);
+}
+
+.social-item a::before {
+    width: 0;
+    height: 0;
+    background: none;
+}
+
+
+/* Contact Us */
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100%, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.number {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    gap: 10px;
+    border: 2px solid var(--Black);
+    border-radius: 15px 0;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        transform: translateY(-10px);
+        box-shadow: 0 0 10px var(--Black);
+        border-color: var(--Gold);
+    }
+}
+
+.number a {
+    color: var(--Black);
+    width: 100%;
+}
+
+.additions {
+    display: none;
+}
+
+/* user Name */
+.User_Name {
+    width: max-content;
+    border: 3px solid var(--Gold);
+    background: var(--White);
+}
+
+.userName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.userName img {
+    margin-bottom: 10px;
+}
+
+.UserNameForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.NameSubmit {
+    color: var(--Black);
+    width: 60px;
+    padding: 10px;
+    font-family: var(--mff);
+    font-size: 15px;
+    border-radius: 10px;
+    background: var(--Cream);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.NameSubmit:hover {
+    background: var(--Gold);
+    color: var(--Navy-Blue);
+}
+
+.NameInput {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: var(--sff);
+    color: var(--Black);
+    background: var(--White);
+    border: 2px solid var(--Black);
+    border-radius: 10px 0;
+
+    &::placeholder {
+        color: var(--Black);
+    }
+}
+
+.NameInput::placeholder {
+    color: var(--Navy-Blue)
+}
+
+/* ShekhSoundsDialog */
+.ShekhSounds>li {
+    width: 100%;
+    justify-content: center;
+    color: var(--Black);
+    font-size: 1.5rem;
+    font-weight: 600;
+}

@@ -1,0 +1,130 @@
+@media screen and (max-width:1000px) {
+    .sounds {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:950px) {
+    .names {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .surahs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:781px) {
+    .setting {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .tab {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: max-content;
+        width: 100%;
+    }
+
+    .tabs:first-child {
+        display: none;
+    }
+
+    .NavScreen {
+        margin: 20px 20px 0 20px;
+        display: block;
+        width: 100%;
+    }
+
+    .tab>button {
+        display: none;
+    }
+
+    .tab-label {
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    .surahs,
+    .sounds {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width:520px) {
+    .leftdevsection {
+        display: none;
+    }
+
+    .hidden {
+        display: flex;
+    }
+
+    #prayer {
+        width: 93vw;
+    }
+
+    .socials,
+    .numbers {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .callus,
+    .Follows {
+        max-height: 90vh;
+    }
+
+    .surahInputWrapper,
+    .countryInputWrapper,
+    .NameInputWrapper,
+    .showall,
+    .showallNames,
+    .SoundInputWrapper,
+    .showallSounds,
+    .UseLocation {
+        width: 93vw;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .UserNameForm {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .NameSubmit {
+        width: 100%;
+    }
+
+    .one {
+        display: none;
+    }
+
+    .two {
+        display: flex;
+    }
+
+    .timeshow {
+        font-size: max(2vw, 20px);
+    }
+}
+
+@media screen and (max-width:400px) {
+    #counter_azkar {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width:313px) {
+    .surahInputWrapper>input {
+        font-size: 20px;
+    }
+}
