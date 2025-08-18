@@ -2,7 +2,12 @@
 <html dir="auto" lang="ar">
 
 <head>
-    <!-- Meta -->
+    <!-- Libraries -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -13,93 +18,11 @@
     <title>إسلامى</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style\style.css">
+    <link rel="stylesheet" href="style\animations.css">
+    <link rel="stylesheet" href="style\dialogs.css">
+    <link rel="stylesheet" href="style\Resposive.css">
     <link rel="icon" href="assets/headers_assets/belief.png">
-    <style>
-        /* Language Dialog Styles */
-        .LanguageDialog {
-            border: none;
-            border-radius: 8px;
-            padding: 0;
-            max-width: 90%;
-            width: 400px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .LanguageDialog::backdrop {
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .languageDialogContent {
-            padding: 20px;
-        }
-
-        .languageHeader {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .languageHeader h1 {
-            font-size: 1.2rem;
-            margin: 0;
-        }
-
-        .closeLanguageDialog {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .languageOptions {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .languageOption {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: right;
-            direction: rtl;
-        }
-
-        .languageOption:hover {
-            background: #f5f5f5;
-            border-color: #aaa;
-        }
-
-        .languageOption img {
-            margin-left: 10px;
-            width: 20px;
-            height: auto;
-        }
-
-        body {
-            top: 0 !important;
-        }
-
-        /* Fix layout when translated */
-        body.translated * {
-            text-align: initial !important;
-            direction: ltr !important;
-        }
-    </style>
-
-    <!-- Libraries -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 
     <!-- Scripts -->
     <script src="JS/SurahData.js" defer></script>
@@ -114,6 +37,8 @@
 </head>
 
 <body>
+    <noscript>يرجى تمكين JavaScript للاستمتاع بالتجربة.</noscript>
+
     <!-- Extra Button -->
     <button class="scrollup">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="25" height="25" fill="currentColor">
@@ -135,7 +60,8 @@
         <div class="EstefsarItems">
             <div class="estefsarheader">
                 <div class="one">
-                    <button class="closeEstefsar" onclick="closeDialog('.Estefsar')"><img src="assets/icons/close.svg" alt="close"></button>
+                    <button class="closeEstefsar" onclick="closeDialog('.Estefsar')"><img src="assets/icons/close.svg"
+                            alt="close"></button>
                     <div>
                         <video src="assets/icons/phone.mp4" width="50" class="estefsarvideo" autoplay loop
                             muted></video>
@@ -143,8 +69,8 @@
                     </div>
                 </div>
                 <div class="two">
-                    <button class="closeEstefsar" id="close-dialog" onclick="closeDialog('.Estefsar')"><img src="assets/icons/close.svg"
-                            alt="close"></button>
+                    <button class="closeEstefsar" id="close-dialog" onclick="closeDialog('.Estefsar')"><img
+                            src="assets/icons/close.svg" alt="close"></button>
                     <h1>قسم الاستفسار</h1>
                 </div>
             </div>
@@ -188,32 +114,6 @@
         </div>
     </dialog>
 
-    <!-- Call Us Dialog -->
-    <dialog class="callus">
-        <div class="callusitems">
-            <div class="callusHeader">
-                <button class="callusclose" aria-label="Close Call Us" onclick="closeDialog('.callus')">
-                    <img src="assets/icons/close.svg" alt="إغلاق">
-                </button>
-                <h1>أتصل بنا</h1>
-            </div>
-            <div class="numbers">
-                <div class="number">
-                    <a href="tel:+201005836845">Abd - Allah</a>
-                </div>
-                <div class="number">
-                    <a href="tel:+201096725599">Omar Ashraf</a>
-                </div>
-                <div class="number">
-                    <a href="tel:+201091216883">Youssef Ayman</a>
-                </div>
-                <div class="number">
-                    <a href="tel:+2001225073533">Code Comet</a>
-                </div>
-            </div>
-        </div>
-    </dialog>
-
     <!-- Alert Dialog -->
     <dialog class="alert1">
         <div class="alert1items">
@@ -238,14 +138,17 @@
     </dialog>
 
     <!-- Shoukh Sound -->
-    <dialog class="ShekhSoundsDialog" open>
-        <div class="ShekhSoundsDialogHeader">
-            <button class="ShekhSoundsDialogclose" aria-label="Close Shekh Sounds Dialog" onclick="closeDialog('.ShekhSoundsDialog')">
-                <img src="assets/icons/close.svg" alt="إغلاق">
-            </button>
-            <h1>أصوات الشيوخ</h1>
+    <dialog class="ShekhSoundsDialog">
+        <div class="ShekhSoundsDialogItems">
+            <div class="ShekhSoundsDialogHeader">
+                <button class="ShekhSoundsDialogclose" aria-label="Close Shekh Sounds Dialog"
+                    onclick="closeDialog('.ShekhSoundsDialog')">
+                    <img src="assets/icons/close.svg" alt="إغلاق">
+                </button>
+                <h1>أصوات الشيوخ</h1>
+            </div>
+            <ul class="ShekhSounds"></ul>
         </div>
-        <ul class="ShekhSounds"></ul>
     </dialog>
 
     <!-- Side Bar -->
@@ -258,33 +161,8 @@
 
             <div class="sidebarcontent">
                 <ul>
-                    <li>
-                        <button class="contact">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"
-                                fill="currentColor">
-                                <path
-                                    d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
-                            </svg>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="FollowMe">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="24" height="24"
-                                fill="currentColor">
-                                <path
-                                    d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                            </svg>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="estefsar">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24"
-                                fill="currentColor">
-                                <path
-                                    d="M192 0c-41.8 0-77.4 26.7-90.5 64L64 64C28.7 64 0 92.7 0 128L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64l-37.5 0C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM105.8 229.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L216 328.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM160 416a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
-                            </svg>
-                        </button>
-                    </li>
+                    <li><button class="FollowMe">الحسابات</button></li>
+                    <li><button class="estefsar">الإستفسار</button></li>
                     <li>
                         <button class="darkmode">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24"
@@ -311,7 +189,7 @@
             <h1>إسلامى</h1>
         </div>
         <div class="leftdevsection">
-            <ul>
+            <ul dir="ltr">
                 <li>
                     <button class="darkmode">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24"
@@ -326,33 +204,8 @@
                         </svg>
                     </button>
                 </li>
-                <li>
-                    <button class="contact">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"
-                            fill="currentColor">
-                            <path
-                                d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" />
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button class="FollowMe">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="24" height="24"
-                            fill="currentColor">
-                            <path
-                                d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button class="estefsar">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="24" height="24"
-                            fill="currentColor">
-                            <path
-                                d="M192 0c-41.8 0-77.4 26.7-90.5 64L64 64C28.7 64 0 92.7 0 128L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64l-37.5 0C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM105.8 229.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L216 328.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM160 416a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
-                        </svg>
-                    </button>
-                </li>
+                <li><button class="FollowMe">الحسابات</button></li>
+                <li><button class="estefsar">الإستفسار</button></li>
             </ul>
         </div>
         <div class="hidden">
@@ -467,6 +320,7 @@
                         </svg>
                     </button>
                 </form>
+                <h1 class="APIState"></h1>
                 <button class="UseLocation">أستخدم عنوانى</button>
             </div>
 
@@ -518,8 +372,9 @@
 
         <section class="audios" id="content4">
             <div class="header">
-                <video class="audioListen" src="assets/headers_assets/audio-book.mp4" alt="الأستماع" width="50" muted
-                    autoplay loop></video>
+                <video class="audioListen" alt="الأستماع" width="50" muted autoplay loop>
+                    <source src="assets\headers_assets\audio-book.mp4">
+                </video>
                 <h1 class="contentSectionHeader"></h1>
             </div>
 
@@ -578,30 +433,33 @@
             </div>
         </section>
 
-        <section class="Setting" id="content6">
+        <section class="other" id="content6">
             <div class="header">
-                <video class="settingsan" src="assets/headers_assets/gears.mp4" alt="الإعدادات" width="50" muted
-                    autoplay loop></video>
+                <video src="assets/headers_assets/gears.mp4" width="50" class="OtherVideo" muted autoplay loop></video>
                 <h1 class="contentSectionHeader"></h1>
             </div>
 
-            <div class="setting">
-                <div class="setting1" id="setting">
-                    <div>
-                        <img src="assets/icons/folder.png" alt="الأسم" width="30">
-                        <h1>تغيير الأسم</h1>
+            <div class="OtherItems">
+                <fieldset>
+                    <legend>الوقت و التاريخ</legend>
+                    <h1 class="timeshow"></h1>
+                </fieldset>
+
+                <fieldset class="ChangeNameField">
+                    <legend>تغيير الأسم</legend>
+                    <div class="setting1" id="setting">
+                        <div>
+                            <img src="assets/icons/folder.png" alt="الأسم" width="30">
+                            <h1>تغيير الأسم</h1>
+                        </div>
+                        <div class="Namebtns">
+                            <button class="ChangeName">تغير الأسم</button>
+                            <button class="RemoveName">مسح الأسم</button>
+                        </div>
                     </div>
-                    <button class="ChangeName">اضغط هنا</button>
-                </div>
+                    <h2 class="CurrentName">الأسم الحالى: <span class="UserCurrentName"></span></h2>
+                </fieldset>
             </div>
-        </section>
-
-        <section class="time" id="content7">
-            <div class="header">
-                <img src="assets/headers_assets/calendar.png" alt="Date" width="50">
-                <h1 class="contentSectionHeader"></h1>
-            </div>
-            <h1 class="timeshow"></h1>
         </section>
     </main>
 </body>
