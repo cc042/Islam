@@ -4,6 +4,8 @@ const soundFinder = document.querySelector('.SurahNamefinder');
 const ClearsSounds = document.querySelector(".ClearSounds");
 const SoundsDisplay = document.querySelector(".sounds");
 const findSound = document.querySelector(".findSound");
+const OpenShoukhSoundDialog = document.querySelector(".ShoukhSounds")
+const ShoukhSoundDialog = document.querySelector(".ShekhSoundsDialog")
 
 class SoundPlayer {
     constructor() {
@@ -369,10 +371,7 @@ class SoundPlayer {
                             </svg>
                         </a>
                     </div>
-                    <div class="volume-control">
-                        
-                    </div>
-                    
+                    <div class="volume-control"></div>
                 </div>
             </div>
         `;
@@ -495,19 +494,9 @@ document.querySelector(".SoundInputWrapper").addEventListener("submit", e => {
     }
 });
 
-soundFinder.addEventListener("input", function (e) {
-    const inputValue = e.target.value;
-    const arabicRegex = /^[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\s]*$/;
-
-    if (!arabicRegex.test(inputValue)) {
-        e.target.setCustomValidity('يُسمح فقط بالأحرف العربية والمسافات.');
-    } else {
-        e.target.setCustomValidity('');
-    }
-});
-
 ShowAllSurahsSounds.addEventListener("click", () => player.ShowAllSurahsSounds());
 ClearsSounds.addEventListener("click", () => player.clearSounds());
+OpenShoukhSoundDialog.addEventListener("click", () => { ShoukhSoundDialog.showModal() })
 player.viewShoukhSoundsName();
 
 window.player = player;

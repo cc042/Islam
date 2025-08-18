@@ -1,19 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     // --- DOM Elements ---
-    const changeLanguageBtn = document.querySelector('.ChangeLanguage'); // This button will now trigger Counter Settings
-    const languageDialog = document.querySelector('.LanguageDialog'); // Repurpose this dialog for Counter Settings
-    const closeLanguageDialog = document.querySelector('.closeLanguageDialog');
-    // Note: languageOptions are removed as language change is removed
-
     const changeNameBtn = document.querySelector('.ChangeName');
     const userNameDialog = document.querySelector('.User_Name');
     const nameInput = document.querySelector('.NameInput');
     const nameSubmit = document.querySelector('.NameSubmit');
 
     // --- User Name Handling (Kept as is) ---
-    if (!localStorage.getItem('userName')) {
-        userNameDialog.showModal();
-    }
+    if (!localStorage.getItem('userName')) userNameDialog.showModal();
 
     changeNameBtn.addEventListener('click', () => userNameDialog.showModal());
 
@@ -109,34 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // sound.js might also trigger this after it finishes loading its data
     if (reciterFilter) { // Only try if the element exists
         populateReciterFilter();
-    }
-
-    if (changeLanguageBtn) {
-        changeLanguageBtn.textContent = 'سجل العداد'; // Change button text to reflect history function
-        changeLanguageBtn.addEventListener('click', () => {
-            // Show the repurposed dialog
-            if (languageDialog) {
-                // --- Key Feature: Update history display when dialog opens ---
-                if (zekrCounter) {
-                    zekrCounter.updateHistoryDisplay();
-                } else {
-                    // Handle case where counter might not be initialized on this page
-                    const historyList = document.getElementById('counter-history-list');
-                    if (historyList) {
-                        historyList.innerHTML = '<li>العداد غير متوفر على هذه الصفحة.</li>';
-                    }
-                }
-                // -----------------------------
-
-                languageDialog.showModal();
-            }
-        });
-    }
-
-    if (closeLanguageDialog) {
-        closeLanguageDialog.addEventListener('click', () => {
-            if (languageDialog) languageDialog.close();
-        });
     }
 
     // --- Other Event Listeners (Kept as is) ---

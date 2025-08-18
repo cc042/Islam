@@ -11,8 +11,7 @@ class MakeTab {
             "#content3": "أوقات الصلاة",
             "#content4": "الأستماع",
             "#content5": "عداد الأذكار",
-            "#content6": "الإعدادات",
-            "#content8": "المزيد"
+            "#content6": "المزيد"
         };
         this.filteredKeys = Object.keys(this.tabs);
         this.filteredValue = Object.values(this.tabs);

@@ -16,7 +16,9 @@ const elements = {
     userNameDialog: document.querySelector(".User_Name"),
     nameInput: document.querySelector(".NameInput"),
     nameSubmit: document.querySelector(".NameSubmit"),
-    changeNameBtn: document.querySelector(".ChangeName")
+    changeNameBtn: document.querySelector(".ChangeName"),
+    UserCurrentName: document.querySelector(".UserCurrentName"),
+    RemoveNameBtn: document.querySelector(".RemoveName")
 };
 
 // Initialize loader
@@ -91,16 +93,6 @@ function closeDialog(dialog) {
     document.querySelector(dialog).close()
 }
 
-if (elements.ProjectsWrapper) {
-    elements.ProjectsWrapper.innerHTML = projects.map(project => `
-        <div class="project">
-            <h1>الأسم: ${project.NAME}</h1>
-            <p>الرابط: <a target="_blank" href='${project.LINK}'>أضغط هنا</a></p>
-            <p>الوصف: ${project.DESCRIPTION}</p>
-        </div>
-    `).join('');
-}
-
 // Time display
 if (elements.timeshow) {
     const updateTime = () => {
@@ -160,24 +152,27 @@ class ThemeSwitch {
 // Zekr
 class Zekr {
     constructor(elements) {
-        this.elements = elements; // Store element references
+        this.elements = elements;
         this.StorageName = "counter"
         this.counter1 = 0;
-        this.counter2 = 0 || localStorage.getItem(this.StorageName);
+        // Correctly initialize counter1 from localStorage
+        this.counter1 = parseInt(localStorage.getItem(this.StorageName)) || 0;
         this.text1 = "عدد التسابيح: ";
         this.text2 = "أخر تسجيل: ";
+        // Call setvalue() to display initial values
+        this.setvalue(this.counter1, this.counter1);
     }
 
     add() {
-        this.counter1++ || localStorage.getItem(this.StorageName);
-        this.counter2 = localStorage.setItem(this.StorageName, this.counter1)
-        this.setvalue(this.counter1, this.counter2)
+        this.counter1++;
+        localStorage.setItem(this.StorageName, this.counter1);
+        this.setvalue(this.counter1, this.counter1);
     }
 
     reset() {
-        this.counter1 = 0
-        this.counter2 = this.counter1
-        this.setvalue(this.counter1, localStorage.setItem(this.StorageName, this.counter1))
+        this.counter1 = 0;
+        localStorage.setItem(this.StorageName, this.counter1);
+        this.setvalue(this.counter1, this.counter1);
     }
 
     setvalue(txt1, txt2) {
@@ -195,9 +190,9 @@ class UserNameManager {
 
     init() {
         // Only show dialog if no name is stored and it's the first visit
-        if (!this.userName && !sessionStorage.getItem('nameDialogShown') && elements.userNameDialog) {
+        if (!this.userName && !localStorage.getItem('nameDialogShown') && elements.userNameDialog) {
             this.showNameDialog(true);
-            sessionStorage.setItem('nameDialogShown', 'true');
+            localStorage.setItem('nameDialogShown', 'true');
         }
 
         // Setup event listeners
@@ -248,6 +243,8 @@ class UserNameManager {
         if (name && name.trim() !== "") {
             this.userName = name.trim();
             setCookie("userName", this.userName, 365);
+            localStorage.setItem("userName", this.userName)
+            elements.UserCurrentName.textContent = this.userName;
             findoff(`مرحبًا ${this.userName}`, "تم تغيير الأسم بنجاح");
             return true;
         }
@@ -285,15 +282,6 @@ class ResponsiveSideBar {
             this.closeSideBar();
         }
     }
-
-    gridResposive(wrapper) {
-        if (!wrapper) return;
-        const width = window.innerWidth;
-        wrapper.style.gridTemplateColumns =
-            width > 950 ? "repeat(3, 1fr)" :
-                width <= 950 && width >= 800 ? "repeat(2, 1fr)" :
-                    "repeat(1, 1fr)";
-    }
 }
 
 // Initialize main components
@@ -301,6 +289,8 @@ const userNameManager = new UserNameManager();
 const switchTheme = new ThemeSwitch();
 const sideBar = new ResponsiveSideBar();
 const zekrCounter = new Zekr();
+
+elements.UserCurrentName.textContent = localStorage.getItem("userName")
 
 // Event listeners
 elements.adder.addEventListener("click", () => {
@@ -310,6 +300,11 @@ elements.adder.addEventListener("click", () => {
 elements.saved_azkar.addEventListener("click", () => {
     zekrCounter.reset()
 })
+
+elements.RemoveNameBtn.addEventListener("click", () => {
+    elements.UserCurrentName.textContent = localStorage.setItem("userName", "")
+})
+
 
 // Enhanced scroll-to-top button with robust functionality
 if (elements.scrollup) {
