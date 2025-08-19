@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="style\animations.css">
     <link rel="stylesheet" href="style\dialogs.css">
     <link rel="stylesheet" href="style\Resposive.css">
+    <link rel="stylesheet" href="style/Prayer.css">
     <link rel="icon" href="assets/headers_assets/belief.png">
 
     <!-- Scripts -->
@@ -75,7 +76,8 @@
             </div>
             <div class="estefsarcontent">
                 <form class="estefsarform">
-                    <textarea required class="estefsartext" placeholder="ما الذى تريد الاستفسار عنه ؟" dir="auto"></textarea>
+                    <textarea required class="estefsartext" placeholder="ما الذى تريد الاستفسار عنه ؟"
+                        dir="auto"></textarea>
                     <input required type="text" class="estefsarname" placeholder="اسمك" dir="auto">
                     <input type="submit" value="أرسل">
                 </form>
@@ -297,12 +299,12 @@
         <section class="pray" id="content3">
             <div class="header">
                 <img src="assets/headers_assets/prayer.png" alt="الصلاة" width="50">
-                <h1 class="contentSectionHeader"></h1>
+                <h1 class="contentSectionHeader">مواقيت الصلاة</h1>
             </div>
 
             <div class="countryinput">
                 <form class="countryInputWrapper">
-                    <input type="text" placeholder="أدخل أسم المدينة" class="countryfinder">
+                    <input type="text" placeholder="أدخل أسم المدينة" class="countryfinder" lang="ar">
                     <button type="submit" class="findcountry">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"
                             fill="currentColor">
@@ -311,52 +313,31 @@
                         </svg>
                     </button>
                 </form>
-                <h1 class="APIState"></h1>
-                <button class="UseLocation">أستخدم عنوانى</button>
+                <button class="UseLocation">أستخدم موقعي</button>
             </div>
 
-            <div class="prayers">
-                <div class="fajr" id="prayer">
-                    <div class="maindata">
-                        <h3>الفجر</h3>
-                        <img src="assets/pray_assets/1.png" alt="صورة الصلاة">
+            <div class="prayer-countdown-content">
+                <div class="current-next-prayerTimes">
+                    <div class="next-prayer-countdown">
+                        <h2>الصلاة القادمة</h2>
+                        <p class="next-prayer-name">--</p>
+                        <p class="next-prayer-time" dir="ltr">--</p>
+                        <div class="countdown-timer">
+                            <span class="countdown-hours">00</span>:<span class="countdown-minutes">00</span>:<span
+                                class="countdown-seconds">00</span>
+                        </div>
                     </div>
-                    <p style="direction: ltr;" class="El-Fajr">00:00</p>
+                    <div class="current-prayer-time">
+                        <h2>الصلاة الحالية</h2>
+                        <p class="current-prayer-name">--</p>
+                        <p class="current-prayer-status">--</p>
+                    </div>
                 </div>
-                <div class="sunrise" id="prayer">
-                    <div class="maindata">
-                        <h3>الشروق</h3>
-                        <img src="assets/pray_assets/sunrise.png" alt="صورة الصلاة">
+                <div class="prayer-times-list">
+                    <h2>أوقات الصلاة اليوم</h2>
+                    <div class="prayer-times-grid">
+                        <!-- This will be populated dynamically by JavaScript -->
                     </div>
-                    <p style="direction: ltr;" class="El-Shurooq">00:00</p>
-                </div>
-                <div class="dhuhur" id="prayer">
-                    <div class="maindata">
-                        <h3>الظهر</h3>
-                        <img src="assets/pray_assets/dhuhr.png" alt="صورة الصلاة">
-                    </div>
-                    <p style="direction: ltr;" class="El-Dhuhr">00:00</p>
-                </div>
-                <div class="Asr" id="prayer">
-                    <div class="maindata">
-                        <h3>العصر</h3>
-                        <img src="assets/pray_assets/asr.png" alt="صورة الصلاة">
-                    </div>
-                    <p style="direction: ltr;" class="El-Asr">00:00</p>
-                </div>
-                <div class="Maghrib" id="prayer">
-                    <div class="maindata">
-                        <h3>المغرب</h3>
-                        <img src="assets/pray_assets/maghrib.png" alt="صورة الصلاة">
-                    </div>
-                    <p style="direction: ltr;" class="El-Maghrib">00:00</p>
-                </div>
-                <div class="Isha" id="prayer">
-                    <div class="maindata">
-                        <h3>العشاء</h3>
-                        <img src="assets/pray_assets/isha.png" alt="صورة الصلاة">
-                    </div>
-                    <p style="direction: ltr;" class="El-Isha">00:00</p>
                 </div>
             </div>
         </section>
@@ -401,9 +382,11 @@
                                 </svg>
                             </button>
                         </div>
+
                     </div>
                 </div>
             </div>
+            <h1 class="SurahsAudiosNumber">0</h1>
 
             <div class="sounds"></div>
         </section>
