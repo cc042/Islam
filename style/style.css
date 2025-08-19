@@ -895,19 +895,18 @@ section:not(.active) {
 
 .controls {
     width: 100%;
-    height: max-content;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.4rem;
 }
 
 .plays,
 .SkipBtn,
 .AudioVolume {
     width: 100%;
-    height: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 0.4rem;
 }
 
