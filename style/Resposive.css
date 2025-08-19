@@ -1,16 +1,7 @@
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 900px) {
     .sounds {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width:950px) {
-    .names {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .surahs {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
+        gap: 1.25rem;
     }
 }
 
@@ -47,11 +38,11 @@
     }
 }
 
-@media screen and (max-width:800px) {
-
-    .surahs,
+@media screen and (max-width:600px) {
     .sounds {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
     }
 }
 
@@ -69,13 +60,12 @@
     }
 
     .socials,
-    .numbers {
+    .ShekhSounds {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .callus,
     .Follows {
-        max-height: 90vh;
+        max-height: 90dvh;
     }
 
     .surahInputWrapper,
@@ -89,6 +79,26 @@
         width: 93vw;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .setting1 {
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .Namebtns {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: .8rem
+    }
+
+    .Namebtns>button {
+        width: 100%;
     }
 }
 

@@ -327,9 +327,7 @@ body.dark-mode .darkmode>svg:last-child {
     width: 100%;
     height: 114px;
     display: grid;
-    align-items: center;
-    justify-content: space-between;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .tabs:first-child li {
@@ -457,7 +455,8 @@ section:not(.active) {
 .surahs,
 .names {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    place-items: center;
     gap: 20px;
     padding: 10px;
     opacity: 1;
@@ -786,10 +785,13 @@ section:not(.active) {
 
 /* Audio Section */
 .sounds {
-    padding: 10px;
+    padding: 1rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 345px), 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1400px;
 }
 
 .SoundsSetting {
@@ -804,13 +806,15 @@ section:not(.active) {
     width: 100%;
     border: 3px solid var(--Black);
     border-radius: 20px 0px;
-    padding: 20px;
+    padding: 1.25rem;
     font-family: var(--mff);
-    cursor: pointer;
-    transition: 0.5s ease;
-    text-align: center;
+    transition: all 0.3s ease;
     animation: fade 1s ease;
     color: var(--Black);
+    display: flex;
+    flex-direction: column;
+    background: var(--White);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sound:hover {
@@ -822,7 +826,7 @@ section:not(.active) {
 .sound h1 {
     color: var(--Black);
     font-size: 30px;
-    margin-bottom: 10px;
+    text-align: center;
 }
 
 .sound h1::before {
@@ -831,214 +835,169 @@ section:not(.active) {
 
 .sound p {
     color: var(--Black);
+    text-align: center;
     font-size: 20px;
 }
 
-.listen {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.primary {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 10px;
-}
-
-.primary>button {
-    width: 100%;
+.ShoukhSounds {
     border-radius: 10px;
-    background: var(--Cream);
-    padding: 15px;
-    color: var(--Navy-Blue);
-}
-
-.listen>button {
-    width: 100%;
-    border-radius: 10px;
-    background: var(--Cream);
-    margin-top: 10px;
-    padding: 15px;
-    color: var(--Navy-Blue);
-}
-
-.primary>button:hover,
-.listen>button:hover {
     background: var(--Gold);
-    color: var(--Green)
+    font-size: 20px;
+    font-family: var(--sff);
+    font-weight: 700;
+    padding: 10px;
 }
 
-.Sounds {
+/* Audio Player Controls */
+.audio-controls {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 20px 0;
 }
 
-.Sounds details {
-    width: 90%;
-    margin-bottom: 10px;
-}
-
-.Sounds summary {
-    font-size: 30px;
-    font-weight: 700;
-    border: 2px solid var(--Green);
-    border-radius: 10px 10px 0 0;
-    padding: 20px;
-    cursor: pointer;
-    color: var(--Black)
-}
-
-.Sounds ul {
-    list-style: none;
-    border: 2px solid var(--Green);
-    border-radius: 0 0 10px 10px;
-    border-top: none;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.Sounds li {
-    padding: 15px;
-    background: var(--Cream);
-    border-radius: 10px;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.Sounds li:hover {
-    background: var(--Gold);
-    color: var(--Green);
-}
-
-/* Audio Player Styles */
 .progress-container {
     width: 100%;
-    height: 5px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-    margin: 10px 0;
-    cursor: pointer;
 }
 
 .progress-bar {
-    height: 100%;
-    background-color: var(--Green);
-    border-radius: 3px;
-    width: 0%;
-    transition: width 0.1s linear;
-}
-
-.plays {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    gap: 10px;
-}
-
-.plays button {
-    width: 100%;
-    padding: 10px;
-    font-family: var(--mff);
-    font-size: 15px;
-    border-radius: 10px;
-    background: var(--Cream);
-    color: var(--Black);
-    font-weight: 600;
+    height: 8px;
+    background: var(--Soft-Gray);
+    border-radius: 4px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
 }
 
-.plays button:hover {
-    background: var(--Gold);
-    color: var(--Navy-Blue);
+.progress-bar:hover {
+    transform: scaleY(1.2)
 }
 
 .time-display {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
     color: var(--Black);
-    font-size: 12px;
-    margin-bottom: 10px;
     font-family: var(--sff);
+    font-weight: 500;
+    margin: 0.2rem 0 .5rem 0;
+    width: 100%;
 }
 
-.listen {
+.current-time,
+.duration {
+    color: var(--Green);
+    font-weight: 600;
+    min-width: 3.5ch;
+    text-align: center;
+    display: inline-block !important;
+}
+
+.controls {
     width: 100%;
+    height: max-content;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.8rem;
 }
 
-.primary,
-.secondary {
+.plays,
+.SkipBtn,
+.AudioVolume {
+    width: 100%;
+    height: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+}
+
+.plays button,
+.SkipBtn button,
+.volume-btn {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    border-radius: 0.6rem;
+    background: var(--Cream);
+    color: var(--Gold);
+    display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.plays button,
+.SkipBtn button {
     width: 100%;
 }
 
-.primary button,
-.secondary button {
-    background: var(--Cream);
-    border: 2px solid var(--Gold);
-    border-radius: 10px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.plays button svg,
+.SkipBtn button svg,
+.volume-btn svg {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
 }
 
-.primary button:hover,
-.secondary button:hover {
-    background: var(--Gold);
-    transform: translateY(-2px);
+.plays button:active,
+.SkipBtn button:active,
+.volume-btn:active {
+    transform: none;
 }
 
-.volume-control {
+.slider {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.5rem;
 }
 
 .volume-slider {
-    width: 80px;
-    cursor: pointer;
-    height: 5px;
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
     background: var(--Soft-Gray);
     border-radius: 3px;
+    outline: none;
 }
 
 .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
+    appearance: none;
     width: 15px;
     height: 15px;
-    background: var(--Green);
+    background: var(--Gold);
     border-radius: 50%;
+    cursor: pointer;
 }
 
-.slider {
-    width: max-content;
+.download {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+    background: var(--Cream);
+    color: var(--Gold);
+}
+
+.download svg {
+    width: 24px;
+    height: 24px;
+}
+
+.play-count {
+    font-size: 0.9rem;
+    color: var(--Soft-Gray);
 }
 
 /* More Section */
@@ -1100,7 +1059,7 @@ section:not(.active) {
     color: var(--Black)
 }
 
-.CurrentName > span {
+.CurrentName>span {
     color: var(--Gold);
     text-shadow: 0 0 .5rem var(--Black);
 }
