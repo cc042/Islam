@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const nameInput = document.querySelector('.NameInput');
     const nameSubmit = document.querySelector('.NameSubmit');
 
-    // --- User Name Handling (Kept as is) ---
     if (!localStorage.getItem('userName')) userNameDialog.showModal();
 
     changeNameBtn.addEventListener('click', () => userNameDialog.showModal());
@@ -74,12 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function filterAndDisplaySounds() {
         // Ensure dependencies are met
         if (typeof window.sounds === 'undefined' || !window.sounds || typeof window.displaySounds !== 'function') {
-            // console.warn("[SettingsJS] Cannot filter sounds: dependencies not ready."); // Reduce log spam
             return;
         }
 
         if (!reciterFilter) {
-            console.warn("[SettingsJS] Cannot filter sounds: reciter filter dropdown not found.");
             return;
         }
 
@@ -119,118 +116,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-function showErrorMessage(message, title = "خطأ") {
-    const dialog = document.getElementById('customAlertDialog');
-    const titleElement = dialog?.querySelector('.custom-alert-title');
-    const messageElement = dialog?.querySelector('.custom-alert-message');
-    const okButton = dialog?.querySelector('.custom-alert-ok-btn');
-    const closeButton = dialog?.querySelector('.custom-alert-close-btn');
-
-    if (!dialog || !titleElement || !messageElement || !okButton || !closeButton) {
-        console.error("[SettingsJS] Custom alert dialog elements not found. Falling back to console.error.");
-        console.error(message);
-        return; // Gracefully handle if dialog elements are missing
-    }
-
-    // Set the title and message
-    titleElement.textContent = title;
-    messageElement.textContent = message;
-
-    // Function to close the dialog
-    const closeDialog = () => {
-        dialog.close();
-        // Remove event listeners to prevent memory leaks if added multiple times
-        okButton.removeEventListener('click', onOkClick);
-        closeButton.removeEventListener('click', onCloseClick);
-        dialog.removeEventListener('close', onCloseClick); // Also remove if closed by backdrop/ESC
-    };
-
-    // Event handler for OK button
-    const onOkClick = (e) => {
-        e.preventDefault(); // Prevent default if button is submit type
-        closeDialog();
-    };
-
-    // Event handler for Close button and dialog close event (e.g., backdrop click, ESC)
-    const onCloseClick = () => {
-        closeDialog();
-    };
-
-    // Attach event listeners (ensure they are removed in closeDialog)
-    okButton.addEventListener('click', onOkClick);
-    closeButton.addEventListener('click', onCloseClick);
-    // Also listen for the dialog's native 'close' event (covers backdrop click, ESC)
-    dialog.addEventListener('close', onCloseClick);
-
-    // Show the dialog
-    dialog.showModal();
-}
-
-
-/**
- * Displays a confirmation dialog to the user.
- * @param {string} message - The confirmation message to display.
- * @param {string} [title="تأكيد"] - The title for the dialog.
- * @param {Function} onConfirm - Function to call if user confirms.
- * @param {Function} onCancel - Function to call if user cancels.
- */
-function showConfirmDialog(message, title = "تأكيد", onConfirm, onCancel) {
-    const dialog = document.getElementById('customConfirmDialog');
-    const titleElement = dialog?.querySelector('.custom-confirm-title');
-    const messageElement = dialog?.querySelector('.custom-confirm-message');
-    const confirmBtn = dialog?.querySelector('.custom-confirm-ok-btn');
-    const cancelBtn = dialog?.querySelector('.custom-confirm-cancel-btn');
-
-    if (!dialog || !titleElement || !messageElement || !confirmBtn || !cancelBtn) {
-        console.error("[SettingsJS] Custom confirm dialog elements not found. Falling back to window.confirm.");
-        // Fallback to native confirm if custom dialog is missing
-        if (confirm(message)) {
-            if (onConfirm) onConfirm();
-        } else {
-            if (onCancel) onCancel();
-        }
-        return;
-    }
-
-    // Set the title and message
-    titleElement.textContent = title;
-    messageElement.textContent = message;
-
-    // Function to close the dialog
-    const closeDialog = () => {
-        dialog.close();
-        // Remove event listeners to prevent memory leaks
-        confirmBtn.removeEventListener('click', onConfirmClick);
-        cancelBtn.removeEventListener('click', onCancelClick);
-        dialog.removeEventListener('close', onClose); // Also remove if closed by backdrop/ESC
-    };
-
-    // Event handlers
-    const onConfirmClick = (e) => {
-        e.preventDefault();
-        closeDialog();
-        if (onConfirm) onConfirm();
-    };
-
-    const onCancelClick = (e) => {
-        e.preventDefault();
-        closeDialog();
-        if (onCancel) onCancel();
-    };
-
-    const onClose = () => {
-        // If dialog is closed by backdrop/ESC, treat as cancel
-        closeDialog();
-        if (onCancel) onCancel();
-    };
-
-    // Attach event listeners
-    confirmBtn.addEventListener('click', onConfirmClick);
-    cancelBtn.addEventListener('click', onCancelClick);
-    dialog.addEventListener('close', onClose); // Covers backdrop click, ESC
-
-    // Show the dialog
-    dialog.showModal();
-}
 // --- End UI Feedback Functions ---

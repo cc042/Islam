@@ -28,15 +28,15 @@ class SoundPlayer {
                 baseUrl: "https://download.quranicaudio.com/quran/abdul_basit_murattal/"
             },
             {
-                name: "سعد الغامدي",
-                value: "ghamadi",
-                baseUrl: "https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/"
-            },
-            {
                 name: "ماهر المعيقلي",
                 value: "maher",
-                baseUrl: "https://download.quranicaudio.com/quran/maher_al_muaiqly/"
-            }
+                baseUrl: "https://server12.mp3quran.net/maher/Almusshaf-Al-Mojawwad/"
+            },
+            {
+                name: "ياسر الدوسري",
+                value: "yasser",
+                baseUrl: "https://server11.mp3quran.net/yasser/"
+            },
         ];
         this.currentReciter = this.ShekhSounds[0];
         this.serviceWorkerRegistration = null;
@@ -344,7 +344,7 @@ class SoundPlayer {
                             </svg>
                         </button>
                     </div>
-                    <div>
+                    <div class="SkipBtn">
                         <button class="previous" aria-label="السورة السابقة">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="currentColor">
                                 <path d="M459.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4L288 214.3V256v41.7L459.5 440.6zM256 352V256 128 96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160C4.2 237.5 0 246.5 0 256s4.2 18.5 11.5 24.6l192 160c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V352z"/>
@@ -356,11 +356,12 @@ class SoundPlayer {
                             </svg>
                         </button>
                     </div>
-                    <div>
+                    <div class="AudioVolume">
                         <div class="slider">
                             <button class="volume-btn" aria-label="تحكم في الصوت">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="24" height="24" fill="currentColor">
-                                    <path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24">
+                                    <path
+                                        d="M533.6 96.5C523.3 88.1 508.2 89.7 499.8 100C491.4 110.3 493 125.4 503.3 133.8C557.5 177.8 592 244.8 592 320C592 395.2 557.5 462.2 503.3 506.3C493 514.7 491.5 529.8 499.8 540.1C508.1 550.4 523.3 551.9 533.6 543.6C598.5 490.7 640 410.2 640 320C640 229.8 598.5 149.2 533.6 96.5zM473.1 171C462.8 162.6 447.7 164.2 439.3 174.5C430.9 184.8 432.5 199.9 442.8 208.3C475.3 234.7 496 274.9 496 320C496 365.1 475.3 405.3 442.8 431.8C432.5 440.2 431 455.3 439.3 465.6C447.6 475.9 462.8 477.4 473.1 469.1C516.3 433.9 544 380.2 544 320.1C544 260 516.3 206.3 473.1 171.1zM412.6 245.5C402.3 237.1 387.2 238.7 378.8 249C370.4 259.3 372 274.4 382.3 282.8C393.1 291.6 400 305 400 320C400 335 393.1 348.4 382.3 357.3C372 365.7 370.5 380.8 378.8 391.1C387.1 401.4 402.3 402.9 412.6 394.6C434.1 376.9 448 350.1 448 320C448 289.9 434.1 263.1 412.6 245.5zM80 416L128 416L262.1 535.2C268.5 540.9 276.7 544 285.2 544C304.4 544 320 528.4 320 509.2L320 130.8C320 111.6 304.4 96 285.2 96C276.7 96 268.5 99.1 262.1 104.8L128 224L80 224C53.5 224 32 245.5 32 272L32 368C32 394.5 53.5 416 80 416z" />
                                 </svg>
                             </button>
                             <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
@@ -371,7 +372,6 @@ class SoundPlayer {
                             </svg>
                         </a>
                     </div>
-                    <div class="volume-control"></div>
                 </div>
             </div>
         `;
