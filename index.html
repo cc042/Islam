@@ -25,14 +25,13 @@
     <link rel="icon" href="assets/headers_assets/belief.png">
 
     <!-- Scripts -->
-    <script src="JS/SurahData.js" defer></script>
     <script src="JS/services.js" defer></script>
     <script src="JS/settings.js" defer></script>
     <script src="JS/sound.js" defer></script>
     <script src="JS/index.js" defer></script>
     <script src="JS/azan.js" defer></script>
-    <script src="JS/Data.js" defer></script>
     <script src="JS/tabs.js" defer></script>
+    <script src="JS/Data.js" defer></script>
     <script src="sw.js" defer></script>
 </head>
 
@@ -76,8 +75,8 @@
             </div>
             <div class="estefsarcontent">
                 <form class="estefsarform">
-                    <textarea required class="estefsartext" placeholder="ما الذى تريد الاستفسار عنه ؟"></textarea>
-                    <input required type="text" class="estefsarname" placeholder="اسمك">
+                    <textarea required class="estefsartext" placeholder="ما الذى تريد الاستفسار عنه ؟" dir="auto"></textarea>
+                    <input required type="text" class="estefsarname" placeholder="اسمك" dir="auto">
                     <input type="submit" value="أرسل">
                 </form>
             </div>
@@ -256,14 +255,6 @@
                             d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7L288 480l9.4 0L512 480c17.7 0 32-14.3 32-32s-14.3-32-32-32l-124.1 0L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416l-9.4 0-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z" />
                     </svg>
                 </button>
-
-                <button class="filtersearch">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24"
-                        fill="currentColor">
-                        <path
-                            d="M3.9 54.9C10.5 40.9 24.5 32 40 32l432 0c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9 320 448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6l0-79.1L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z" />
-                    </svg>
-                </button>
             </div>
             <h1 class="length">0</h1>
             <div class="surahs"></div>
@@ -404,10 +395,9 @@
                                 </svg>
                             </button>
                             <button class="ShoukhSounds">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="24" height="24"
-                                    fill="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24">
                                     <path
-                                        d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z" />
+                                        d="M533.6 96.5C523.3 88.1 508.2 89.7 499.8 100C491.4 110.3 493 125.4 503.3 133.8C557.5 177.8 592 244.8 592 320C592 395.2 557.5 462.2 503.3 506.3C493 514.7 491.5 529.8 499.8 540.1C508.1 550.4 523.3 551.9 533.6 543.6C598.5 490.7 640 410.2 640 320C640 229.8 598.5 149.2 533.6 96.5zM473.1 171C462.8 162.6 447.7 164.2 439.3 174.5C430.9 184.8 432.5 199.9 442.8 208.3C475.3 234.7 496 274.9 496 320C496 365.1 475.3 405.3 442.8 431.8C432.5 440.2 431 455.3 439.3 465.6C447.6 475.9 462.8 477.4 473.1 469.1C516.3 433.9 544 380.2 544 320.1C544 260 516.3 206.3 473.1 171.1zM412.6 245.5C402.3 237.1 387.2 238.7 378.8 249C370.4 259.3 372 274.4 382.3 282.8C393.1 291.6 400 305 400 320C400 335 393.1 348.4 382.3 357.3C372 365.7 370.5 380.8 378.8 391.1C387.1 401.4 402.3 402.9 412.6 394.6C434.1 376.9 448 350.1 448 320C448 289.9 434.1 263.1 412.6 245.5zM80 416L128 416L262.1 535.2C268.5 540.9 276.7 544 285.2 544C304.4 544 320 528.4 320 509.2L320 130.8C320 111.6 304.4 96 285.2 96C276.7 96 268.5 99.1 262.1 104.8L128 224L80 224C53.5 224 32 245.5 32 272L32 368C32 394.5 53.5 416 80 416z" />
                                 </svg>
                             </button>
                         </div>
@@ -440,11 +430,6 @@
             </div>
 
             <div class="OtherItems">
-                <fieldset>
-                    <legend>الوقت و التاريخ</legend>
-                    <h1 class="timeshow"></h1>
-                </fieldset>
-
                 <fieldset class="ChangeNameField">
                     <legend>تغيير الأسم</legend>
                     <div class="setting1" id="setting">
@@ -458,6 +443,11 @@
                         </div>
                     </div>
                     <h2 class="CurrentName">الأسم الحالى: <span class="UserCurrentName"></span></h2>
+                </fieldset>
+
+                <fieldset>
+                    <legend>الوقت و التاريخ</legend>
+                    <h1 class="timeshow"></h1>
                 </fieldset>
             </div>
         </section>
