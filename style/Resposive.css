@@ -38,6 +38,34 @@
     }
 }
 
+@media (max-width: 768px) {
+
+    .prayer-time-item {
+        padding: 12px 15px;
+    }
+
+    .countdown-hours,
+    .countdown-minutes,
+    .countdown-seconds {
+        font-size: 1.2rem;
+        min-width: 40px;
+        padding: 6px 10px;
+    }
+
+    .current-prayer-name,
+    .next-prayer-name {
+        font-size: 1.5rem;
+    }
+
+
+}
+
+@media screen and (max-width: 650px) {
+    .current-next-prayerTimes {
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width:600px) {
     .sounds {
         grid-template-columns: 1fr;
@@ -79,6 +107,26 @@
         width: 93vw;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .pray .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .prayer-time-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .prayer-time-item>div {
+        justify-content: center;
+    }
+
+    .countdown-timer {
+        flex-wrap: wrap;
     }
 }
 
