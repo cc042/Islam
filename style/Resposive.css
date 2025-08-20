@@ -39,8 +39,8 @@
 }
 
 @media (max-width: 768px) {
-
     .prayer-time-item {
+        width: 100%;
         padding: 12px 15px;
     }
 
@@ -56,8 +56,6 @@
     .next-prayer-name {
         font-size: 1.5rem;
     }
-
-
 }
 
 @media screen and (max-width: 650px) {
@@ -71,6 +69,28 @@
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0.5rem;
+    }
+
+    /* Fix for prayer times grid on small screens */
+    .prayer-times-grid {
+        grid-template-columns: 1fr !important;
+        /* Force single column */
+        gap: 0.8rem;
+    }
+
+    .prayer-time-item {
+        padding: 10px 12px;
+        flex-direction: row;
+        /* Keep horizontal layout */
+        justify-content: space-between;
+    }
+
+    .prayer-time-name {
+        font-size: 1rem;
+    }
+
+    .prayer-time-value {
+        font-size: 1rem;
     }
 }
 
@@ -111,22 +131,34 @@
 }
 
 @media (max-width: 480px) {
-    .pray .header h1 {
-        font-size: 1.6rem;
-    }
-
     .prayer-time-item {
-        flex-direction: column;
-        text-align: center;
+        width: 100%;
+        flex-direction: row;
+        /* Changed from column to row */
+        text-align: left;
+        /* Changed from center to left */
         gap: 10px;
-    }
-
-    .prayer-time-item>div {
-        justify-content: center;
+        padding: 10px 12px;
+        /* Reduced padding */
     }
 
     .countdown-timer {
         flex-wrap: wrap;
+    }
+
+    /* Additional fixes for very small screens */
+    .prayer-times-grid {
+        gap: 0.6rem;
+    }
+
+    .prayer-time-name {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .prayer-time-value {
+        font-size: 0.9rem;
+        white-space: nowrap;
     }
 }
 
@@ -172,6 +204,17 @@
     .timeshow {
         font-size: max(2vw, 20px);
     }
+
+    /* Additional prayer time fixes for very small screens */
+    .prayer-time-item>div {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .prayer-time-name,
+    .prayer-time-value {
+        font-size: 0.85rem;
+    }
 }
 
 @media screen and (max-width:400px) {
@@ -179,10 +222,47 @@
         font-size: 40px;
         margin-bottom: 10px;
     }
+
+    .prayer-times-grid {
+        display: flex;
+        flex-direction: column;
+        /* Force single column layout */
+        gap: 0.8rem;
+    }
+
+    .prayer-time-item {
+        min-width: 0;
+        /* Allow items to shrink */
+        max-width: 100%;
+        /* Prevent overflow */
+    }
+
+    /* Fix for prayer countdown on very small screens */
+    .countdown-timer {
+        gap: 4px;
+    }
+
+    .countdown-hours,
+    .countdown-minutes,
+    .countdown-seconds {
+        font-size: 1.1rem;
+        min-width: 35px;
+        padding: 5px 8px;
+    }
 }
 
 @media screen and (max-width:313px) {
     .surahInputWrapper>input {
         font-size: 20px;
+    }
+
+    /* Final adjustments for extremely small screens */
+    .prayer-time-item {
+        padding: 8px 10px;
+    }
+
+    .prayer-time-name,
+    .prayer-time-value {
+        font-size: 0.8rem;
     }
 }
