@@ -189,7 +189,7 @@
 .prayer-time-item>div {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     flex: 1;
     /* Changed from width: 100% to flex: 1 */
     min-width: 0;

@@ -41,7 +41,7 @@
 @media (max-width: 768px) {
     .prayer-time-item {
         width: 100%;
-        padding: 12px 15px;
+        padding: 10px 13px;
     }
 
     .countdown-hours,
@@ -133,13 +133,17 @@
 @media (max-width: 480px) {
     .prayer-time-item {
         width: 100%;
-        flex-direction: row;
+        flex-direction: column;
         /* Changed from column to row */
         text-align: left;
         /* Changed from center to left */
         gap: 10px;
         padding: 10px 12px;
         /* Reduced padding */
+    }
+
+    .prayer-time-item>div {
+        align-self: start;
     }
 
     .countdown-timer {
@@ -207,7 +211,7 @@
 
     /* Additional prayer time fixes for very small screens */
     .prayer-time-item>div {
-        flex-direction: column;
+        flex-direction: row;
         gap: 5px;
     }
 
@@ -258,7 +262,7 @@
 
     /* Final adjustments for extremely small screens */
     .prayer-time-item {
-        padding: 8px 10px;
+        padding: 6px 8px;
     }
 
     .prayer-time-name,
