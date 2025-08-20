@@ -48,7 +48,7 @@ function hideLoading() {
     findcountry.disabled = false;
 }
 
-function showTimes(prayerData) {
+function showTimes(prayerData, city) {
     if (!prayerData || !prayerData.timings) {
         showError("بيانات الأوقات غير متوفرة حالياً", "خطأ");
         return;
@@ -73,6 +73,11 @@ function showTimes(prayerData) {
 
     // Update prayer countdown content
     updatePrayerCountdownContent(prayerData);
+
+    // حفظ المدينة للاستخدام في الخلفية
+    if (city) {
+        localStorage.setItem('lastSearchedCity', city);
+    }
 }
 
 function formatTime(timeString) {
@@ -241,7 +246,7 @@ function updatePrayerTimesList(prayers, currentPrayer, nextPrayer) {
 
         // Create prayer item with image and name
         prayerItem.innerHTML = `
-            <div style="display: flex; gap: 0.4rem; align-items: center;">
+            <div>
                 <img src="${prayer.icon}" alt="${prayer.name}" width="20">
                 <span class="prayer-time-name">${prayer.name}</span>
             </div>
@@ -276,7 +281,7 @@ async function fetchData(city) {
         if (data.code === 200 && data.data) {
             // Cache the result
             prayerTimesCache[city] = data.data;
-            showTimes(data.data);
+            showTimes(data.data, city);
         } else {
             showError("لم يتم العثور على أوقات الصلاة لهذه المدينة", "تنبيه");
         }
