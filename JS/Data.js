@@ -233,7 +233,7 @@ class AllahNames {
 // Surahs
 class Surahs {
     constructor() {
-
+        this.SurahsContainer = document.querySelector(".")
     }
 
     ShowAllSurahs() {
